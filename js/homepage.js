@@ -1,3 +1,26 @@
+console.log("homepage.js loaded");
+
+const featuredContainer = document.querySelector("#featuredProducts");
+
+console.log(featuredContainer);
+console.log(products);
+
+if (featuredContainer) {
+
+    const featured = products.filter(product => product.featured);
+
+    console.log(featured);
+
+    featured.forEach(product => {
+
+        console.log(product.name);
+
+        featuredContainer.innerHTML += `
+        ...
+        `;
+    });
+}
+
 /* ==========================================================
 FEATURED PRODUCTS
 ========================================================== */
