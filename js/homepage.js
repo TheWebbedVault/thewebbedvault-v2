@@ -1,33 +1,10 @@
-console.log("homepage.js loaded");
-
-const featuredContainer = document.querySelector("#featuredProducts");
-
-console.log(featuredContainer);
-console.log(products);
-
-if (featuredContainer) {
-
-    const featured = products.filter(product => product.featured);
-
-    console.log(featured);
-
-    featured.forEach(product => {
-
-        console.log(product.name);
-
-        featuredContainer.innerHTML += `
-        ...
-        `;
-    });
-}
-
 /* ==========================================================
-FEATURED PRODUCTS
+   FEATURED PRODUCTS
 ========================================================== */
 
 const featuredContainer = document.querySelector("#featuredProducts");
 
-if(featuredContainer){
+if (featuredContainer) {
 
     const featured = products.filter(product => product.featured);
 
@@ -38,9 +15,7 @@ if(featuredContainer){
         <div class="product">
 
             <span class="product-badge">
-
                 ${product.badge}
-
             </span>
 
             <img src="${product.image}" alt="${product.name}">
@@ -52,15 +27,11 @@ if(featuredContainer){
             <div class="product-buttons">
 
                 <button class="wishlist-btn">
-
                     ❤ Wishlist
-
                 </button>
 
                 <button class="cart-btn">
-
                     🛒 Add to Cart
-
                 </button>
 
             </div>
@@ -73,28 +44,25 @@ if(featuredContainer){
 
 }
 
+
 /* ==========================================================
-NEW DROPS
+   NEW DROPS
 ========================================================== */
 
 const newDropsContainer = document.querySelector("#newDrops");
 
-if(newDropsContainer){
+if (newDropsContainer) {
 
-    const newDrops = products.filter(product =>
-        product.badge === "New Drop"
-    );
+    const newDrops = products.filter(product => product.badge === "New Drop");
 
-    newDrops.forEach(product=>{
+    newDrops.forEach(product => {
 
         newDropsContainer.innerHTML += `
 
         <div class="product">
 
             <span class="product-badge">
-
                 ${product.badge}
-
             </span>
 
             <img src="${product.image}" alt="${product.name}">
@@ -106,15 +74,11 @@ if(newDropsContainer){
             <div class="product-buttons">
 
                 <button class="wishlist-btn">
-
                     ❤ Wishlist
-
                 </button>
 
                 <button class="cart-btn">
-
                     🛒 Add to Cart
-
                 </button>
 
             </div>
