@@ -12,7 +12,8 @@ if (featuredContainer) {
 
         featuredContainer.innerHTML += `
 
-        <div class="product">
+        <div class="product"
+     onclick="window.location.href='Html/product.html?id=${product.id}'">
 
             <span class="product-badge">
                 ${product.badge}

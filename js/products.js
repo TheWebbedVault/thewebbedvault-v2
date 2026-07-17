@@ -7,18 +7,40 @@ const products = [
     /* ==========================
        MASKS
     ========================== */
+{
+    id: 1,
+    name: "Tobey Red Mask",
+    category: "Masks",
+    price: 85,
 
-    {
-        id: 1,
-        name: "Tobey Red Mask",
-        category: "Masks",
-        price: 85,
-        image: "Images/Masks/Mask-pictures/tobey-red.front.png",
-        badge: "Best Seller",
-        featured: false,
-        stock: 10,
-        description: "Premium Raimi-inspired full-head Spider-Man mask."
-    },
+    image: "Images/Masks/Mask-pictures/tobey-red.front.png",
+
+    images: [
+        "Images/Masks/Mask-pictures/tobey-red.front.png",
+        "Images/Masks/Mask-pictures/tobey-red.eyes-close.png",
+        "Images/Masks/Mask-pictures/tobey-red.side-left.png",
+        "Images/Masks/Mask-pictures/tobey-red.side-right.png",
+    
+    ],
+
+    badge: "Best Seller",
+    featured: true,
+    stock: 10,
+
+    description: "Premium Raimi-inspired full-head Spider-Man mask.",
+
+features: [
+    "Raised 3D webbing",
+    "Magnetic lenses",
+    "Premium lycra fabric",
+    "Collector quality",
+    "Comfortable fit"
+],
+
+shipping: "Ships within 1–2 business days.",
+
+returns: "30-day returns accepted."
+},
 
     {
         id: 2,

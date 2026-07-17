@@ -1913,3 +1913,119 @@ FOOTER
     color:#888;
 
 }
+
+/* ==========================================================
+   PRODUCT PAGE
+========================================================== */
+
+.product-page{
+
+    max-width:1400px;
+
+    margin:80px auto;
+
+    padding:0 60px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:70px;
+
+    align-items:start;
+
+}
+
+.product-gallery img{
+
+    width:100%;
+
+    border-radius:18px;
+
+}
+
+.product-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+#productBadge{
+
+    display:inline-block;
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:8px 18px;
+
+    border-radius:999px;
+
+    width:fit-content;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+#productName{
+
+    font-size:48px;
+
+    font-weight:800;
+
+}
+
+#productPrice{
+
+    font-size:40px;
+
+    color:#2563eb;
+
+    font-weight:700;
+
+}
+
+#productDescription{
+
+    color:#b8b8b8;
+
+    line-height:1.8;
+
+    font-size:18px;
+
+}
+
+.thumbnails{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:20px;
+
+}
+
+.thumbnails img{
+
+    width:90px;
+
+    cursor:pointer;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+}
+
+.thumbnails img:hover{
+
+    transform:scale(1.05);
+
+}
