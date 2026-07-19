@@ -3,72 +3,108 @@
 
 <head>
 
-    <!-- Basic Meta -->
+    <!-- ==========================================================
+         META
+    =========================================================== -->
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Website Title -->
-    <title>The Webbed Vault | Anyone Can Wear The Mask</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-    <!-- Website Description -->
     <meta
         name="description"
-        content="Premium Spider-Man masks, gloves, web shooters, comics and collectibles. Anyone Can Wear The Mask."
-    >
+        content="Premium Spider-Man masks, gloves, web shooters, comics and collectibles. Anyone Can Wear The Mask.">
 
-    <!-- Website Author -->
-    <meta name="author" content="The Webbed Vault">
+    <meta
+        name="author"
+        content="The Webbed Vault">
 
-    <!-- Favicon -->
-    <link rel="icon" href="Images/Logo/Logo.png">
+    <meta
+        name="theme-color"
+        content="#0d1117">
 
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>The Webbed Vault | Anyone Can Wear The Mask</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- ==========================================================
+         FAVICON
+    =========================================================== -->
 
-    <!-- Font Awesome -->
+    <link
+        rel="icon"
+        type="image/png"
+        href="Images/Logo/Logo.png">
+
+    <!-- ==========================================================
+         GOOGLE FONTS
+    =========================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- ==========================================================
+         FONT AWESOME
+    =========================================================== -->
+
     <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    >
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="Style.css">
+    <!-- ==========================================================
+         CSS
+    =========================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="Style.css">
 
 </head>
 
 <body>
 
-    <!-- ==========================
+    <!-- ==========================================================
          ANNOUNCEMENT BAR
-    =========================== -->
+    =========================================================== -->
 
     <div class="announcement-bar">
 
         <p>
+
             🚚 FREE UK SHIPPING ON ORDERS OVER £150
+
         </p>
 
     </div>
 
-    <!-- ==========================
+    <!-- ==========================================================
          HEADER
-    =========================== -->
+    =========================================================== -->
 
-    <header>
+    <header class="header">
 
         <nav class="navbar">
 
             <!-- Logo -->
 
-            <a href="index.html" class="logo">
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="The Webbed Vault Home">
 
                 <img
                     src="Images/Logo/Logo.png"
-                    alt="The Webbed Vault Logo"
-                >
+                    alt="The Webbed Vault Logo">
 
             </a>
 
@@ -77,11 +113,15 @@
             <div class="nav-search">
 
                 <input
-                    type="text"
+                    id="searchInput"
+                    type="search"
                     placeholder="Search masks, gloves, web shooters..."
-                >
+                    autocomplete="off"
+                    aria-label="Search products">
 
-                <button>
+                <button
+                    type="button"
+                    aria-label="Search">
 
                     <i class="fa-solid fa-magnifying-glass"></i>
 
@@ -93,7 +133,7 @@
 
             <ul class="nav-links">
 
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
 
                 <li><a href="Html/Shop.html">Shop</a></li>
 
@@ -115,15 +155,21 @@
 
             <div class="nav-icons">
 
-                 <a href="Html/Wishlist.html" class="wishlist-icon">
+                <a
+                    href="Html/Wishlist.html"
+                    class="wishlist-icon"
+                    aria-label="Wishlist">
 
-                 <i class="fa-regular fa-heart"></i>
+                    <i class="fa-regular fa-heart"></i>
 
-                 <span id="wishlistCount">0</span>
+                    <span id="wishlistCount">0</span>
 
                 </a>
 
-                <a href="Html/Cart.html" class="cart-icon">
+                <a
+                    href="Html/Cart.html"
+                    class="cart-icon"
+                    aria-label="Shopping Cart">
 
                     <i class="fa-solid fa-cart-shopping"></i>
 
@@ -137,482 +183,694 @@
 
     </header>
 
-    <!-- ==========================
-     HERO
-========================== -->
+        
+    <!-- ==========================================================
+         HERO
+    =========================================================== -->
 
-<section class="hero" id="hero">
+    <main>
 
-    <div class="hero-overlay"></div>
+        <section class="hero" id="hero">
 
-    <div class="hero-content">
+            <div class="hero-overlay"></div>
 
-        <p class="hero-subtitle">
+            <div class="hero-content">
 
-            PREMIUM SPIDER-MAN COLLECTIBLES
+                <span class="hero-tag">
 
-        </p>
+                    PREMIUM SPIDER-MAN COLLECTIBLES
 
-        <h1>
+                </span>
 
-            ANYONE CAN<br>
-            WEAR THE MASK
+                <h1>
 
-        </h1>
+                    ANYONE CAN<br>
+                    WEAR THE MASK
 
-        <p class="hero-description">
+                </h1>
 
-            Premium Spider-Man masks, gloves, web shooters,
-            comics and collectibles built for fans across every universe.
+                <p class="hero-description">
 
-        </p>
+                    Premium Spider-Man masks, gloves, web shooters,
+                    comics and collectibles inspired by every Spider-Verse.
 
-        <div class="hero-buttons">
+                </p>
 
-            <a href="Html/Shop.html" class="primary-btn">
+                <div class="hero-buttons">
 
-                Shop Collection
+                    <a
+                        href="Html/Shop.html"
+                        class="primary-btn">
 
-            </a>
+                        Shop Collection
 
-            <a href="#featured-products" class="secondary-btn">
+                    </a>
 
-                Explore
+                    <a
+                        href="#featured-products"
+                        class="secondary-btn">
 
-            </a>
+                        Explore Collection
 
-        </div>
+                    </a>
 
-    </div>
+                </div>
 
-</section>
+            </div>
 
-<section class="features">
+            <div class="hero-scroll">
 
-    <div class="feature-card">
+                <a
+                    href="#featured-products"
+                    aria-label="Scroll to Featured Products">
 
-        <i class="fa-solid fa-truck-fast"></i>
+                    <i class="fa-solid fa-chevron-down"></i>
 
-        <h3>Free UK Shipping</h3>
-
-        <p>On orders over £150</p>
-
-    </div>
-
-    <div class="feature-card">
-
-        <i class="fa-solid fa-shield-halved"></i>
-
-        <h3>Premium Quality</h3>
-
-        <p>Built for collectors</p>
-
-    </div>
-
-    <div class="feature-card">
-
-        <i class="fa-solid fa-lock"></i>
-
-        <h3>Secure Payments</h3>
-
-        <p>Stripe • PayPal • Klarna</p>
-
-    </div>
-
-    <div class="feature-card">
-
-        <i class="fa-solid fa-star"></i>
-
-        <h3>Trusted Seller</h3>
-
-        <p>eBay • Vinted • Depop</p>
-
-    </div>
-
-</section>
-
-<!-- ==========================
-FEATURED PRODUCTS
-========================== -->
-
-<section class="featured-products">
-
-    <div class="section-title">
-
-        <h2>Featured Across the Spider-Verse</h2>
-
-        <p>Premium Spider-Man masks crafted for collectors.</p>
-
-    </div>
-
-    <div class="products" id="featuredProducts">
-
-    </div>
-
-</section>
-
-<section class="new-drops">
-
-    <div class="section-title">
-
-        <h2>🔥 New Drops</h2>
-
-        <p>The latest additions to The Webbed Vault.</p>
-
-    </div>
-
-    <div class="products" id="newDrops">
-
-    </div>
-
-</section>
-
-<!-- ==========================
-SHOP BY CATEGORY
-========================== -->
-<section class="categories">
-
-    <div class="section-title">
-
-        <h2>Shop By Category</h2>
-
-        <p>Everything a Spider-Man fan could want.</p>
-
-    </div>
-
-    <div class="category-grid">
-
-        <a href="Html/Masks.html" class="category-card">
-
-            <span>🕷</span>
-
-            <h3>Masks</h3>
-
-        </a>
-
-        <a href="Html/Gloves.html" class="category-card">
-
-            <span>🧤</span>
-
-            <h3>Gloves</h3>
-
-        </a>
-
-        <a href="Html/Webshooters.html" class="category-card">
-
-            <span>🕸</span>
-
-            <h3>Web Shooters</h3>
-
-        </a>
-
-        <a href="Html/Comics.html" class="category-card">
-
-            <span>📚</span>
-
-            <h3>Comics</h3>
-
-        </a>
-
-        <a href="Html/Collectibles.html" class="category-card">
-
-            <span>🎁</span>
-
-            <h3>Collectibles</h3>
-
-        </a>
-
-        <a href="#" class="category-card">
-
-            <span>👕</span>
-
-            <h3>Suits</h3>
-
-            <small>Coming Soon</small>
-
-        </a>
-
-    </div>
-
-</section>
-
-<section class="social-section">
-
-    <div class="section-title">
-
-        <h2>Follow The Webbed Vault</h2>
-
-        <p>See new drops, behind the scenes and exclusive content.</p>
-
-    </div>
-
-    <div class="social-grid">
-
-        <a href="#" class="social-card">
-
-            <i class="fa-brands fa-tiktok"></i>
-
-            <h3>TikTok</h3>
-
-        </a>
-
-        <a href="#" class="social-card">
-
-            <i class="fa-brands fa-instagram"></i>
-
-            <h3>Instagram</h3>
-
-        </a>
-
-        <a href="#" class="social-card">
-
-            <i class="fa-brands fa-ebay"></i>
-
-            <h3>eBay</h3>
-
-        </a>
-
-        <a href="#" class="social-card">
-
-            <h3>Vinted</h3>
-
-        </a>
-
-        <a href="#" class="social-card">
-
-            <h3>Depop</h3>
-
-        </a>
-
-    </div>
-
-</section>
-
-<!-- ==========================
-WHY CHOOSE US
-========================== -->
-
-<section class="why-us">
-
-    <div class="section-title">
-
-        <h2>Why Choose The Webbed Vault?</h2>
-
-        <p>Built for collectors. Trusted by Spider-Man fans.</p>
-
-    </div>
-
-    <div class="why-grid">
-
-        <div class="why-card">
-
-            <div class="why-icon">🚚</div>
-
-            <h3>Fast UK Shipping</h3>
-
-            <p>
-                Quick dispatch with tracked delivery.
-            </p>
-
-        </div>
-
-        <div class="why-card">
-
-            <div class="why-icon">⭐</div>
-
-            <h3>Collector Quality</h3>
-
-            <p>
-                Premium masks and accessories made to impress.
-            </p>
-
-        </div>
-
-        <div class="why-card">
-
-            <div class="why-icon">🔒</div>
-
-            <h3>Secure Checkout</h3>
-
-            <p>
-                Safe payments through Stripe, PayPal and Klarna.
-            </p>
-
-        </div>
-
-        <div class="why-card">
-
-            <div class="why-icon">💬</div>
-
-            <h3>Customer Support</h3>
-
-            <p>
-                We're here whenever you need help.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ==========================
-CUSTOMER REVIEWS
-========================== -->
-
-<section class="reviews">
-
-    <div class="section-title">
-
-        <h2>What Our Customers Say</h2>
-
-        <p>Trusted by Spider-Man collectors across the UK.</p>
-
-    </div>
-
-    <div class="review-grid">
-
-        <div class="review-card">
-
-            <div class="stars">★★★★★</div>
-
-            <p>
-                "The quality blew me away. Easily one of the best Spider-Man masks I've owned."
-            </p>
-
-            <h4>— Alex M.</h4>
-
-        </div>
-
-        <div class="review-card">
-
-            <div class="stars">★★★★★</div>
-
-            <p>
-                "Fast delivery and amazing customer service. I'll definitely be ordering again."
-            </p>
-
-            <h4>— Jamie R.</h4>
-
-        </div>
-
-        <div class="review-card">
-
-            <div class="stars">★★★★★</div>
-
-            <p>
-                "Looks incredible on display and fits perfectly. Worth every penny."
-            </p>
-
-            <h4>— Sam T.</h4>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ==========================
-FOOTER
-========================== -->
-
-<footer class="footer">
-
-    <div class="footer-grid">
-
-        <!-- Logo & About -->
-
-        <div class="footer-column">
-
-            <img src="Images/Logo/Logo.png"
-                 alt="The Webbed Vault"
-                 class="footer-logo">
-
-            <p>
-                Premium Spider-Man masks, gloves,
-                web shooters, comics and collectibles.
-            </p>
-
-        </div>
-
-        <!-- Shop -->
-
-        <div class="footer-column">
-
-            <h3>Shop</h3>
-
-            <a href="Html/Shop.html">All Products</a>
-
-            <a href="Html/Masks.html">Masks</a>
-
-            <a href="Html/Gloves.html">Gloves</a>
-
-            <a href="Html/Webshooters.html">Web Shooters</a>
-
-        </div>
-
-        <!-- Information -->
-
-        <div class="footer-column">
-
-            <h3>Information</h3>
-
-            <a href="#">Shipping Policy</a>
-
-            <a href="#">Returns</a>
-
-            <a href="#">Privacy Policy</a>
-
-            <a href="#">Terms & Conditions</a>
-
-        </div>
-
-        <!-- Contact -->
-
-        <div class="footer-column">
-
-            <h3>Contact</h3>
-
-            <p>Email:</p>
-
-            <p>support@thewebbedvault.com</p>
-
-            <div class="footer-socials">
-
-                <a href="#" aria-label="Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-
-                <a href="#" aria-label="TikTok">
-                    <i class="fa-brands fa-tiktok"></i>
-                </a>
-
-                <a href="#" aria-label="YouTube">
-                    <i class="fa-brands fa-youtube"></i>
                 </a>
 
             </div>
 
-        </div>
+        </section>
 
-    </div>
+        <!-- ==========================================================
+             FEATURED PRODUCTS
+        =========================================================== -->
 
-    <div class="footer-bottom">
+        <section
+            id="featured-products"
+            class="featured-products">
 
-        © 2026 The Webbed Vault. All Rights Reserved.
+            <div class="section-title">
 
-    </div>
+                <span class="section-subtitle">
 
-</footer>
+                    OUR COLLECTION
 
+                </span>
 
-<script src="js/products.js"></script>
-<script src="js/homepage.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/wishlist.js"></script>
-<script src="Script.js"></script>
+                <h2>
+
+                    Featured Across the Spider-Verse
+
+                </h2>
+
+                <p>
+
+                    Discover our best-selling Spider-Man masks,
+                    gloves and collectibles.
+
+                </p>
+
+            </div>
+
+            <div
+                class="products"
+                id="featuredProducts">
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================================
+             NEW DROPS
+        =========================================================== -->
+
+        <section class="new-drops">
+
+            <div class="section-title">
+
+                <span class="section-subtitle">
+
+                    JUST ARRIVED
+
+                </span>
+
+                <h2>
+
+                    🔥 New Drops
+
+                </h2>
+
+                <p>
+
+                    Fresh arrivals added to The Webbed Vault.
+
+                </p>
+
+            </div>
+
+            <div
+                class="products"
+                id="newDrops">
+
+            </div>
+
+        </section>
+
+                <!-- ==========================================================
+             SHOP BY CATEGORY
+        =========================================================== -->
+
+        <section class="categories">
+
+            <div class="section-title">
+
+                <span class="section-subtitle">
+
+                    SHOP BY CATEGORY
+
+                </span>
+
+                <h2>
+
+                    Everything a Spider-Man Fan Needs
+
+                </h2>
+
+                <p>
+
+                    Browse every collection inside The Webbed Vault.
+
+                </p>
+
+            </div>
+
+            <div class="category-grid">
+
+                <a href="Html/Masks.html" class="category-card">
+
+                    <span>🕷</span>
+
+                    <h3>Masks</h3>
+
+                </a>
+
+                <a href="Html/Gloves.html" class="category-card">
+
+                    <span>🧤</span>
+
+                    <h3>Gloves</h3>
+
+                </a>
+
+                <a href="Html/Webshooters.html" class="category-card">
+
+                    <span>🕸</span>
+
+                    <h3>Web Shooters</h3>
+
+                </a>
+
+                <a href="Html/Comics.html" class="category-card">
+
+                    <span>📚</span>
+
+                    <h3>Comics</h3>
+
+                </a>
+
+                <a href="Html/Collectibles.html" class="category-card">
+
+                    <span>🎁</span>
+
+                    <h3>Collectibles</h3>
+
+                </a>
+
+                <a href="#" class="category-card disabled">
+
+                    <span>🦸</span>
+
+                    <h3>Suits</h3>
+
+                    <small>Coming Soon</small>
+
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================================
+             FOLLOW US
+        =========================================================== -->
+
+        <section class="social-section">
+
+            <div class="section-title">
+
+                <span class="section-subtitle">
+
+                    FOLLOW THE WEBBED VAULT
+
+                </span>
+
+                <h2>
+
+                    Join Our Community
+
+                </h2>
+
+                <p>
+
+                    Follow us for behind-the-scenes content,
+                    new drops and exclusive offers.
+
+                </p>
+
+            </div>
+
+            <div class="social-grid">
+
+                <a href="#" class="social-card">
+
+                    <i class="fa-brands fa-tiktok"></i>
+
+                    <h3>TikTok</h3>
+
+                </a>
+
+                <a href="#" class="social-card">
+
+                    <i class="fa-brands fa-instagram"></i>
+
+                    <h3>Instagram</h3>
+
+                </a>
+
+                <a href="#" class="social-card">
+
+                    <i class="fa-brands fa-youtube"></i>
+
+                    <h3>YouTube</h3>
+
+                </a>
+
+                <a href="#" class="social-card">
+
+                    <i class="fa-brands fa-ebay"></i>
+
+                    <h3>eBay</h3>
+
+                </a>
+
+                <a href="#" class="social-card">
+
+                    <h3>Vinted</h3>
+
+                </a>
+
+                <a href="#" class="social-card">
+
+                    <h3>Depop</h3>
+
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================================
+             WHY CHOOSE US
+        =========================================================== -->
+
+        <section class="why-us">
+
+            <div class="section-title">
+
+                <span class="section-subtitle">
+
+                    WHY CHOOSE US
+
+                </span>
+
+                <h2>
+
+                    Built For Spider-Man Collectors
+
+                </h2>
+
+                <p>
+
+                    Every order is packed with care and backed by secure
+                    payment methods and reliable UK shipping.
+
+                </p>
+
+            </div>
+
+            <div class="why-grid">
+
+                <article class="why-card">
+
+                    <div class="why-icon">🚚</div>
+
+                    <h3>Fast UK Shipping</h3>
+
+                    <p>
+
+                        Tracked delivery with quick dispatch across the UK.
+
+                    </p>
+
+                </article>
+
+                <article class="why-card">
+
+                    <div class="why-icon">⭐</div>
+
+                    <h3>Collector Quality</h3>
+
+                    <p>
+
+                        Premium Spider-Man products made for fans and collectors.
+
+                    </p>
+
+                </article>
+
+                <article class="why-card">
+
+                    <div class="why-icon">🔒</div>
+
+                    <h3>Secure Checkout</h3>
+
+                    <p>
+
+                        Safe payments using Stripe, PayPal and Klarna.
+
+                    </p>
+
+                </article>
+
+                <article class="why-card">
+
+                    <div class="why-icon">💬</div>
+
+                    <h3>Customer Support</h3>
+
+                    <p>
+
+                        Friendly support whenever you need help.
+
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================================
+             CUSTOMER REVIEWS
+        =========================================================== -->
+
+        <section class="reviews">
+
+            <div class="section-title">
+
+                <span class="section-subtitle">
+
+                    CUSTOMER REVIEWS
+
+                </span>
+
+                <h2>
+
+                    Loved By Spider-Man Fans
+
+                </h2>
+
+                <p>
+
+                    Here's what our customers have to say.
+
+                </p>
+
+            </div>
+
+            <div class="review-grid">
+
+                <article class="review-card">
+
+                    <div class="stars">
+
+                        ★★★★★
+
+                    </div>
+
+                    <p>
+
+                        "The quality blew me away. Easily one of the best Spider-Man masks I've ever owned."
+
+                    </p>
+
+                    <h4>
+
+                        — Alex M.
+
+                    </h4>
+
+                </article>
+
+                <article class="review-card">
+
+                    <div class="stars">
+
+                        ★★★★★
+
+                    </div>
+
+                    <p>
+
+                        "Fast delivery, incredible quality and brilliant customer service."
+
+                    </p>
+
+                    <h4>
+
+                        — Jamie R.
+
+                    </h4>
+
+                </article>
+
+                <article class="review-card">
+
+                    <div class="stars">
+
+                        ★★★★★
+
+                    </div>
+
+                    <p>
+
+                        "Looks incredible on display and fits perfectly. Worth every penny."
+
+                    </p>
+
+                    <h4>
+
+                        — Sam T.
+
+                    </h4>
+
+                </article>
+
+            </div>
+
+        </section>
+
+                <!-- ==========================================================
+             FOOTER
+        =========================================================== -->
+
+        <footer class="footer">
+
+            <div class="footer-grid">
+
+                <!-- Brand -->
+
+                <div class="footer-column">
+
+                    <img
+                        src="Images/Logo/Logo.png"
+                        alt="The Webbed Vault Logo"
+                        class="footer-logo">
+
+                    <p>
+
+                        Premium Spider-Man masks, gloves,
+                        web shooters, comics and collectibles
+                        for fans across every universe.
+
+                    </p>
+
+                </div>
+
+                <!-- Shop -->
+
+                <div class="footer-column">
+
+                    <h3>
+
+                        Shop
+
+                    </h3>
+
+                    <a href="Html/Shop.html">
+
+                        All Products
+
+                    </a>
+
+                    <a href="Html/Masks.html">
+
+                        Masks
+
+                    </a>
+
+                    <a href="Html/Gloves.html">
+
+                        Gloves
+
+                    </a>
+
+                    <a href="Html/Webshooters.html">
+
+                        Web Shooters
+
+                    </a>
+
+                    <a href="Html/Collectibles.html">
+
+                        Collectibles
+
+                    </a>
+
+                </div>
+
+                <!-- Information -->
+
+                <div class="footer-column">
+
+                    <h3>
+
+                        Information
+
+                    </h3>
+
+                    <a href="#">
+
+                        Shipping Policy
+
+                    </a>
+
+                    <a href="#">
+
+                        Returns & Refunds
+
+                    </a>
+
+                    <a href="#">
+
+                        Privacy Policy
+
+                    </a>
+
+                    <a href="#">
+
+                        Terms & Conditions
+
+                    </a>
+
+                </div>
+
+                <!-- Contact -->
+
+                <div class="footer-column">
+
+                    <h3>
+
+                        Contact
+
+                    </h3>
+
+                    <p>
+
+                        support@thewebbedvault.com
+
+                    </p>
+
+                    <div class="footer-socials">
+
+                        <a
+                            href="#"
+                            aria-label="Instagram">
+
+                            <i class="fa-brands fa-instagram"></i>
+
+                        </a>
+
+                        <a
+                            href="#"
+                            aria-label="TikTok">
+
+                            <i class="fa-brands fa-tiktok"></i>
+
+                        </a>
+
+                        <a
+                            href="#"
+                            aria-label="YouTube">
+
+                            <i class="fa-brands fa-youtube"></i>
+
+                        </a>
+
+                        <a
+                            href="#"
+                            aria-label="eBay">
+
+                            <i class="fa-brands fa-ebay"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+
+                <p>
+
+                    © 2026 The Webbed Vault. All Rights Reserved.
+
+                </p>
+
+                <p>
+
+                    Anyone Can Wear The Mask 🕷️
+
+                </p>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+    <!-- ==========================================================
+         JAVASCRIPT
+    =========================================================== -->
+
+    <script src="js/products.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/homepage.js"></script>
+    <script src="js/search.js"></script>
 
 </body>
+
 </html>

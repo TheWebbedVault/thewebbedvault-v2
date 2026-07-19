@@ -1,190 +1,324 @@
+/* ==========================================================
+   THE WEBBED VAULT
+   CART.JS
+========================================================== */
 
+"use strict";
 
+/* ==========================================================
+ELEMENTS
+========================================================== */
 
+const cartItemsContainer = document.querySelector("#cartItems");
 
+const subtotalElement = document.querySelector("#subtotal");
 
+const totalElement = document.querySelector("#total");
 
 /* ==========================================================
 ADD TO CART
 ========================================================== */
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+document.querySelectorAll(".cart-btn").forEach(button => {
 
-const cartButtons = document.querySelectorAll(".cart-btn");
+    button.addEventListener("click", event => {
 
-cartButtons.forEach((button, index) => {
+        event.preventDefault();
 
-    button.addEventListener("click", () => {
+        event.stopPropagation();
 
-        const existingItem = cart.find(item => item.id === products[index].id);
+        const id = Number(button.dataset.id);
 
-if(existingItem){
+        const product = Store.getProduct(id);
 
-    existingItem.quantity++;
+        if (!product) return;
 
-}
+        Store.addToCart(id);
 
-else{
-
-    cart.push({
-
-        ...products[index],
-
-        quantity:1
-
-    });
-
-}
-
-        localStorage.setItem("cart", JSON.stringify(cart));
-
-        updateCartCount();
-
-        alert(products[index].name + " added to cart!");
+        Store.showToast(`${product.name} added to cart 🛒`);
 
     });
 
 });
 
-function updateCartCount(){
-
-    const cartCount = document.querySelector("#cartCount");
-
-    if(cartCount){
-
-        cartCount.textContent = cart.length;
-
-    }
-
-}
-
-updateCartCount();
-
 /* ==========================================================
-DISPLAY CART
+CART ITEM
 ========================================================== */
 
-const cartItemsContainer = document.querySelector("#cartItems");
+function createCartItem(item) {
 
-if(cartItemsContainer){
+    return `
 
-    let subtotal = 0;
+        <div class="cart-item">
 
-    if(cart.length === 0){
+            <img
+                src="../${item.image}"
+                alt="${item.name}">
 
-        cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+            <div class="cart-info">
 
-    } else {
+                <h3>
 
-        cart.forEach(item => {
+                    ${item.name}
 
-            subtotal += item.price * item.quantity;
+                </h3>
 
-            cartItemsContainer.innerHTML += `
+                <p>
 
-            <div class="cart-item">
+                    £${item.price.toFixed(2)}
 
-                <img src="../${item.image}" alt="${item.name}">
+                </p>
 
-                <div class="cart-info">
+                <div class="quantity">
 
-                    <h3>${item.name}</h3>
+                    <button
+                        class="minus"
+                        data-id="${item.id}">
 
-               
+                        −
 
-                    <p>
+                    </button>
 
-£${item.price}
+                    <span>
 
-</p>
+                        ${item.quantity}
 
-<div class="quantity">
+                    </span>
 
-<button class="minus" data-id="${item.id}">
+                    <button
+                        class="plus"
+                        data-id="${item.id}">
 
--
+                        +
 
-</button>
+                    </button>
 
-<span>
+                    <button
+                        class="remove-item"
+                        data-id="${item.id}"
+                        aria-label="Remove ${item.name}">
 
-${item.quantity}
+                        <i class="fa-solid fa-trash"></i>
 
-</span>
-
-<button class="plus" data-id="${item.id}">
-
-+
-
-</button>
-
-</div>
+                    </button>
 
                 </div>
 
             </div>
 
-            `;
+        </div>
 
-        });
-
-    }
-
-    const subtotalElement = document.querySelector("#subtotal");
-    const totalElement = document.querySelector("#total");
-
-    if(subtotalElement){
-
-        subtotalElement.textContent = "£" + subtotal.toFixed(2);
-
-    }
-
-    if(totalElement){
-
-        totalElement.textContent = "£" + subtotal.toFixed(2);
-
-    }
+    `;
 
 }
 
 /* ==========================================================
-CHANGE QUANTITY
+RENDER CART
 ========================================================== */
 
-document.addEventListener("click",(e)=>{
+function renderCart() {
 
-if(e.target.classList.contains("plus")){
+    if (!cartItemsContainer) return;
 
-const id = Number(e.target.dataset.id);
+    const cart = Store.getCart();
 
-const item = cart.find(product=>product.id===id);
+    if (cart.length === 0) {
 
-item.quantity++;
+        cartItemsContainer.innerHTML = `
 
-localStorage.setItem("cart",JSON.stringify(cart));
+            <div class="empty-cart">
 
-location.reload();
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <h2>Your cart is empty</h2>
+
+                <p>
+
+                    Looks like you haven't added anything yet.
+
+                </p>
+
+                <a
+                    href="shop.html"
+                    class="continue-shopping">
+
+                    Continue Shopping
+
+                </a>
+
+            </div>
+
+        `;
+
+        if (subtotalElement) {
+
+            subtotalElement.textContent = "£0.00";
+
+        }
+
+        if (totalElement) {
+
+            totalElement.textContent = "£0.00";
+
+        }
+
+        Store.updateCartCount();
+
+        return;
+
+    }
+
+    cartItemsContainer.innerHTML = cart
+        .map(createCartItem)
+        .join("");
+
+           
+    /* ==========================================================
+    TOTALS
+    ========================================================== */
+
+    const subtotal = Store.getCartTotal();
+
+    if (subtotalElement) {
+
+        subtotalElement.textContent = `£${subtotal.toFixed(2)}`;
+
+    }
+
+    if (totalElement) {
+
+        totalElement.textContent = `£${subtotal.toFixed(2)}`;
+
+    }
+
+    Store.updateCartCount();
 
 }
 
-if(e.target.classList.contains("minus")){
+/* ==========================================================
+CART EVENTS
+========================================================== */
 
-const id = Number(e.target.dataset.id);
+document.addEventListener("click", event => {
 
-const item = cart.find(product=>product.id===id);
+    const plusButton = event.target.closest(".plus");
 
-item.quantity--;
+    if (plusButton) {
 
-if(item.quantity<=0){
+        const id = Number(plusButton.dataset.id);
 
-cart=cart.filter(product=>product.id!==id);
+        Store.updateQuantity(id, 1);
+
+        renderCart();
+
+        return;
+
+    }
+
+    const minusButton = event.target.closest(".minus");
+
+    if (minusButton) {
+
+        const id = Number(minusButton.dataset.id);
+
+        Store.updateQuantity(id, -1);
+
+        renderCart();
+
+        return;
+
+    }
+
+    const removeButton = event.target.closest(".remove-item");
+
+    if (removeButton) {
+
+        const id = Number(removeButton.dataset.id);
+
+        const product = Store.getProduct(id);
+
+        Store.removeFromCart(id);
+
+        renderCart();
+
+        if (product) {
+
+            Store.showToast(`${product.name} removed from cart 🗑️`);
+
+        }
+
+    }
+
+});
+
+/* ==========================================================
+CLEAR CART
+========================================================== */
+
+const clearCartButton = document.querySelector("#clearCart");
+
+if (clearCartButton) {
+
+    clearCartButton.addEventListener("click", () => {
+
+        if (Store.getCart().length === 0) return;
+
+        Store.clearCart();
+
+        renderCart();
+
+        Store.showToast("Cart cleared 🛒");
+
+    });
 
 }
 
-localStorage.setItem("cart",JSON.stringify(cart));
+/* ==========================================================
+CHECKOUT
+========================================================== */
 
-location.reload();
+const checkoutButton = document.querySelector("#checkoutBtn");
+
+if (checkoutButton) {
+
+    checkoutButton.addEventListener("click", () => {
+
+        if (Store.getCart().length === 0) {
+
+            Store.showToast("Your cart is empty.");
+
+            return;
+
+        }
+
+        Store.showToast("Checkout coming soon 💳");
+
+        // Future Stripe / PayPal checkout goes here
+
+    });
 
 }
+
+/* ==========================================================
+REFRESH COUNTERS
+========================================================== */
+
+window.addEventListener("storage", () => {
+
+    Store.reset();
+
+    renderCart();
+
+});
+
+/* ==========================================================
+INITIALISE
+========================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    Store.updateCartCount();
+
+    renderCart();
 
 });

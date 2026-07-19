@@ -3,69 +3,278 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <!-- ==========================================================
+         META
+    =========================================================== -->
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Your Cart | The Webbed Vault</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="../Style.css">
+    <meta
+        name="description"
+        content="View your shopping cart and checkout your Spider-Man collectibles from The Webbed Vault.">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Your Cart | The Webbed Vault</title>
+
+    <!-- ==========================================================
+         FAVICON
+    =========================================================== -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="../Images/Logo/Logo.png">
+
+    <!-- ==========================================================
+         GOOGLE FONTS
+    =========================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- ==========================================================
+         FONT AWESOME
+    =========================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- ==========================================================
+         CSS
+    =========================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../Style.css">
 
 </head>
 
 <body>
 
-<nav class="navbar">
+    <!-- ==========================================================
+         HEADER
+    =========================================================== -->
 
-<a href="../index.html" class="logo">
+    <header class="header">
 
-    <img src="../Images/Logo/Logo.png" alt="The Webbed Vault Logo">
+        <nav class="navbar">
 
-</a>
+            <a
+                href="../index.html"
+                class="logo">
 
-<ul class="nav-links">
+                <img
+                    src="../Images/Logo/Logo.png"
+                    alt="The Webbed Vault Logo">
 
-<li><a href="../index.html">Home</a></li>
+            </a>
 
-<li><a href="Shop.html">Shop</a></li>
+            <div class="nav-search">
 
-</ul>
+                <input
+                    id="searchInput"
+                    type="search"
+                    placeholder="Search products...">
 
-</nav>
+                <button type="button">
 
-<section class="cart-page">
+                    <i class="fa-solid fa-magnifying-glass"></i>
 
-<h1>Your Cart</h1>
+                </button>
 
-<div id="cartItems"></div>
+            </div>
 
-<div class="cart-summary">
+            <ul class="nav-links">
 
-    <h2>Order Summary</h2>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="Shop.html">Shop</a></li>
+                <li><a href="Masks.html">Masks</a></li>
+                <li><a href="Gloves.html">Gloves</a></li>
 
-    <p>Subtotal: <span id="subtotal">£0.00</span></p>
+            </ul>
 
-    <p>Shipping: <span id="shipping">Calculated at checkout</span></p>
+            <div class="nav-icons">
 
-    <h3>Total: <span id="total">£0.00</span></h3>
+                <a
+                    href="Wishlist.html"
+                    class="wishlist-icon">
 
-    <button class="checkout-btn">
+                    <i class="fa-regular fa-heart"></i>
 
-        Proceed to Checkout
+                    <span id="wishlistCount">0</span>
 
-    </button>
+                </a>
 
-</div>
+                <a
+                    href="Cart.html"
+                    class="cart-icon">
 
-</section>
+                    <i class="fa-solid fa-cart-shopping"></i>
 
-<script src="../js/products.js"></script>
-<script src="../js/cart.js"></script>
+                    <span id="cartCount">0</span>
+
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ==========================================================
+         CART PAGE
+    =========================================================== -->
+
+    <main class="cart-page">
+
+        <section class="page-header">
+
+            <h1>Your Shopping Cart</h1>
+
+            <p>
+                Review your items before securely checking out.
+            </p>
+
+        </section>
+
+        <section class="cart-layout">
+
+            <!-- =============================
+                 CART ITEMS
+            ============================== -->
+
+            <div class="cart-container">
+
+                <div
+                    id="cartItems"
+                    class="cart-items">
+
+                    <!-- Generated by cart.js -->
+
+                </div>
+
+            </div>
+
+            <!-- =============================
+                 ORDER SUMMARY
+            ============================== -->
+
+            <aside class="cart-summary">
+
+                <h2>Order Summary</h2>
+
+                <div class="summary-row">
+
+                    <span>Subtotal</span>
+
+                    <span id="subtotal">£0.00</span>
+
+                </div>
+
+                <div class="summary-row">
+
+                    <span>Shipping</span>
+
+                    <span>Calculated at checkout</span>
+
+                </div>
+
+                <div class="summary-row total-row">
+
+                    <span>Total</span>
+
+                    <strong id="total">£0.00</strong>
+
+                </div>
+
+                <button
+                    id="checkoutBtn"
+                    class="primary-btn">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    Secure Checkout
+
+                </button>
+
+                <button
+                    id="clearCart"
+                    class="secondary-btn">
+
+                    <i class="fa-solid fa-trash"></i>
+
+                    Clear Cart
+
+                </button>
+
+                <div class="payment-icons">
+
+                    <i class="fa-brands fa-cc-visa"></i>
+
+                    <i class="fa-brands fa-cc-mastercard"></i>
+
+                    <i class="fa-brands fa-paypal"></i>
+
+                    <i class="fa-solid fa-credit-card"></i>
+
+                </div>
+
+                <div class="cart-guarantees">
+
+                    <p>
+
+                        ✅ Secure payments
+
+                    </p>
+
+                    <p>
+
+                        🚚 Fast UK dispatch
+
+                    </p>
+
+                    <p>
+
+                        ↩️ 30-Day Returns
+
+                    </p>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+    <!-- ==========================================================
+         JAVASCRIPT
+    =========================================================== -->
+
+    <script src="../js/products.js"></script>
+
+    <script src="../js/store.js"></script>
+
+    <script src="../js/search.js"></script>
+
+    <script src="../js/cart.js"></script>
 
 </body>
 
 </html>
+

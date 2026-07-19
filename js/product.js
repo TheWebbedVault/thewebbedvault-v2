@@ -1,84 +1,259 @@
 /* ==========================================================
+   THE WEBBED VAULT
    PRODUCT PAGE
 ========================================================== */
 
-// Get the product ID from the URL
+"use strict";
+
+/* ==========================================================
+GET PRODUCT
+========================================================== */
+
 const params = new URLSearchParams(window.location.search);
+
 const productId = Number(params.get("id"));
 
-// Find the product
-const product = products.find(p => p.id === productId);
+const product = Store.getProduct(productId);
 
-// If no product exists
+/* ==========================================================
+PRODUCT NOT FOUND
+========================================================== */
+
 if (!product) {
 
     document.body.innerHTML = `
+
         <h1 style="text-align:center;margin-top:100px;">
+
             Product not found.
+
         </h1>
+
     `;
+
+    throw new Error("Product not found.");
 
 }
 
-// Product found
-else {
+/* ==========================================================
+ELEMENTS
+========================================================== */
 
-    // Main information
-    document.getElementById("productName").textContent = product.name;
-    document.getElementById("productPrice").textContent = `£${product.price}`;
-    document.getElementById("productDescription").textContent = product.description;
-// Features
-const featuresList = document.getElementById("productFeatures");
+const productName = document.getElementById("productName");
 
-if (product.features) {
+const productPrice = document.getElementById("productPrice");
+
+const productDescription = document.getElementById("productDescription");
+
+const productBadge = document.getElementById("productBadge");
+
+const productShipping = document.getElementById("productShipping");
+
+const productReturns = document.getElementById("productReturns");
+
+const productFeatures = document.getElementById("productFeatures");
+
+const productCartBtn = document.getElementById("productCartBtn");
+
+const mainImage = document.getElementById("mainImage");
+
+const thumbnails = document.getElementById("thumbnails");
+
+const relatedProducts = document.getElementById("relatedProducts");
+
+/* ==========================================================
+PRODUCT INFORMATION
+========================================================== */
+
+productName.textContent = product.name;
+
+productPrice.textContent = `£${product.price.toFixed(2)}`;
+
+productDescription.textContent = product.description;
+
+productBadge.textContent = product.badge;
+
+productShipping.textContent = product.shipping;
+
+productReturns.textContent = product.returns;
+
+if (productCartBtn) {
+
+    productCartBtn.dataset.id = product.id;
+
+}
+
+/* ==========================================================
+FEATURES
+========================================================== */
+
+if (product.features && productFeatures) {
+
+    productFeatures.innerHTML = "";
 
     product.features.forEach(feature => {
 
         const li = document.createElement("li");
 
-        li.textContent = "✓ " + feature;
+        li.textContent = `✓ ${feature}`;
 
-        featuresList.appendChild(li);
+        productFeatures.appendChild(li);
 
     });
 
 }
 
-// Shipping
-document.getElementById("productShipping").textContent = product.shipping || "";
+/* ==========================================================
+MAIN IMAGE
+========================================================== */
 
-// Returns
-document.getElementById("productReturns").textContent = product.returns || "";
-document.getElementById("productBadge").textContent = product.badge;
+mainImage.src = `../${product.image}`;
 
-    // Main image
-    const mainImage = document.getElementById("mainImage");
-    mainImage.src = "../" + product.image;
-    mainImage.alt = product.name;
+mainImage.alt = product.name;
 
-    // Gallery
-    const thumbnails = document.getElementById("thumbnails");
+/* ==========================================================
+IMAGE GALLERY
+========================================================== */
 
-    if (product.images) {
+function setMainImage(image) {
 
-        product.images.forEach(image => {
+    mainImage.src = `../${image}`;
 
-            const img = document.createElement("img");
+}
 
-            img.src = "../" + image;
+if (thumbnails && product.images) {
 
-            img.alt = product.name;
+    thumbnails.innerHTML = "";
 
-            img.addEventListener("click", () => {
+    product.images.forEach((image, index) => {
 
-                mainImage.src = "../" + image;
+        const thumbnail = document.createElement("img");
 
-            });
+        thumbnail.src = `../${image}`;
 
-            thumbnails.appendChild(img);
+        thumbnail.alt = `${product.name} ${index + 1}`;
+
+        thumbnail.classList.add("thumbnail");
+
+        if (index === 0) {
+
+            thumbnail.classList.add("active");
+
+        }
+
+        thumbnail.addEventListener("click", () => {
+
+            setMainImage(image);
+
+            document
+                .querySelectorAll(".thumbnail")
+                .forEach(img => img.classList.remove("active"));
+
+            thumbnail.classList.add("active");
 
         });
 
-    }
+        thumbnails.appendChild(thumbnail);
+
+    });
 
 }
+
+/* ==========================================================
+ADD TO CART
+========================================================== */
+
+if (productCartBtn) {
+
+    productCartBtn.addEventListener("click", () => {
+
+        Store.addToCart(product.id);
+
+        Store.showToast("Added to cart 🛒");
+
+    });
+
+}
+
+/* ==========================================================
+RELATED PRODUCTS
+========================================================== */
+
+function renderRelatedProducts() {
+
+    if (!relatedProducts) return;
+
+    const related = Store.getProducts()
+
+        .filter(item => {
+
+            return (
+                item.category === product.category &&
+                item.id !== product.id
+            );
+
+        })
+
+        .slice(0, 4);
+
+    relatedProducts.innerHTML = related.map(item => `
+
+        <div class="product-card">
+
+            <a href="product.html?id=${item.id}">
+
+                <img
+                    src="../${item.image}"
+                    alt="${item.name}">
+
+            </a>
+
+            <span class="badge">
+
+                ${item.badge}
+
+            </span>
+
+            <h3>${item.name}</h3>
+
+            <p>£${item.price.toFixed(2)}</p>
+
+            <button
+                class="cart-btn"
+                data-id="${item.id}">
+
+                🛒 Add to Cart
+
+            </button>
+
+        </div>
+
+    `).join("");
+
+    relatedProducts
+        .querySelectorAll(".cart-btn")
+        .forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const id = Number(button.dataset.id);
+
+                Store.addToCart(id);
+
+                Store.showToast("Added to cart 🛒");
+
+            });
+
+        });
+
+}
+
+/* ==========================================================
+INITIALISE
+========================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    renderRelatedProducts();
+
+});

@@ -1,34 +1,83 @@
 /* ==========================================================
-SEARCH PRODUCTS
+   THE WEBBED VAULT
+   SEARCH.JS
+========================================================== */
+
+"use strict";
+
+/* ==========================================================
+ELEMENTS
 ========================================================== */
 
 const searchInput = document.querySelector("#searchInput");
 
-if(searchInput){
+/* ==========================================================
+SEARCH PRODUCTS
+========================================================== */
 
-    searchInput.addEventListener("keyup", function(){
+function searchProducts(query) {
 
-        const value = this.value.toLowerCase();
+    const search = query.trim().toLowerCase();
 
-        const cards = document.querySelectorAll(".product");
+    if (search === "") {
 
-        cards.forEach(card=>{
+        renderProducts();
 
-            const title = card.querySelector("h3").textContent.toLowerCase();
+        return;
 
-            if(title.includes(value)){
+    }
 
-                card.style.display="block";
+    const filteredProducts = Store.getProducts().filter(product => {
 
-            }
+        const searchableText = [
 
-            else{
+            product.name,
+            product.category,
+            product.badge,
+            product.description,
+            ...(product.features || [])
 
-                card.style.display="none";
+        ]
 
-            }
+        .join(" ")
 
-        });
+        .toLowerCase();
+
+        return searchableText.includes(search);
+
+    });
+
+    renderProducts(filteredProducts);
+
+}
+
+/* ==========================================================
+SEARCH EVENT
+========================================================== */
+
+if (searchInput) {
+
+    searchInput.addEventListener("input", event => {
+
+        searchProducts(event.target.value);
+
+    });
+
+}
+
+/* ==========================================================
+CLEAR SEARCH WITH ESC
+========================================================== */
+
+if (searchInput) {
+
+    searchInput.addEventListener("keydown", event => {
+
+        if (event.key !== "Escape") return;
+
+        searchInput.value = "";
+
+        renderProducts();
 
     });
 

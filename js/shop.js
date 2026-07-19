@@ -1,34 +1,72 @@
 /* ==========================================================
-BUILD SHOP PAGE
+   THE WEBBED VAULT
+   SHOP.JS
+========================================================== */
+
+"use strict";
+
+/* ==========================================================
+ELEMENTS
 ========================================================== */
 
 const shopContainer = document.querySelector(".shop-products");
+const filterButtons = document.querySelectorAll(".filter-btn");
 
-if (shopContainer) {
+/* ==========================================================
+PRODUCT CARD
+========================================================== */
 
-    products.forEach(product => {
+function createProductCard(product) {
 
-        shopContainer.innerHTML += `
+    return `
 
-        <div class="product">
+        <div class="product" data-category="${product.category}">
 
-            <img src="../${product.image}" alt="${product.name}">
+            <a href="product.html?id=${product.id}" class="product-image">
 
-            <span class="product-badge">${product.badge}</span>
+                <img
+                    src="../${product.image}"
+                    alt="${product.name}">
 
-            <h3>${product.name}</h3>
+            </a>
 
-            <p class="price">£${product.price}</p>
+            <span class="product-badge">
+
+                ${product.badge}
+
+            </span>
+
+            <h3>
+
+                <a href="product.html?id=${product.id}">
+
+                    ${product.name}
+
+                </a>
+
+            </h3>
+
+            <p class="price">
+
+                £${product.price.toFixed(2)}
+
+            </p>
 
             <div class="product-buttons">
 
-                <button class="wishlist-btn">
+                <button
+                    class="wishlist-btn"
+                    data-id="${product.id}"
+                    aria-label="Add ${product.name} to wishlist">
 
                     ❤ Wishlist
 
                 </button>
 
-                <button class="cart-btn">
+                <button
+                    class="cart-btn"
+                    data-id="${product.id}"
+                    aria-label="Add ${product.name} to cart">
 
                     🛒 Add to Cart
 
@@ -38,7 +76,63 @@ if (shopContainer) {
 
         </div>
 
-        `;
+    `;
+
+}
+
+/* ==========================================================
+RENDER PRODUCTS
+========================================================== */
+
+function renderProducts(productList = Store.getProducts()) {
+
+    if (!shopContainer) return;
+
+    shopContainer.innerHTML = productList
+        .map(createProductCard)
+        .join("");
+
+    initialiseButtons();
+
+}
+
+/* ==========================================================
+BUTTON EVENTS
+========================================================== */
+
+function initialiseButtons() {
+
+    document.querySelectorAll(".wishlist-btn").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const id = Number(button.dataset.id);
+
+            if (Store.addToWishlist(id)) {
+
+                Store.showToast("Added to wishlist ❤️");
+
+            } else {
+
+                Store.showToast("Already in wishlist ❤️");
+
+            }
+
+        });
+
+    });
+
+    document.querySelectorAll(".cart-btn").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const id = Number(button.dataset.id);
+
+            Store.addToCart(id);
+
+            Store.showToast("Added to cart 🛒");
+
+        });
 
     });
 
@@ -48,44 +142,40 @@ if (shopContainer) {
 CATEGORY FILTERS
 ========================================================== */
 
-const filterButtons = document.querySelectorAll(".filter-btn");
+filterButtons.forEach(button => {
 
-filterButtons.forEach(button=>{
+    button.addEventListener("click", () => {
 
-button.addEventListener("click",()=>{
+        filterButtons.forEach(btn => btn.classList.remove("active"));
 
-document.querySelector(".active").classList.remove("active");
+        button.classList.add("active");
 
-button.classList.add("active");
+        const filter = button.dataset.filter;
 
-const filter = button.dataset.filter;
+        if (filter === "All") {
 
-const cards = document.querySelectorAll(".product");
+            renderProducts();
 
-cards.forEach(card=>{
+            return;
 
-const title = card.querySelector("h3").textContent;
+        }
 
-if(filter==="All"){
+        renderProducts(
 
-card.style.display="block";
+            Store.getProducts().filter(product => product.category === filter)
 
-}
+        );
 
-else if(title.includes(filter.replace(" Web Shooters",""))){
-
-card.style.display="block";
-
-}
-
-else{
-
-card.style.display="none";
-
-}
+    });
 
 });
 
-});
+/* ==========================================================
+INITIALISE
+========================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    renderProducts();
 
 });

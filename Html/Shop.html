@@ -3,135 +3,294 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <!-- ==========================================================
+         META
+    =========================================================== -->
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Shop | The Webbed Vault</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="../Style.css">
+    <meta
+        name="description"
+        content="Browse premium Spider-Man masks, gloves, web shooters and collectibles from The Webbed Vault.">
 
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <meta
+        name="theme-color"
+        content="#0d1117">
+
+    <title>Shop | The Webbed Vault</title>
+
+    <!-- ==========================================================
+         FAVICON
+    =========================================================== -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="../Images/Logo/Logo.png">
+
+    <!-- ==========================================================
+         GOOGLE FONTS
+    =========================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- ==========================================================
+         FONT AWESOME
+    =========================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- ==========================================================
+         CSS
+    =========================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../Style.css">
 
 </head>
 
 <body>
 
-<header>
+    <!-- ==========================================================
+         HEADER
+    =========================================================== -->
 
-<nav class="navbar">
+    <header class="header">
 
-<a href="../index.html" class="logo">
+        <nav class="navbar">
 
-<img src="../Images/Logo/Logo.png">
+            <!-- Logo -->
 
-</a>
+            <a
+                href="../index.html"
+                class="logo">
 
-<div class="nav-search">
+                <img
+                    src="../Images/Logo/Logo.png"
+                    alt="The Webbed Vault Logo">
 
-<input
-type="text"
-id="searchInput"
-placeholder="Search products..."
->
+            </a>
 
-<button>
+            <!-- Search -->
 
-<i class="fa-solid fa-magnifying-glass"></i>
+            <div class="nav-search">
 
-</button>
+                <input
+                    id="searchInput"
+                    type="search"
+                    placeholder="Search masks, gloves, web shooters..."
+                    autocomplete="off">
 
-</div>
+                <button
+                    type="button">
 
-<ul class="nav-links">
+                    <i class="fa-solid fa-magnifying-glass"></i>
 
-<li><a href="../index.html">Home</a></li>
+                </button>
 
-<li><a href="Shop.html">Shop</a></li>
+            </div>
 
-<li><a href="Masks.html">Masks</a></li>
+            <!-- Navigation -->
 
-<li><a href="Gloves.html">Gloves</a></li>
+            <ul class="nav-links">
 
-</ul>
+                <li><a href="../index.html">Home</a></li>
 
-<div class="nav-icons">
+                <li><a href="Shop.html" class="active">Shop</a></li>
 
-<a href="Wishlist.html">
+                <li><a href="Masks.html">Masks</a></li>
 
-<i class="fa-regular fa-heart"></i>
+                <li><a href="Gloves.html">Gloves</a></li>
 
-</a>
+                <li><a href="Webshooters.html">Web Shooters</a></li>
 
-<a href="Cart.html">
+                <li><a href="Comics.html">Comics</a></li>
 
-<i class="fa-solid fa-cart-shopping"></i>
+                <li><a href="Collectibles.html">Collectibles</a></li>
 
-<span id="cartCount">0</span>
+                <li><a href="Contact.html">Contact</a></li>
 
-</a>
+            </ul>
 
-</div>
+            <!-- Icons -->
 
-</nav>
+            <div class="nav-icons">
 
-</header>
+                <a
+                    href="Wishlist.html"
+                    class="wishlist-icon">
 
-<section class="shop-header">
+                    <i class="fa-regular fa-heart"></i>
 
-<h1>Shop</h1>
+                    <span id="wishlistCount">0</span>
 
-<p>
+                </a>
 
-Premium Spider-Man collectibles.
+                <a
+                    href="Cart.html"
+                    class="cart-icon">
 
-</p>
+                    <i class="fa-solid fa-cart-shopping"></i>
 
-</section>
+                    <span id="cartCount">0</span>
 
-<section class="shop-filters">
+                </a>
 
-<button class="filter-btn active" data-filter="All">
+            </div>
 
-All
+        </nav>
 
-</button>
+    </header>
 
-<button class="filter-btn" data-filter="Masks">
+    <!-- ==========================================================
+         SHOP HEADER
+    =========================================================== -->
 
-Masks
+    <main>
 
-</button>
+        <section class="shop-header">
 
-<button class="filter-btn" data-filter="Gloves">
+            <span class="section-subtitle">
 
-Gloves
+                THE WEBBED VAULT
 
-</button>
+            </span>
 
-<button class="filter-btn" data-filter="Web Shooters">
+            <h1>
 
-Web Shooters
+                Shop Our Collection
 
-</button>
+            </h1>
 
-</section>
+            <p>
 
-<section class="shop-products">
+                Premium Spider-Man masks, gloves, web shooters and collectibles inspired by every Spider-Verse.
 
-    <div class="products-grid" id="productsContainer"></div>
+            </p>
 
-</section>
+        </section>
 
+        <!-- ==========================================================
+             FILTERS
+        =========================================================== -->
 
-<script src="../js/products.js"></script>
-<script src="../js/shop.js"></script>
-<script src="../js/cart.js"></script>
-<script src="../js/wishlist.js"></script>
-<script src="../Script.js"></script>
+        <section class="shop-filters">
+
+            <button
+                class="filter-btn active"
+                data-filter="All">
+
+                All Products
+
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="Masks">
+
+                Masks
+
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="Gloves">
+
+                Gloves
+
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="Web Shooters">
+
+                Web Shooters
+
+            </button>
+
+            <button
+                class="filter-btn"
+                data-filter="Collectibles">
+
+                Collectibles
+
+            </button>
+
+        </section>
+
+        <!-- ==========================================================
+             PRODUCTS
+        =========================================================== -->
+
+        <section class="shop-products">
+
+            <div class="section-title">
+
+                <span class="section-subtitle">
+
+                    OUR PRODUCTS
+
+                </span>
+
+                <h2>
+
+                    Find Your Next Collectible
+
+                </h2>
+
+                <p>
+
+                    Every product is carefully selected for Spider-Man fans and collectors.
+
+                </p>
+
+            </div>
+
+            <div
+                id="productsContainer"
+                class="products-grid">
+
+                <!-- Products generated by shop.js -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ==========================================================
+         JAVASCRIPT
+    =========================================================== -->
+
+    <script src="../js/products.js"></script>
+
+    <script src="../js/store.js"></script>
+
+    <script src="../js/search.js"></script>
+
+    <script src="../js/cart.js"></script>
+
+    <script src="../js/wishlist.js"></script>
+
+    <script src="../js/shop.js"></script>
 
 </body>
 
