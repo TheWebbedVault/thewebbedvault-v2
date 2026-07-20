@@ -1268,17 +1268,10 @@ p{
 }
 
 .product:hover{
-
-    transform:
-        translateY(-10px)
-        scale(1.01);
-
-    border-color:rgba(59,130,246,.6);
-
+    transform:translateY(-12px);
+    border-color:var(--blue);
     box-shadow:
-
-        0 18px 45px rgba(37,99,235,.18);
-
+        0 25px 60px rgba(37,99,235,.22);
 }
 
 /* ==========================================================
@@ -1316,11 +1309,11 @@ p{
    
     width:100%;
 
-    height:350px;
+    height:430px;
 
     object-fit:contain;
 
-    padding:30px;
+    padding:15px;
 
     transition:.45s ease;
 
@@ -1342,17 +1335,17 @@ p{
 
     position:absolute;
 
-    top:22px;
+    top:18px;
 
-    left:22px;
+    left:18px;
 
-    padding:10px 20px;
+    padding:8px 16px;
 
     backdrop-filter:blur(14px);
 
     border-radius:999px;
 
-    font-size:.78rem;
+    font-size:.72rem;
 
     font-weight:800;
 
@@ -1433,9 +1426,9 @@ p{
 
     flex-direction:column;
 
-    gap:16px;
+    gap:10px;
 
-    padding:30px;
+    padding:22px;
 
     flex:1;
 
@@ -1454,13 +1447,11 @@ p{
 }
 
 .product h3{
-
-    font-size:1.5rem;
-
-    line-height:1.35;
-
-    letter-spacing:-.4px;
-
+    font-size:1.25rem;
+    line-height:1.3;
+    font-weight:700;
+    letter-spacing:-0.3px;
+    min-height:52px;
 }
 
 .product-description{
@@ -1478,20 +1469,13 @@ p{
 ========================================================== */
 
 .price{
-
     margin-top:auto;
-
-    font-size:2.15rem;
-
-    letter-spacing:-1px;
-
+    font-size:1.9rem;
     font-weight:800;
-
-    color:var(--blue-light);
-
-    text-shadow:
-    0 0 18px rgba(37,99,235,.20);
+    color:#fff;
+    margin-bottom:15px;
 }
+
 /* ==========================================================
    PRODUCT BUTTONS
 ========================================================== */
@@ -1507,17 +1491,12 @@ p{
 }
 
 .product-buttons button{
-
     flex:1;
-
-    padding:15px;
-
-    border-radius:14px;
-
-    font-weight:700;
-
+    padding:12px 16px;
+    border-radius:12px;
+    font-size:.92rem;
+    font-weight:600;
     transition:var(--transition);
-
 }
 
 /* ==========================================================
@@ -2659,21 +2638,20 @@ p{
 ========================================================== */
 
 .product-page{
-
+    
     width:min(var(--container),100%);
-
+   
     margin:80px auto;
-
+   
     padding:0 8%;
-
+   
     display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:70px;
-
+   
+    grid-template-columns:1.2fr .8fr;
+   
+    gap:50px;
+    
     align-items:start;
-
 }
 
 /* ==========================================================
@@ -2700,7 +2678,7 @@ p{
 
     overflow:hidden;
 
-    padding:40px;
+    padding:20px;
 
 }
 
@@ -2708,7 +2686,7 @@ p{
 
     width:100%;
 
-    height:600px;
+    height:720px;
 
     object-fit:contain;
 
@@ -2758,11 +2736,11 @@ p{
 
     width:100%;
 
-    height:100px;
+    height:130px;
 
     object-fit:contain;
 
-    padding:10px;
+    padding:8px;
 
 }
 
@@ -2783,13 +2761,12 @@ p{
 ========================================================== */
 
 .product-details{
-
+   
     display:flex;
-
+    
     flex-direction:column;
-
-    gap:22px;
-
+    
+    gap:18px;
 }
 
 .product-details .product-badge{
@@ -2801,19 +2778,22 @@ p{
 }
 
 .product-details h1{
-
-    font-size:3rem;
-
+   
+    font-size:2.4rem;
+   
     line-height:1.15;
-
+    
+    margin-bottom:10px;
 }
 
 .product-price{
 
-    font-size:2.5rem;
+    font-size:2.2rem;
 
     font-weight:800;
-
+ 
+    margin-bottom:10px;
+ 
     color:var(--blue-light);
 
 }
@@ -2925,13 +2905,12 @@ p{
 ========================================================== */
 
 .product-actions{
-
+    
     display:flex;
-
-    gap:18px;
-
-    margin-top:10px;
-
+   
+    gap:14px;
+    
+    margin-top:18px;
 }
 
 .product-actions .cart-btn{
@@ -3364,7 +3343,7 @@ p{
             var(--red)
         );
 
-    color:white;
+    color:rgb(252, 248, 247);
 
     transition:var(--transition);
 
@@ -4142,4 +4121,56 @@ img{
 
         opacity .35s ease;
 
+}
+
+/* =========================================
+   RELATED PRODUCTS
+========================================= */
+
+.related-products{
+    padding:90px 8%;
+}
+
+.related-products .products-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:28px;
+    max-width:1250px;
+    margin:60px auto 0;
+}
+
+.related-products .product{
+    max-width:300px;
+    margin:auto;
+}
+
+.related-products .product-image img{
+    height:270px;
+    padding:18px;
+}
+
+.related-products .product h3{
+    font-size:1.1rem;
+    min-height:auto;
+}
+
+.related-products .price{
+    font-size:1.6rem;
+}
+
+.related-products .product-buttons button{
+    padding:10px 14px;
+    font-size:.85rem;
+}
+
+/* ==========================
+   AUTO HIDE HEADER
+========================== */
+
+.header{
+    transition:transform .35s ease;
+}
+
+.header.header-hidden{
+    transform:translateY(-100%);
 }

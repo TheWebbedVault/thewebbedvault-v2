@@ -55,6 +55,8 @@ const productFeatures = document.getElementById("productFeatures");
 
 const productCartBtn = document.getElementById("productCartBtn");
 
+const productWishlistBtn = document.getElementById("productWishlistBtn");
+
 const mainImage = document.getElementById("mainImage");
 
 const thumbnails = document.getElementById("thumbnails");
@@ -83,6 +85,12 @@ if (productCartBtn) {
 
 }
 
+if (productWishlistBtn && Store.isInWishlist(product.id)) {
+
+    productWishlistBtn.innerHTML =
+        '<i class="fa-solid fa-heart"></i>';
+
+}
 /* ==========================================================
 FEATURES
 ========================================================== */
@@ -175,6 +183,33 @@ if (productCartBtn) {
 
 }
 
+if (productWishlistBtn) {
+
+    productWishlistBtn.addEventListener("click", () => {
+
+        if (Store.isInWishlist(product.id)) {
+
+            Store.removeFromWishlist(product.id);
+
+            Store.showToast("Removed from wishlist ❤️");
+
+            productWishlistBtn.innerHTML =
+                '<i class="fa-regular fa-heart"></i>';
+
+        } else {
+
+            Store.addToWishlist(product.id);
+
+            Store.showToast("Added to wishlist ❤️");
+
+            productWishlistBtn.innerHTML =
+                '<i class="fa-solid fa-heart"></i>';
+
+        }
+
+    });
+
+}
 /* ==========================================================
 RELATED PRODUCTS
 ========================================================== */
