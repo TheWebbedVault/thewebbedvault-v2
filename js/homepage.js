@@ -218,3 +218,43 @@ document.addEventListener("DOMContentLoaded", () => {
     Store.updateWishlistCount();
 
 });
+
+/* ==========================================================
+   HOMEPAGE SEARCH
+========================================================== */
+
+const searchInput = document.getElementById("searchInput");
+const searchButton = document.querySelector(".nav-search button");
+
+function performSearch() {
+
+    if (!searchInput) return;
+
+    const query = searchInput.value.trim();
+
+    if (query === "") return;
+
+    window.location.href =
+        `Html/Shop.html?search=${encodeURIComponent(query)}`;
+
+}
+
+if (searchInput) {
+
+    searchInput.addEventListener("keydown", event => {
+
+        if (event.key === "Enter") {
+
+            performSearch();
+
+        }
+
+    });
+
+}
+
+if (searchButton) {
+
+    searchButton.addEventListener("click", performSearch);
+
+}

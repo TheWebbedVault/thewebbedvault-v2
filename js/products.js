@@ -33,7 +33,7 @@ const products = [
             "Images/Masks/Mask-pictures/tobey-red.side-right.png"
         ],
 
-        description: "Premium Raimi-inspired full-head Spider-Man mask.",
+        description: "Premium Raimi-inspired full-head mask.",
 
         features: [
             "Raised 3D webbing",
@@ -73,7 +73,7 @@ const products = [
             "Images/Masks/Mask-pictures/tobey-black.side-right.png"
         ],
 
-        description: "Black Symbiote full-head Spider-Man mask.",
+        description: "Black Symbiote full-head mask.",
 
         features: [
             "Raised 3D webbing",
@@ -92,7 +92,7 @@ const products = [
     {
         id: 3,
 
-        name: "Amazing Spider-Man V1",
+        name: "Amazing Spider V1",
 
         category: "Masks",
 
@@ -110,10 +110,10 @@ const products = [
             "Images/Masks/Mask-pictures/amazing-v1.front.png",
             "Images/Masks/Mask-pictures/amazing-v1.eyes-close.png",
             "Images/Masks/Mask-pictures/amazing-v1.side-left.png",
-            "Images/Masks/Mask-pictures/amazing-v1.side-right.png"
+            "Images/Masks/Mask-pictures/amazing-v1.close.png"
         ],
 
-        description: "The Amazing Spider-Man Version 1 mask.",
+        description: "The Amazing Spider- Version 1 mask.",
 
         features: [
             "Raised 3D webbing",
@@ -132,7 +132,7 @@ const products = [
     {
         id: 4,
 
-        name: "Amazing Spider-Man V2",
+        name: "Amazing Spider V2",
 
         category: "Masks",
 
@@ -153,7 +153,7 @@ const products = [
             "Images/Masks/Mask-pictures/amazing-v2.side-right.png"
         ],
 
-        description: "The Amazing Spider-Man Version 2 mask.",
+        description: "The Amazing Spider- Version 2 mask.",
 
         features: [
             "Raised 3D webbing",
@@ -172,13 +172,13 @@ const products = [
     {
         id: 5,
 
-        name: "Miles Morales Mask",
+        name: "Spider-Verse Mask",
 
         category: "Masks",
 
         price: 70,
 
-        badge: "Spider-Verse",
+        badge: "Spectacular",
 
         featured: true,
 
@@ -188,12 +188,12 @@ const products = [
 
         images: [
             "Images/Masks/Mask-pictures/miles-front.png",
-            "Images/Masks/Mask-pictures/miles-eyes-close.png",
+            "Images/Masks/Mask-pictures/miles-close.png",
             "Images/Masks/Mask-pictures/miles-side-left.png",
             "Images/Masks/Mask-pictures/miles-side-right.png"
         ],
 
-        description: "Miles Morales inspired full-head mask.",
+        description: "Spider-Verse inspired full-head mask.",
 
         features: [
             "Raised 3D webbing",
@@ -230,10 +230,10 @@ const products = [
             "Images/Masks/Mask-pictures/brand-new-day.front.png",
             "Images/Masks/Mask-pictures/brand-new-day.eyes-close.png",
             "Images/Masks/Mask-pictures/brand-new-day.side-left.png",
-            "Images/Masks/Mask-pictures/brand-new-day.side-right.png"
+            "Images/Masks/Mask-pictures/brand-new-day.close.png"
         ],
 
-        description: "Inspired by Spider-Man: Brand New Day.",
+        description: "Inspired by:Brand New Day.",
 
         features: [
             "Raised 3D webbing",
@@ -249,9 +249,6 @@ const products = [
 
     },
 
-    /* ==========================================================
-       GLOVES
-    ========================================================== */
     /* ==========================================================
        GLOVES
     ========================================================== */
@@ -296,7 +293,7 @@ const products = [
     {
         id: 8,
 
-        name: "TASM 1 Gloves",
+        name: "Amazing 1 Gloves",
 
         category: "Gloves",
 
@@ -314,7 +311,7 @@ const products = [
             "Images/Gloves/amazing-v1gloves.webp"
         ],
 
-        description: "The Amazing Spider-Man 1 gloves.",
+        description: "The Amazing Spider 1 gloves.",
 
         features: [
             "Premium fabric",
@@ -333,7 +330,7 @@ const products = [
     {
         id: 9,
 
-        name: "TASM 2 Gloves",
+        name: "Amazing 2 Gloves",
 
         category: "Gloves",
 
@@ -351,7 +348,7 @@ const products = [
             "Images/Gloves/amazing-v2gloves.webp"
         ],
 
-        description: "The Amazing Spider-Man 2 gloves.",
+        description: "The Amazing Spider 2 gloves.",
 
         features: [
             "Premium fabric",
@@ -388,7 +385,7 @@ const products = [
             "Images/Gloves/tobey-red-gloves.webp"
         ],
 
-        description: "Raimi Spider-Man gloves.",
+        description: "Raimi Spider gloves.",
 
         features: [
             "Premium fabric",
@@ -429,7 +426,7 @@ const products = [
             "Images/Webshooters/webshooters.webp"
         ],
 
-        description: "Classic Spider-Man web shooters.",
+        description: "Classic Spider web shooters.",
 
         features: [
             "Detailed design",
@@ -448,7 +445,7 @@ const products = [
     {
         id: 12,
 
-        name: "TASM 2 Web Shooters",
+        name: "Amazing 2 Web Shooters",
 
         category: "Web Shooters",
 
@@ -466,7 +463,7 @@ const products = [
             "Images/Webshooters/tasm2-webshooters.webp"
         ],
 
-        description: "Amazing Spider-Man 2 web shooters.",
+        description: "Amazing Spider 2 web shooters.",
 
         features: [
             "Detailed design",
@@ -525,7 +522,7 @@ const products = [
       {
         id: 14,
 
-        name: "TASM 2 Bag",
+        name: "Amazing 2 Bag",
 
         category: "Accessories",
 
@@ -543,7 +540,7 @@ const products = [
             "Images/Accessories/tasm2-bag.webp"
         ],
 
-        description: "The Amazing Spider-Man 2 display bag.",
+        description: "Movie display bag.",
 
         features: [
             "Premium quality",

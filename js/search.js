@@ -51,19 +51,61 @@ function searchProducts(query) {
 
 }
 
+
+
 /* ==========================================================
 SEARCH EVENT
 ========================================================== */
 
 if (searchInput) {
 
-    searchInput.addEventListener("input", event => {
+    const isShopPage = window.location.pathname
+        .toLowerCase()
+        .includes("shop");
 
-        searchProducts(event.target.value);
+    if (isShopPage) {
 
-    });
+        searchInput.addEventListener("input", event => {
+
+            searchProducts(event.target.value);
+
+        });
+
+    } else {
+
+        const performSearch = () => {
+
+            const query = searchInput.value.trim();
+
+            if (!query) return;
+
+            window.location.href =
+                `Html/Shop.html?search=${encodeURIComponent(query)}`;
+
+        };
+
+        searchInput.addEventListener("keydown", event => {
+
+            if (event.key === "Enter") {
+
+                performSearch();
+
+            }
+
+        });
+
+        const searchButton = document.querySelector(".nav-search button");
+
+        if (searchButton) {
+
+            searchButton.addEventListener("click", performSearch);
+
+        }
+
+    }
 
 }
+  
 
 /* ==========================================================
 CLEAR SEARCH WITH ESC

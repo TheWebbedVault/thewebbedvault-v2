@@ -103,7 +103,7 @@ function renderWishlist() {
 
                 <p>
 
-                    Save your favourite Spider-Man items here.
+                    Save your favourite items here.
 
                 </p>
 

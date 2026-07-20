@@ -9,24 +9,72 @@
 ELEMENTS
 ========================================================== */
 
-const shopContainer = document.querySelector(".shop-products");
+const productsContainer = document.getElementById("productsContainer");
+
 const filterButtons = document.querySelectorAll(".filter-btn");
 
+const searchInput = document.getElementById("searchInput");
+
 /* ==========================================================
-PRODUCT CARD
+PAGE CATEGORY
+========================================================== */
+
+function getPageCategory() {
+
+    const page = window.location.pathname.toLowerCase();
+
+    if (page.includes("masks")) {
+
+        return "Masks";
+
+    }
+
+    if (page.includes("gloves")) {
+
+        return "Gloves";
+
+    }
+
+    if (page.includes("webshooters")) {
+
+        return "Web Shooters";
+
+    }
+
+    if (page.includes("comics")) {
+
+        return "Comics";
+
+    }
+
+    if (page.includes("collectibles")) {
+
+        return "Collectibles";
+
+    }
+
+    return null;
+
+}
+
+/* ==========================================================
+CREATE PRODUCT CARD
 ========================================================== */
 
 function createProductCard(product) {
 
     return `
 
-        <div class="product" data-category="${product.category}">
+        <article class="product">
 
-            <a href="product.html?id=${product.id}" class="product-image">
+            <a
+                href="Product.html?id=${product.id}"
+                class="product-image">
 
                 <img
                     src="../${product.image}"
-                    alt="${product.name}">
+                    alt="${product.name}"
+                    loading="lazy">
 
             </a>
 
@@ -38,7 +86,7 @@ function createProductCard(product) {
 
             <h3>
 
-                <a href="product.html?id=${product.id}">
+                <a href="Product.html?id=${product.id}">
 
                     ${product.name}
 
@@ -74,7 +122,7 @@ function createProductCard(product) {
 
             </div>
 
-        </div>
+        </article>
 
     `;
 
@@ -84,12 +132,40 @@ function createProductCard(product) {
 RENDER PRODUCTS
 ========================================================== */
 
-function renderProducts(productList = Store.getProducts()) {
+function renderProducts(productList) {
 
-    if (!shopContainer) return;
+    if (!productsContainer) return;
 
-    shopContainer.innerHTML = productList
+    if (productList.length === 0) {
+
+        productsContainer.innerHTML = `
+
+            <div class="no-products">
+
+                <h2>
+
+                    No products found
+
+                </h2>
+
+                <p>
+
+                    Try another search or browse a different category.
+
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    productsContainer.innerHTML = productList
+
         .map(createProductCard)
+
         .join("");
 
     initialiseButtons();
@@ -114,7 +190,13 @@ function initialiseButtons() {
 
             } else {
 
-                Store.showToast("Already in wishlist ❤️");
+                Store.showToast("Already in your wishlist ❤️");
+
+            }
+
+            if (typeof Store.updateWishlistCount === "function") {
+
+                Store.updateWishlistCount();
 
             }
 
@@ -132,6 +214,12 @@ function initialiseButtons() {
 
             Store.showToast("Added to cart 🛒");
 
+            if (typeof Store.updateCartCount === "function") {
+
+                Store.updateCartCount();
+
+            }
+
         });
 
     });
@@ -139,36 +227,100 @@ function initialiseButtons() {
 }
 
 /* ==========================================================
-CATEGORY FILTERS
+CATEGORY FILTER
 ========================================================== */
 
-filterButtons.forEach(button => {
+function filterProducts(category) {
 
-    button.addEventListener("click", () => {
+    let products = Store.getProducts();
 
-        filterButtons.forEach(btn => btn.classList.remove("active"));
+    if (category !== "All") {
 
-        button.classList.add("active");
+        products = products.filter(product => product.category === category);
 
-        const filter = button.dataset.filter;
+    }
 
-        if (filter === "All") {
+    renderProducts(products);
 
-            renderProducts();
+}
 
-            return;
+if (filterButtons.length) {
 
-        }
+    filterButtons.forEach(button => {
 
-        renderProducts(
+        button.addEventListener("click", () => {
 
-            Store.getProducts().filter(product => product.category === filter)
+            filterButtons.forEach(btn => {
 
-        );
+                btn.classList.remove("active");
+
+            });
+
+            button.classList.add("active");
+
+            filterProducts(button.dataset.filter);
+
+        });
 
     });
 
-});
+}
+
+/* ==========================================================
+SEARCH
+========================================================== */
+
+function searchProducts(query) {
+
+    const search = query.trim().toLowerCase();
+
+    let products = Store.getProducts();
+
+    const pageCategory = getPageCategory();
+
+    if (pageCategory) {
+
+        products = products.filter(product => product.category === pageCategory);
+
+    }
+
+    if (search !== "") {
+
+        products = products.filter(product => {
+
+            const searchableText = [
+
+                product.name,
+                product.category,
+                product.badge || "",
+                product.description || "",
+                ...(product.features || [])
+
+            ]
+
+            .join(" ")
+
+            .toLowerCase();
+
+            return searchableText.includes(search);
+
+        });
+
+    }
+
+    renderProducts(products);
+
+}
+
+if (searchInput) {
+
+    searchInput.addEventListener("input", () => {
+
+        searchProducts(searchInput.value);
+
+    });
+
+}
 
 /* ==========================================================
 INITIALISE
@@ -176,6 +328,83 @@ INITIALISE
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    renderProducts();
+    let products = Store.getProducts();
+
+    /* ======================================================
+       PAGE CATEGORY
+    ====================================================== */
+
+    const pageCategory = getPageCategory();
+
+    if (pageCategory) {
+
+        products = products.filter(product => {
+
+            return product.category === pageCategory;
+
+        });
+
+    }
+
+    /* ======================================================
+       SEARCH FROM URL
+    ====================================================== */
+
+    const params = new URLSearchParams(window.location.search);
+
+    const search = params.get("search");
+
+    if (search) {
+
+        if (searchInput) {
+
+            searchInput.value = search;
+
+        }
+
+        const query = search.toLowerCase();
+
+        products = products.filter(product => {
+
+            const searchableText = [
+
+                product.name,
+                product.category,
+                product.badge || "",
+                product.description || "",
+                ...(product.features || [])
+
+            ]
+
+                .join(" ")
+                .toLowerCase();
+
+            return searchableText.includes(query);
+
+        });
+
+    }
+
+    /* ======================================================
+       RENDER PRODUCTS
+    ====================================================== */
+
+    renderProducts(products);
+
+    /* ======================================================
+       UPDATE COUNTS
+    ====================================================== */
+
+    if (typeof Store.updateCartCount === "function") {
+
+        Store.updateCartCount();
+
+    }
+
+    if (typeof Store.updateWishlistCount === "function") {
+
+        Store.updateWishlistCount();
+
+    }
 
 });
