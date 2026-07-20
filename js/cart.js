@@ -5,6 +5,24 @@
 
 "use strict";
 
+const ECWID_PRODUCT_IDS = {
+    "Amazing 1 Mask": 846610119,
+    "Amazing 2 Mask": 846610118,
+    "Black Symbiote Mask": 846610124,
+    "Brand New Day Mask": 846610122,
+    "Spider-Verse Mask": 846610125,
+    "Tobey Red Mask": 846610126,
+
+    "Amazing 1 Gloves": 849846652,
+    "Amazing 2 Gloves": 849849183,
+    "Black Spider Gloves": 846610121,
+    "Brand New Day Gloves": 849849194,
+    "Tobey Red Gloves": 849846654,
+
+    "Amazing 2 Web Shooters": 846610120,
+    "Brand New Day Web Shooters": 846610123,
+    "Web Shooters": 849846650
+};
 /* ==========================================================
 ELEMENTS
 ========================================================== */

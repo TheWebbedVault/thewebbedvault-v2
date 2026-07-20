@@ -18,7 +18,7 @@ const products = [
 
         price: 85,
 
-        badge: "Best Seller",
+        badge: "Out of stock",
 
         featured: true,
 
@@ -58,7 +58,7 @@ const products = [
 
         price: 85,
 
-        badge: "Popular",
+        badge: "Out of stock",
 
         featured: true,
 
@@ -98,7 +98,7 @@ const products = [
 
         price: 85,
 
-        badge: "New",
+        badge: "Out of stock",
 
         featured: true,
 
@@ -138,7 +138,7 @@ const products = [
 
         price: 85,
 
-        badge: "New",
+        badge: "Out of stock",
 
         featured: true,
 
@@ -178,7 +178,7 @@ const products = [
 
         price: 70,
 
-        badge: "Spectacular",
+        badge: "Out of stock",
 
         featured: true,
 
