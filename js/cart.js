@@ -291,9 +291,11 @@ if (clearCartButton) {
 
 }
 
+
 /* ==========================================================
 CHECKOUT
 ========================================================== */
+
 const checkoutButton = document.querySelector("#checkoutBtn");
 
 if (checkoutButton) {
@@ -307,14 +309,18 @@ if (checkoutButton) {
             return;
         }
 
+        // Show loading message
+        Store.showToast("Preparing secure checkout...");
+
         // Hide your custom cart
         document.querySelector(".cart-layout").style.display = "none";
 
-        // Show the IONOS checkout
+        // Show IONOS checkout
         document.querySelector("#ionos-store").style.display = "block";
 
-        // Scroll to the checkout
-        document.querySelector("#ionos-store").scrollIntoView({
+        // Scroll to top
+        window.scrollTo({
+            top: 0,
             behavior: "smooth"
         });
 
