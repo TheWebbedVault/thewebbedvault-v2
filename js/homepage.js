@@ -258,3 +258,23 @@ if (searchButton) {
     searchButton.addEventListener("click", performSearch);
 
 }
+
+// =========================================
+// Hide Navbar on Scroll
+// =========================================
+
+const header = document.querySelector(".header");
+
+let lastScrollY = window.scrollY;
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > lastScrollY && window.scrollY > 120) {
+        header.classList.add("hide");
+    } else {
+        header.classList.remove("hide");
+    }
+
+    lastScrollY = window.scrollY;
+
+});

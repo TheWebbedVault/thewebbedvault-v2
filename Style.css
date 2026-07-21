@@ -426,25 +426,30 @@ p{
 ========================================================== */
 
 .header{
+    position: sticky;
+    
+    top: 0;
+    
+    left: 0;
+    
+    width: 100%;
+    
+    z-index: 1000;
 
-    position:sticky;
+    
+    backdrop-filter: blur(20px);
+    
+    -webkit-backdrop-filter: blur(20px);
 
-    top:0;
-
-    left:0;
-
-    width:100%;
-
-    z-index:1000;
-
-    backdrop-filter:blur(20px);
-
-    -webkit-backdrop-filter:blur(20px);
-
-    background:rgba(10,10,10,.88);
-
+    background: rgba(10,10,10,.88);
+    
     border-bottom:1px solid var(--border);
 
+    transition: transform .5s cubic-bezier(.22,1,.36,1);
+}
+
+.header.hide{
+    transform: translateY(-100%);
 }
 
 /* ==========================================================
