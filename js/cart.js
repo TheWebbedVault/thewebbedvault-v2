@@ -307,30 +307,16 @@ if (checkoutButton) {
             return;
         }
 
-        if (typeof Ecwid === "undefined") {
-            alert("IONOS checkout isn't loaded.");
-            return;
-        }
+        // Hide your custom cart
+        document.querySelector(".cart-layout").style.display = "none";
 
-        cart.forEach(item => {
+        // Show the IONOS checkout
+        document.querySelector("#ionos-store").style.display = "block";
 
-            const productId = ECWID_PRODUCT_IDS[item.name];
-
-            if (!productId) {
-                console.warn("No IONOS Product ID found for:", item.name);
-                return;
-            }
-
-            Ecwid.Cart.addProduct({
-                id: productId,
-                quantity: item.quantity
-            });
-
+        // Scroll to the checkout
+        document.querySelector("#ionos-store").scrollIntoView({
+            behavior: "smooth"
         });
-
-        setTimeout(() => {
-            Ecwid.Cart.gotoCheckout();
-        }, 1200);
 
     });
 
