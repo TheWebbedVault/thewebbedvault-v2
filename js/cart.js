@@ -294,29 +294,47 @@ if (clearCartButton) {
 /* ==========================================================
 CHECKOUT
 ========================================================== */
-
 const checkoutButton = document.querySelector("#checkoutBtn");
 
 if (checkoutButton) {
 
     checkoutButton.addEventListener("click", () => {
 
-        if (Store.getCart().length === 0) {
+        const cart = Store.getCart();
 
+        if (cart.length === 0) {
             Store.showToast("Your cart is empty.");
-
             return;
-
         }
 
-        Store.showToast("Checkout coming soon 💳");
+        if (typeof Ecwid === "undefined") {
+            alert("IONOS checkout isn't loaded.");
+            return;
+        }
 
-        // Future Stripe / PayPal checkout goes here
+        cart.forEach(item => {
+
+            const productId = ECWID_PRODUCT_IDS[item.name];
+
+            if (!productId) {
+                console.warn("No IONOS Product ID found for:", item.name);
+                return;
+            }
+
+            Ecwid.Cart.addProduct({
+                id: productId,
+                quantity: item.quantity
+            });
+
+        });
+
+        setTimeout(() => {
+            Ecwid.Cart.gotoCheckout();
+        }, 1200);
 
     });
 
 }
-
 /* ==========================================================
 REFRESH COUNTERS
 ========================================================== */
