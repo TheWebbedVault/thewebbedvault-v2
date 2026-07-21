@@ -12,6 +12,8 @@ const products = [
     {
         id: 1,
 
+        ecwidId: 846610126,
+
         name: "Tobey Red Mask",
 
         category: "Masks",
@@ -52,6 +54,8 @@ const products = [
     {
         id: 2,
 
+        ecwidId: 846610124,
+       
         name: "Black Symbiote Mask",
 
         category: "Masks",
@@ -92,6 +96,8 @@ const products = [
     {
         id: 3,
 
+        ecwidId: 846610119,
+       
         name: "Amazing Spider V1",
 
         category: "Masks",
@@ -132,6 +138,8 @@ const products = [
     {
         id: 4,
 
+        ecwidId: 846610118,
+        
         name: "Amazing Spider V2",
 
         category: "Masks",
@@ -172,6 +180,8 @@ const products = [
     {
         id: 5,
 
+        ecwidId: 846610125,
+        
         name: "Spider-Verse Mask",
 
         category: "Masks",
@@ -211,6 +221,8 @@ const products = [
 
     {
         id: 6,
+
+        ecwidId: 846610122,
 
         name: "Brand New Day Mask",
 
@@ -256,6 +268,8 @@ const products = [
     {
         id: 7,
 
+        ecwidId: 846610121,
+
         name: "Black Spider Gloves",
 
         category: "Gloves",
@@ -293,6 +307,8 @@ const products = [
     {
         id: 8,
 
+        ecwidId: 849846652,
+        
         name: "Amazing 1 Gloves",
 
         category: "Gloves",
@@ -330,6 +346,8 @@ const products = [
     {
         id: 9,
 
+        ecwidId: 849849183,
+
         name: "Amazing 2 Gloves",
 
         category: "Gloves",
@@ -366,6 +384,8 @@ const products = [
 
     {
         id: 10,
+
+        ecwidId: 849846654,
 
         name: "Tobey Red Gloves",
 
@@ -407,7 +427,9 @@ const products = [
 
     {
         id: 11,
-
+       
+        ecwidId: 849846650,
+       
         name: "Web Shooters",
 
         category: "Web Shooters",
@@ -444,6 +466,8 @@ const products = [
 
     {
         id: 12,
+
+        ecwidId: 846610120,
 
         name: "Amazing 2 Web Shooters",
 
@@ -482,6 +506,7 @@ const products = [
     {
         id: 13,
 
+        ecwidId: 846610123,
         name: "Brand New Day Web Shooters",
 
         category: "Web Shooters",

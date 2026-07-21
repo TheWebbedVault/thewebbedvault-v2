@@ -6,8 +6,8 @@
 "use strict";
 
 const ECWID_PRODUCT_IDS = {
-    "Amazing 1 Mask": 846610119,
-    "Amazing 2 Mask": 846610118,
+    "Amazing Spider V1": 846610119,
+    "Amazing Spider V2": 846610118,
     "Black Symbiote Mask": 846610124,
     "Brand New Day Mask": 846610122,
     "Spider-Verse Mask": 846610125,
@@ -292,6 +292,7 @@ if (clearCartButton) {
 }
 
 
+
 /* ==========================================================
 CHECKOUT
 ========================================================== */
@@ -300,7 +301,7 @@ const checkoutButton = document.querySelector("#checkoutBtn");
 
 if (checkoutButton) {
 
-    checkoutButton.addEventListener("click", () => {
+    checkoutButton.addEventListener("click", async () => {
 
         const cart = Store.getCart();
 
@@ -309,19 +310,86 @@ if (checkoutButton) {
             return;
         }
 
-        // Show loading message
         Store.showToast("Preparing secure checkout...");
 
-        // Hide your custom cart
+        // Hide custom cart
         document.querySelector(".cart-layout").style.display = "none";
 
-        // Show IONOS checkout
+        // Show Ecwid
+       
+
+        // Wait until Ecwid is ready
+        const waitForEcwid = () => new Promise(resolve => {
+
+            const check = () => {
+
+                if (
+                    window.Ecwid &&
+                    Ecwid.Cart &&
+                    Ecwid.Cart.clear &&
+                    Ecwid.Cart.addProduct
+                ) {
+                    resolve();
+                } else {
+                    setTimeout(check, 100);
+                }
+
+            };
+
+            check();
+
+        });
+
+        await waitForEcwid();
+
+        // Clear old Ecwid cart
+        await new Promise(resolve => {
+
+            Ecwid.Cart.clear(() => resolve());
+
+        });
+
+        // Add every item from your custom cart
+        for (const item of cart) {
+
+            const ecwidId = ECWID_PRODUCT_IDS[item.name];
+
+            if (!ecwidId) {
+                console.warn("Missing Ecwid ID:", item.name);
+                continue;
+            }
+
+            await new Promise(resolve => {
+
+                Ecwid.Cart.addProduct({
+
+                    id: ecwidId,
+
+                    quantity: item.quantity,
+
+                    callback: function () {
+
+                        resolve();
+
+                    }
+
+                });
+
+            });
+
+        }
+
+        // Open Ecwid cart
+        Ecwid.openPage("cart");
+
         document.querySelector("#ionos-store").style.display = "block";
 
-        // Scroll to top
         window.scrollTo({
+
             top: 0,
+
             behavior: "smooth"
+
         });
 
     });
