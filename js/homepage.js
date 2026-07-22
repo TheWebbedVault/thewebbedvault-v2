@@ -25,9 +25,7 @@ function createProductCard(product) {
             class="product"
             data-id="${product.id}">
 
-            <a
-                href="Html/product.html?id=${product.id}"
-                class="product-image">
+            <div class="product-image-wrapper">
 
                 <span class="product-badge">
 
@@ -35,12 +33,27 @@ function createProductCard(product) {
 
                 </span>
 
-                <img
-                    src="${product.image}"
-                    alt="${product.name}"
-                    loading="lazy">
+                <button
+                    class="wishlist-floating"
+                    data-id="${product.id}"
+                    aria-label="Add ${product.name} to wishlist">
 
-            </a>
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <a
+                    href="Html/product.html?id=${product.id}"
+                    class="product-image">
+
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}"
+                        loading="lazy">
+
+                </a>
+
+            </div>
 
             <div class="product-content">
 
@@ -60,27 +73,16 @@ function createProductCard(product) {
 
                 </p>
 
-                <div class="product-buttons">
+                <button
+                    class="full-cart-btn"
+                    data-id="${product.id}"
+                    aria-label="Add ${product.name} to cart">
 
-                    <button
-                        class="wishlist-btn"
-                        data-id="${product.id}"
-                        aria-label="Add ${product.name} to wishlist">
+                    <i class="fa-solid fa-cart-shopping"></i>
 
-                        <i class="fa-regular fa-heart"></i>
+                    Add to Cart
 
-                    </button>
-
-                    <button
-                        class="cart-btn"
-                        data-id="${product.id}"
-                        aria-label="Add ${product.name} to cart">
-
-                        🛒 Add to Cart
-
-                    </button>
-
-                </div>
+                </button>
 
             </div>
 
@@ -151,11 +153,13 @@ BUTTON EVENTS
 
 document.addEventListener("click", event => {
 
-    const wishlistButton = event.target.closest(".wishlist-btn");
+    const wishlistButton = event.target.closest(".wishlist-floating");
 
     if (wishlistButton) {
 
         event.preventDefault();
+
+        event.stopPropagation();
 
         const id = Number(wishlistButton.dataset.id);
 
@@ -173,11 +177,13 @@ document.addEventListener("click", event => {
 
     }
 
-    const cartButton = event.target.closest(".cart-btn");
+    const cartButton = event.target.closest(".full-cart-btn");
 
     if (cartButton) {
 
         event.preventDefault();
+
+        event.stopPropagation();
 
         const id = Number(cartButton.dataset.id);
 
@@ -188,7 +194,6 @@ document.addEventListener("click", event => {
     }
 
 });
-
 /* ==========================================================
 PRODUCT CARD NAVIGATION
 ========================================================== */
@@ -260,21 +265,41 @@ if (searchButton) {
 }
 
 // =========================================
-// Hide Navbar on Scroll
+// Smooth Navbar Effects
 // =========================================
 
 const header = document.querySelector(".header");
 
 let lastScrollY = window.scrollY;
+let ticking = false;
 
-window.addEventListener("scroll", () => {
+function updateNavbar() {
 
-    if (window.scrollY > lastScrollY && window.scrollY > 120) {
-        header.classList.add("hide");
+    const currentScroll = window.scrollY;
+
+    // Shrink
+    if (currentScroll > 60) {
+        header.classList.add("shrink");
     } else {
+        header.classList.remove("shrink");
+    }
+
+    // Hide / Show
+    if (currentScroll > lastScrollY && currentScroll > 150) {
+        header.classList.add("hide");
+    } else if (currentScroll < lastScrollY) {
         header.classList.remove("hide");
     }
 
-    lastScrollY = window.scrollY;
+    lastScrollY = currentScroll;
+    ticking = false;
+}
+
+window.addEventListener("scroll", () => {
+
+    if (!ticking) {
+        window.requestAnimationFrame(updateNavbar);
+        ticking = true;
+    }
 
 });

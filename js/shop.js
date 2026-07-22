@@ -13,7 +13,9 @@ const productsContainer = document.getElementById("productsContainer");
 
 const filterButtons = document.querySelectorAll(".filter-btn");
 
-const searchInput = document.getElementById("searchInput");
+const searchInput =
+    document.getElementById("shopSearch") ||
+    document.getElementById("searchInput");
 
 /* ==========================================================
 PAGE CATEGORY
@@ -60,12 +62,28 @@ function getPageCategory() {
 /* ==========================================================
 CREATE PRODUCT CARD
 ========================================================== */
-
 function createProductCard(product) {
 
     return `
 
-        <article class="product">
+    <article class="product">
+
+        <div class="product-image-wrapper">
+
+            <span class="product-badge">
+
+                ${product.badge}
+
+            </span>
+
+            <button
+                class="wishlist-floating wishlist-btn"
+                data-id="${product.id}"
+                aria-label="Add to Wishlist">
+
+                <i class="fa-regular fa-heart"></i>
+
+            </button>
 
             <a
                 href="Product.html?id=${product.id}"
@@ -78,11 +96,17 @@ function createProductCard(product) {
 
             </a>
 
-            <span class="product-badge">
+        </div>
 
-                ${product.badge}
+        <div class="product-content">
 
-            </span>
+            <div class="product-rating">
+
+                ⭐⭐⭐⭐⭐
+
+                <span>(4.9)</span>
+
+            </div>
 
             <h3>
 
@@ -100,29 +124,19 @@ function createProductCard(product) {
 
             </p>
 
-            <div class="product-buttons">
+            <button
+                class="cart-btn full-cart-btn"
+                data-id="${product.id}">
 
-                <button
-                    class="wishlist-btn"
-                    data-id="${product.id}"
-                    aria-label="Add ${product.name} to wishlist">
+                <i class="fa-solid fa-cart-shopping"></i>
 
-                    ❤ Wishlist
+                Add to Cart
 
-                </button>
+            </button>
 
-                <button
-                    class="cart-btn"
-                    data-id="${product.id}"
-                    aria-label="Add ${product.name} to cart">
+        </div>
 
-                    🛒 Add to Cart
-
-                </button>
-
-            </div>
-
-        </article>
+    </article>
 
     `;
 
@@ -227,68 +241,53 @@ function initialiseButtons() {
 }
 
 /* ==========================================================
-CATEGORY FILTER
+   SHOP STATE
 ========================================================== */
 
-function filterProducts(category) {
-
-    let products = Store.getProducts();
-
-    if (category !== "All") {
-
-        products = products.filter(product => product.category === category);
-
-    }
-
-    renderProducts(products);
-
-}
-
-if (filterButtons.length) {
-
-    filterButtons.forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            filterButtons.forEach(btn => {
-
-                btn.classList.remove("active");
-
-            });
-
-            button.classList.add("active");
-
-            filterProducts(button.dataset.filter);
-
-        });
-
-    });
-
-}
+let selectedCategory = "All";
+let searchQuery = "";
+let sortOption = "featured";
 
 /* ==========================================================
-SEARCH
+   EXTRA ELEMENTS
 ========================================================== */
 
-function searchProducts(query) {
+const sortSelect = document.getElementById("sortProducts");
+const productCount = document.getElementById("productCount");
 
-    const search = query.trim().toLowerCase();
+/* ==========================================================
+   UPDATE SHOP
+========================================================== */
 
-    let products = Store.getProducts();
+function updateShop() {
+
+    let products = [...Store.getProducts()];
 
     const pageCategory = getPageCategory();
 
     if (pageCategory) {
 
-        products = products.filter(product => product.category === pageCategory);
+        products = products.filter(product =>
+            product.category === pageCategory
+        );
 
     }
 
-    if (search !== "") {
+    if (selectedCategory !== "All") {
+
+        products = products.filter(product =>
+            product.category === selectedCategory
+        );
+
+    }
+
+    if (searchQuery !== "") {
+
+        const query = searchQuery.toLowerCase();
 
         products = products.filter(product => {
 
-            const searchableText = [
+            const text = [
 
                 product.name,
                 product.category,
@@ -296,27 +295,109 @@ function searchProducts(query) {
                 product.description || "",
                 ...(product.features || [])
 
-            ]
+            ].join(" ").toLowerCase();
 
-            .join(" ")
-
-            .toLowerCase();
-
-            return searchableText.includes(search);
+            return text.includes(query);
 
         });
 
     }
 
+    switch (sortOption) {
+
+        case "low-high":
+
+            products.sort((a,b)=>a.price-b.price);
+
+            break;
+
+        case "high-low":
+
+            products.sort((a,b)=>b.price-a.price);
+
+            break;
+
+        case "name":
+
+            products.sort((a,b)=>
+                a.name.localeCompare(b.name)
+            );
+
+            break;
+
+        case "newest":
+
+            products.reverse();
+
+            break;
+
+        default:
+
+            break;
+
+    }
+
     renderProducts(products);
+
+    if(productCount){
+
+        productCount.textContent = products.length;
+
+    }
 
 }
 
-if (searchInput) {
+/* ==========================================================
+   FILTER BUTTONS
+========================================================== */
 
-    searchInput.addEventListener("input", () => {
+filterButtons.forEach(button=>{
 
-        searchProducts(searchInput.value);
+    button.addEventListener("click",()=>{
+
+        filterButtons.forEach(btn=>{
+
+            btn.classList.remove("active");
+
+        });
+
+        button.classList.add("active");
+
+        selectedCategory = button.dataset.filter;
+
+        updateShop();
+
+    });
+
+});
+
+/* ==========================================================
+   SEARCH
+========================================================== */
+
+if(searchInput){
+
+    searchInput.addEventListener("input",e=>{
+
+        searchQuery = e.target.value.trim();
+
+        updateShop();
+
+    });
+
+}
+
+/* ==========================================================
+   SORT
+========================================================== */
+
+if(sortSelect){
+
+    sortSelect.addEventListener("change",e=>{
+
+        sortOption = e.target.value;
+
+        updateShop();
 
     });
 
@@ -389,7 +470,7 @@ document.addEventListener("DOMContentLoaded", () => {
        RENDER PRODUCTS
     ====================================================== */
 
-    renderProducts(products);
+    updateShop();
 
     /* ======================================================
        UPDATE COUNTS
