@@ -125,9 +125,21 @@ IMAGE GALLERY
 
 function setMainImage(image) {
 
-    mainImage.src = `../${image}`;
+    mainImage.classList.add("changing");
+
+    setTimeout(() => {
+
+        mainImage.src = `../${image}`;
+
+    }, 150);
 
 }
+
+mainImage.addEventListener("load", () => {
+
+    mainImage.classList.remove("changing");
+
+});
 
 if (thumbnails && product.images) {
 
@@ -290,5 +302,28 @@ INITIALISE
 document.addEventListener("DOMContentLoaded", () => {
 
     renderRelatedProducts();
+
+});
+/* ==========================================================
+   TEST IMAGE HOVER
+========================================================== */
+
+const imageContainer = document.querySelector(".main-product-image");
+
+console.log(imageContainer);
+
+imageContainer.addEventListener("mouseenter", () => {
+
+    console.log("ENTER");
+
+    mainImage.classList.add("zoomed");
+
+});
+
+imageContainer.addEventListener("mouseleave", () => {
+
+    console.log("LEAVE");
+
+    mainImage.classList.remove("zoomed");
 
 });

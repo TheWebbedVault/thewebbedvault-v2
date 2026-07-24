@@ -417,4 +417,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderCart();
 
+    const page = sessionStorage.getItem("ecwidPage");
+
+    if (!page) return;
+
+    sessionStorage.removeItem("ecwidPage");
+
+    document.querySelector(".cart-layout").style.display = "none";
+
+    document.querySelector("#ionos-store").style.display = "block";
+
+    const wait = setInterval(() => {
+
+        if (window.Ecwid && Ecwid.openPage) {
+
+            clearInterval(wait);
+
+            Ecwid.openPage(page);
+
+        }
+
+    }, 100);
+
 });
