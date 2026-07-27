@@ -322,3 +322,4 @@ function closeMenu() {
 menuToggle?.addEventListener("click", openMenu);
 menuClose?.addEventListener("click", closeMenu);
 menuOverlay?.addEventListener("click", closeMenu);
+
