@@ -86,7 +86,7 @@ function createProductCard(product) {
             </button>
 
             <a
-                href="Product.html?id=${product.id}"
+                href="product.html?id=${product.id}"
                 class="product-image">
 
                 <img
@@ -110,7 +110,7 @@ function createProductCard(product) {
 
             <h3>
 
-                <a href="Product.html?id=${product.id}">
+                <a href="product.html?id=${product.id}">
 
                     ${product.name}
 
