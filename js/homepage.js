@@ -306,27 +306,19 @@ window.addEventListener("scroll", () => {
 
 const menuToggle = document.getElementById("menuToggle");
 const mobileMenu = document.getElementById("mobileMenu");
-
-menuToggle.addEventListener("click", () => {
-    mobileMenu.classList.toggle("active");
-});
-
-const menuToggle = document.getElementById("menuToggle");
-const mobileMenu = document.getElementById("mobileMenu");
-const menuOverlay = document.getElementById("menuOverlay");
 const menuClose = document.getElementById("menuClose");
+const menuOverlay = document.getElementById("menuOverlay");
 
-menuToggle.addEventListener("click", () => {
+function openMenu() {
     mobileMenu.classList.add("active");
     menuOverlay.classList.add("active");
-});
+}
 
-menuClose.addEventListener("click", () => {
+function closeMenu() {
     mobileMenu.classList.remove("active");
     menuOverlay.classList.remove("active");
-});
+}
 
-menuOverlay.addEventListener("click", () => {
-    mobileMenu.classList.remove("active");
-    menuOverlay.classList.remove("active");
-});
+menuToggle?.addEventListener("click", openMenu);
+menuClose?.addEventListener("click", closeMenu);
+menuOverlay?.addEventListener("click", closeMenu);
