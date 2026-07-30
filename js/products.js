@@ -18,7 +18,7 @@ const products = [
 
         category: "Masks",
 
-        price: 85,
+        price: 70,
 
         badge: "Out of stock",
 
@@ -60,7 +60,7 @@ const products = [
 
         category: "Masks",
 
-        price: 85,
+        price: 75,
 
         badge: "Out of stock",
 
@@ -102,7 +102,7 @@ const products = [
 
         category: "Masks",
 
-        price: 85,
+        price: 70,
 
         badge: "Out of stock",
 
@@ -144,7 +144,7 @@ const products = [
 
         category: "Masks",
 
-        price: 85,
+        price: 70,
 
         badge: "Out of stock",
 
@@ -228,7 +228,7 @@ const products = [
 
         category: "Masks",
 
-        price: 85,
+        price: 70,
 
         badge: "New Drop",
 
@@ -274,7 +274,7 @@ const products = [
 
         category: "Gloves",
 
-        price: 45,
+        price: 51.99,
 
         badge: "Popular",
 
@@ -313,7 +313,7 @@ const products = [
 
         category: "Gloves",
 
-        price: 60,
+        price: 51.99,
 
         badge: "Amazing",
 
@@ -352,7 +352,7 @@ const products = [
 
         category: "Gloves",
 
-        price: 60,
+        price: 51.99,
 
         badge: "Amazing",
 
@@ -391,7 +391,7 @@ const products = [
 
         category: "Gloves",
 
-        price: 60,
+        price: 51.99,
 
         badge: "Popular",
 
@@ -434,7 +434,7 @@ const products = [
 
         category: "Web Shooters",
 
-        price: 90,
+        price: 25,
 
         badge: "Collector",
 
@@ -473,7 +473,7 @@ const products = [
 
         category: "Web Shooters",
 
-        price: 45,
+        price: 38,
 
         badge: "Best Seller",
 
@@ -511,7 +511,7 @@ const products = [
 
         category: "Web Shooters",
 
-        price: 45,
+        price: 38,
 
         badge: "New Drop",
 
@@ -551,7 +551,7 @@ const products = [
 
         category: "Accessories",
 
-        price: 70,
+        price: 65,
 
         badge: "Collector",
 
