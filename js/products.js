@@ -102,7 +102,7 @@ const products = [
 
         category: "Masks",
 
-        price: 70,
+        price: 75,
 
         badge: "Out of stock",
 
@@ -144,7 +144,7 @@ const products = [
 
         category: "Masks",
 
-        price: 70,
+        price: 75,
 
         badge: "Out of stock",
 
@@ -186,7 +186,7 @@ const products = [
 
         category: "Masks",
 
-        price: 70,
+        price: 75,
 
         badge: "Out of stock",
 
@@ -228,7 +228,7 @@ const products = [
 
         category: "Masks",
 
-        price: 70,
+        price: 75,
 
         badge: "New Drop",
 
@@ -261,12 +261,49 @@ const products = [
 
     },
 
+    {
+   
+        id: 7,
+
+    name: "Iron Man Helmet",
+
+    category: "Collectibles",
+
+    price: 100,
+
+    badge: "Marvel",
+
+    featured: true,
+
+    stock: 10,
+
+    image: "Images/Collectibles/ironman-helmet.webp",
+
+    images: [
+        "Images/Collectibles/ironman-helmet.webp"
+    ],
+
+    description: "Premium Iron Man display helmet.",
+
+    features: [
+        "Collector quality",
+        "Premium finish",
+        "Display worthy",
+        "Marvel inspired",
+        "Limited stock"
+    ],
+
+    shipping: "Ships within 1–2 business days.",
+
+    returns: "30-day returns accepted."
+},
+
     /* ==========================================================
        GLOVES
     ========================================================== */
 
     {
-        id: 7,
+        id: 8,
 
         ecwidId: 846610121,
 
@@ -305,7 +342,7 @@ const products = [
     },
 
     {
-        id: 8,
+        id: 9,
 
         ecwidId: 849846652,
         
@@ -344,7 +381,7 @@ const products = [
     },
 
     {
-        id: 9,
+        id: 10,
 
         ecwidId: 849849183,
 
@@ -383,7 +420,7 @@ const products = [
     },
 
     {
-        id: 10,
+        id: 11,
 
         ecwidId: 849846654,
 
@@ -421,12 +458,83 @@ const products = [
 
     },
 
+    {
+    id: 12,
+
+    name: "Miles Morales Gloves",
+
+    category: "Gloves",
+
+    price: 52,
+
+    badge: "Spider-Verse",
+
+    featured: true,
+
+    stock: 10,
+
+    image: "Images/Gloves/miles-gloves.webp",
+
+    images: [
+        "Images/Gloves/miles-gloves.webp"
+    ],
+
+    description: "Spider-Verse inspired gloves.",
+
+    features: [
+        "Premium fabric",
+        "Screen accurate design",
+        "Comfortable fit",
+        "Collector quality",
+        "Perfect for cosplay"
+    ],
+
+    shipping: "Ships within 1–2 business days.",
+
+    returns: "30-day returns accepted."
+},
+
+{
+    id: 13,
+
+    name: "Brand New Day Gloves",
+
+    category: "Gloves",
+
+    price: 52,
+
+    badge: "New Drop",
+
+    featured: true,
+
+    stock: 10,
+
+    image: "Images/Gloves/bnd-gloves.webp",
+
+    images: [
+        "Images/Gloves/bnd-gloves.webp"
+    ],
+
+    description: "Brand New Day inspired gloves.",
+
+    features: [
+        "Premium fabric",
+        "Screen accurate design",
+        "Comfortable fit",
+        "Collector quality",
+        "Perfect for cosplay"
+    ],
+
+    shipping: "Ships within 1–2 business days.",
+
+    returns: "30-day returns accepted."
+},
     /* ==========================================================
        WEB SHOOTERS
     ========================================================== */
 
     {
-        id: 11,
+        id: 14,
        
         ecwidId: 849846650,
        
@@ -465,7 +573,7 @@ const products = [
     },
 
     {
-        id: 12,
+        id: 15,
 
         ecwidId: 846610120,
 
@@ -504,7 +612,7 @@ const products = [
     },
 
     {
-        id: 13,
+        id: 16,
 
         ecwidId: 846610123,
         name: "Brand New Day Web Shooters",
@@ -545,7 +653,7 @@ const products = [
        ACCESSORIES
     ========================================================== */ 
       {
-        id: 14,
+        id: 17,
 
         name: "Amazing 2 Bag",
 
@@ -579,7 +687,44 @@ const products = [
 
         returns: "30-day returns accepted."
 
-    }
+    },
+
+    {
+        
+    id: 18,
+
+    name: "Washed Denim Bag",
+
+    category: "Accessories",
+
+    price: 65,
+
+    badge: "New",
+
+    featured: true,
+
+    stock: 10,
+
+    image: "Images/Accessories/washed-denim-bag.webp",
+
+    images: [
+        "Images/Accessories/washed-denim-bag.webp"
+    ],
+
+    description: "Premium washed denim Spider-Man bag.",
+
+    features: [
+        "Premium quality",
+        "Collector edition",
+        "Durable construction",
+        "Movie inspired",
+        "Perfect everyday bag"
+    ],
+
+    shipping: "Ships within 1–2 business days.",
+
+    returns: "30-day returns accepted."
+},
 
 ];
 
