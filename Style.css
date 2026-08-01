@@ -5225,8 +5225,7 @@ img {
 /* ==========================================================
    PRODUCT GALLERY UPGRADE
 ========================================================== */
-
-..main-product-image{
+.main-product-image{
 
     position:relative;
 
@@ -5621,7 +5620,7 @@ PRODUCT REVIEWS
 }
 
 .account-hero{
-    padding:40px;px 20px;
+    padding:40px 20px;
 }
 
 .account-hero h1{
@@ -6884,5 +6883,7 @@ canvas{
         font-size:17px;
 
     }
+
+}
 
 }
