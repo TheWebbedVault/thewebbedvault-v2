@@ -70,7 +70,7 @@
         href="Style.css">
 
 </head>
-<div class="menu-overlay" id="menuOverlay"></div>
+
 <body>
 
     <!-- ==========================================================
@@ -87,64 +87,114 @@
 
     </div>
 
-    <!-- ==========================================================
-         HEADER
-    =========================================================== -->
 
-   <header class="header">
+<!-- ==========================================================
+HEADER
+========================================================== -->
 
-<nav class="navbar">
+<header class="header">
 
+    
 
-<a href="index.html" class="logo">
-    <img src="Images/Logo/Logo.png" alt="The Webbed Vault">
-</a>
+    <nav class="navbar">
 
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open menu">
 
-    <div class="nav-search">
-        <input type="search" id="searchInput" placeholder="Search products...">
-        <button>
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-bars"></i>
+
         </button>
-    </div>
 
-    <ul class="nav-links">
+        <a href="index.html" class="logo">
 
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="Html/Shop.html">Shop</a></li>
-        <li><a href="Html/Masks.html">Masks</a></li>
-        <li><a href="Html/Gloves.html">Gloves</a></li>
-        <li><a href="Html/Webshooters.html">Web Shooters</a></li>
-        <li><a href="Html/Comics.html">Comics</a></li>
-        <li><a href="Html/Collectibles.html">Collectibles</a></li>
+            <img
+                src="Images/Logo/Logo.png"
+                alt="The Webbed Vault">
 
-    </ul>
+        </a>
 
-</div>
+        <div class="nav-search">
 
-<div class="nav-icons">
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search products...">
 
-    <a href="Html/Wishlist.html">
-        <i class="fa-regular fa-heart"></i>
-        <span id="wishlistCount">0</span>
-    </a>
+            <button type="button">
 
-    <a href="Html/account.html">
-        <i class="fa-regular fa-user"></i>
-    </a>
+                <i class="fa-solid fa-magnifying-glass"></i>
 
-    <a href="Html/Cart.html">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span id="cartCount">0</span>
-    </a>
+            </button>
 
-</div>
+        </div>
 
-</nav>
+        <ul class="nav-links">
 
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Html/Shop.html">Shop</a></li>
+            <li><a href="Html/Masks.html">Masks</a></li>
+            <li><a href="Html/Gloves.html">Gloves</a></li>
+            <li><a href="Html/Webshooters.html">Web Shooters</a></li>
+            <li><a href="Html/Comics.html">Comics</a></li>
+            <li><a href="Html/Collectibles.html">Collectibles</a></li>
+            <li><a href="Html/Contact.html">Contact</a></li>
 
+        </ul>
+
+        <div class="nav-icons">
+
+            <a href="Html/Wishlist.html">
+
+                <i class="fa-regular fa-heart"></i>
+
+                <span id="wishlistCount">0</span>
+
+            </a>
+
+            <a href="Html/account.html">
+
+                <i class="fa-regular fa-user"></i>
+
+            </a>
+
+            <a href="Html/Cart.html">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span id="cartCount">0</span>
+
+            </a>
+
+        </div>
+
+    </nav>
 
 </header>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<nav class="mobile-menu" id="mobileMenu">
+
+    <button
+        class="menu-close"
+        id="menuClose">
+
+        <i class="fa-solid fa-xmark"></i>
+
+    </button>
+
+    <a href="index.html">Home</a>
+    <a href="Html/Shop.html">Shop</a>
+    <a href="Html/Masks.html">Masks</a>
+    <a href="Html/Gloves.html">Gloves</a>
+    <a href="Html/Webshooters.html">Web Shooters</a>
+    <a href="Html/Comics.html">Comics</a>
+    <a href="Html/Collectibles.html">Collectibles</a>
+    <a href="Html/Contact.html">Contact</a>
+
+</nav>
         
     <!-- ==========================================================
          HERO
