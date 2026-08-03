@@ -24,7 +24,7 @@ const products = [
 
         featured: true,
 
-        stock: 10,
+        stock: 0,
 
         image: "Images/Masks/Mask-pictures/tobey-red.front.png",
 
@@ -64,9 +64,9 @@ const products = [
 
         badge: "Out of stock",
 
-        featured: true,
+        featured: false,
 
-        stock: 10,
+        stock: 0,
 
         image: "Images/Masks/Mask-pictures/tobey-black.front.png",
 
@@ -108,7 +108,7 @@ const products = [
 
         featured: true,
 
-        stock: 10,
+        stock: 0,
 
         image: "Images/Masks/Mask-pictures/amazing-v1.front.png",
 
@@ -150,7 +150,7 @@ const products = [
 
         featured: true,
 
-        stock: 10,
+        stock: 0,
 
         image: "Images/Masks/Mask-pictures/amazing-v2.front.png",
 
@@ -192,7 +192,7 @@ const products = [
 
         featured: true,
 
-        stock: 10,
+        stock: 0,
 
         image: "Images/Masks/Mask-pictures/miles-front.png",
 
@@ -316,14 +316,14 @@ const products = [
 
         featured: true,
 
-        stock: 10,
+        stock: 0,
 
-        image: "Images/Masks/Mask-pictures/amazing-v1.front.png",
+        image: "Images/Masks/Mask-pictures/tom-mask.png",
 
         images: [
-            "Images/Masks/Mask-pictures/amazing-v1.front.png",
-            "Images/Masks/Mask-pictures/amazing-v1.eyes-close.png",
-            "Images/Masks/Mask-pictures/amazing-v1.side-left.png",
+            "Images/Masks/Mask-pictures/tom-mask.png",
+            "Images/Masks/Mask-pictures/tom1-mask.png",
+            "Images/Masks/Mask-pictures/tom2-mask.png",
             "Images/Masks/Mask-pictures/amazing-v1.close.png"
         ],
 
@@ -442,10 +442,11 @@ const products = [
 
         stock: 10,
 
-        image: "Images/Gloves/amazing-v2gloves.webp",
+        image: "Images/Gloves/amazing2-gloves.png",
 
         images: [
-            "Images/Gloves/amazing-v2gloves.webp"
+            "Images/Gloves/amazing2-gloves.png",
+            "Images/Gloves/amazing2-gloves.close.png",
         ],
 
         description: "The Amazing Spider 2 gloves.",
@@ -521,10 +522,11 @@ const products = [
 
     stock: 10,
 
-    image: "Images/Gloves/miles-gloves.webp",
+    image: "Images/Gloves/miles-gloves.close.png",
 
     images: [
-        "Images/Gloves/miles-gloves.webp"
+        "Images/Gloves/miles-gloves.close.png",
+        "Images/Gloves/miles-gloves-side.png"
     ],
 
     description: "Spider-Verse inspired gloves.",
@@ -559,10 +561,14 @@ const products = [
 
     stock: 10,
 
-    image: "Images/Gloves/bnd-gloves.webp",
+    image: "Images/Gloves/bnd-gloves-front.png",
 
     images: [
-        "Images/Gloves/bnd-gloves.webp"
+        "Images/Gloves/bnd-gloves-front.png",
+        "Images/Gloves/bnd-gloves-close.png",
+        "Images/Gloves/Bnd-gloves-back.png",
+        "Images/Gloves/bnd-gloves-webshooters.png",
+        "Images/Gloves/brandnewday-gloves.png",
     ],
 
     description: "Brand New Day inspired gloves.",
@@ -594,7 +600,7 @@ const products = [
 
         price: 25,
 
-        badge: "Collector",
+        badge: "Coming Soon",
 
         featured: false,
 
@@ -639,10 +645,14 @@ const products = [
 
         stock: 10,
 
-        image: "Images/Webshooters/tasm2-webshooters.webp",
+        image: "Images/Webshooters/tasm2-webshooters-front.png",
 
         images: [
-            "Images/Webshooters/tasm2-webshooters.webp"
+            "Images/Webshooters/tasm2-webshooters-front.png",
+            "Images/Webshooters/tasm2-webshooters-sp.png",
+            "Images/Webshooters/tasm2-webshooters.webp.jpeg",
+            "Images/Webshooters/tasm2-webshooters.close.png",
+
         ],
 
         description: "Amazing Spider 2 web shooters.",
@@ -678,10 +688,12 @@ const products = [
 
         stock: 10,
 
-        image: "Images/Webshooters/bnd-webshooters.webp",
+        image: "Images/Webshooters/brandnewday-webshooters.png",
 
         images: [
-            "Images/Webshooters/bnd-webshooters.webp"
+            "Images/Webshooters/brandnewday-webshooters.png",
+            "Images/Webshooters/brandnewday-webshoot1.png",
+            "Images/Webshooters/brandnewdaywebshooters.png",
         ],
 
         description: "Brand New Day inspired web shooters.",
@@ -716,14 +728,22 @@ const products = [
 
         badge: "Collector",
 
-        featured: false,
+        featured: true,
 
-        stock: 10,
+        stock: 3,
 
-        image: "Images/Accessories/tasm2-bag.webp",
+        image: "Images/Accessories/bagpic2,jpeg",
 
         images: [
-            "Images/Accessories/tasm2-bag.webp"
+            "Images/Accessories/bagpic2,jpeg",
+            "Images/Accessories/bagleftside.jpeg",
+            "Images/Accessories/dloorbag.jpeg",
+            "Images/Accessories/bagshowinggloves.jpeg",
+            "Images/Accessories/bagprops.jpeg",
+            "Images/Accessories/behindbag.jpeg",
+            "Images/Accessories/insidebag.jpeg",
+           
+
         ],
 
         description: "Movie display bag.",
