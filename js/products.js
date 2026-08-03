@@ -18,7 +18,7 @@ const products = [
 
         category: "Masks",
 
-        price: 70,
+        price: 75,
 
         badge: "Out of stock",
 
@@ -230,7 +230,7 @@ const products = [
 
         price: 75,
 
-        badge: "New Drop",
+        badge: "Out of stock",
 
         featured: true,
 
@@ -273,7 +273,7 @@ const products = [
 
     price: 100,
 
-    badge: "Marvel",
+    badge: "Out of stock",
 
     featured: true,
 
@@ -397,7 +397,7 @@ const products = [
 
         price: 51.99,
 
-        badge: "Amazing",
+        badge: "Out of stock",
 
         featured: false,
 
@@ -436,7 +436,7 @@ const products = [
 
         price: 51.99,
 
-        badge: "Amazing",
+        badge: "Out of stock",
 
         featured: true,
 
@@ -475,7 +475,7 @@ const products = [
 
         price: 51.99,
 
-        badge: "Popular",
+        badge: "Out of stock",
 
         featured: false,
 
@@ -515,7 +515,7 @@ const products = [
 
     price: 52,
 
-    badge: "Spider-Verse",
+    badge: "Out of stock",
 
     featured: true,
 
@@ -706,7 +706,7 @@ const products = [
       {
         id: 18,
          
-        ecwidId:85302144
+        ecwidId:85302144, 
         
         name: "Amazing 2 Bag",
 

@@ -1,30 +1,3 @@
-// ===== Mobile Menu =====
-document.addEventListener('DOMContentLoaded', function() {
- const menuToggle = document.getElementById('menuToggle');
- const menuClose = document.getElementById('menuClose');
- const mobileMenu = document.getElementById('mobileMenu');
- const menuOverlay = document.getElementById('menuOverlay');
- const mobileLinks = mobileMenu? mobileMenu.querySelectorAll('a'): [];
-
- function openMenu() {
- mobileMenu.classList.add('active');
- menuOverlay.classList.add('active');
- document.body.style.overflow = 'hidden';
- }
-
- function closeMenu() {
- mobileMenu.classList.remove('active');
- menuOverlay.classList.remove('active');
- document.body.style.overflow = '';
- }
-
- if (menuToggle) menuToggle.addEventListener('click', openMenu);
- if (menuClose) menuClose.addEventListener('click', closeMenu);
- if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
- mobileLinks.forEach(function(link) {
- link.addEventListener('click', closeMenu);
- });
-});
 
 /* ==========================================================
    THE WEBBED VAULT
