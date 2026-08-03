@@ -266,7 +266,9 @@ const products = [
         id: 7,
 
     name: "Iron Man Helmet",
-
+   
+    ecwidId: 853020945,
+   
     category: "Collectibles",
 
     price: 100,
@@ -298,12 +300,55 @@ const products = [
     returns: "30-day returns accepted."
 },
 
+
+ {
+        id: 8,
+
+        ecwidId: 853014984,
+       
+        name: "Stark Suit Mask",
+
+        category: "Masks",
+
+        price: 75,
+
+        badge: "Out of stock",
+
+        featured: true,
+
+        stock: 10,
+
+        image: "Images/Masks/Mask-pictures/amazing-v1.front.png",
+
+        images: [
+            "Images/Masks/Mask-pictures/amazing-v1.front.png",
+            "Images/Masks/Mask-pictures/amazing-v1.eyes-close.png",
+            "Images/Masks/Mask-pictures/amazing-v1.side-left.png",
+            "Images/Masks/Mask-pictures/amazing-v1.close.png"
+        ],
+
+        description: "The Amazing Spider- Version 1 mask.",
+
+        features: [
+            "Raised 3D webbing",
+            "Magnetic lenses",
+            "Premium lycra fabric",
+            "Collector quality",
+            "Comfortable fit"
+        ],
+
+        shipping: "Ships within 1–2 business days.",
+
+        returns: "30-day returns accepted."
+
+    },
+
     /* ==========================================================
        GLOVES
     ========================================================== */
 
     {
-        id: 8,
+        id: 9,
 
         ecwidId: 846610121,
 
@@ -342,7 +387,7 @@ const products = [
     },
 
     {
-        id: 9,
+        id: 10,
 
         ecwidId: 849846652,
         
@@ -381,7 +426,7 @@ const products = [
     },
 
     {
-        id: 10,
+        id: 11,
 
         ecwidId: 849849183,
 
@@ -420,7 +465,7 @@ const products = [
     },
 
     {
-        id: 11,
+        id: 12,
 
         ecwidId: 849846654,
 
@@ -459,7 +504,10 @@ const products = [
     },
 
     {
-    id: 12,
+   
+    id: 13,
+
+    ecwidId: 853014986,
 
     name: "Miles Morales Gloves",
 
@@ -495,8 +543,10 @@ const products = [
 },
 
 {
-    id: 13,
-
+    id: 14,
+    
+    ecwidId:849849194,
+    
     name: "Brand New Day Gloves",
 
     category: "Gloves",
@@ -534,7 +584,7 @@ const products = [
     ========================================================== */
 
     {
-        id: 14,
+        id: 15,
        
         ecwidId: 849846650,
        
@@ -573,7 +623,7 @@ const products = [
     },
 
     {
-        id: 15,
+        id: 16,
 
         ecwidId: 846610120,
 
@@ -612,9 +662,10 @@ const products = [
     },
 
     {
-        id: 16,
+        id: 17,
 
         ecwidId: 846610123,
+        
         name: "Brand New Day Web Shooters",
 
         category: "Web Shooters",
@@ -653,8 +704,10 @@ const products = [
        ACCESSORIES
     ========================================================== */ 
       {
-        id: 17,
-
+        id: 18,
+         
+        ecwidId:85302144
+        
         name: "Amazing 2 Bag",
 
         category: "Accessories",
@@ -691,7 +744,7 @@ const products = [
 
     {
         
-    id: 18,
+    id: 19,
 
     name: "Washed Denim Bag",
 
