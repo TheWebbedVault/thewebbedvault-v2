@@ -154,6 +154,7 @@ BUTTON EVENTS
 
 document.addEventListener("click", event => {
 
+    console.log("DOCUMENT CLICK");
     const wishlistButton = event.target.closest(".wishlist-floating");
 
     if (wishlistButton) {
@@ -163,16 +164,30 @@ document.addEventListener("click", event => {
         event.stopPropagation();
 
         const id = Number(wishlistButton.dataset.id);
+        
+        console.log("Wishlist clicked", id);
 
         if (Store.addToWishlist(id)) {
 
-            Store.showToast("Added to wishlist ❤️");
+    wishlistButton.innerHTML =
+        '<i class="fa-solid fa-heart"></i>';
 
-        } else {
+    wishlistButton.classList.add("active");
 
-            Store.showToast("Already in wishlist ❤️");
+    Store.showToast("Added to wishlist ❤️");
 
-        }
+} else {
+
+    Store.removeFromWishlist(id);
+
+    wishlistButton.innerHTML =
+        '<i class="fa-regular fa-heart"></i>';
+
+    wishlistButton.classList.remove("active");
+
+    Store.showToast("Removed from wishlist ❤️");
+
+}
 
         return;
 

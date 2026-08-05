@@ -136,35 +136,108 @@ HEADER
 
         </ul>
 
-        <div class="nav-icons">
+    <div class="nav-icons">
 
-            <a href="Html/Wishlist.html">
+    <a href="Html/Wishlist.html">
 
-                <i class="fa-regular fa-heart"></i>
+        <i class="fa-regular fa-heart"></i>
 
-                <span id="wishlistCount">0</span>
+        <span id="wishlistCount">0</span>
 
-            </a>
+    </a>
 
-            <a href="Html/account.html">
+    <a href="Html/account.html">
 
-                <i class="fa-regular fa-user"></i>
+        <i class="fa-regular fa-user"></i>
 
-            </a>
+    </a>
 
-            <a href="Html/Cart.html">
+    <a href="Html/Cart.html">
 
-                <i class="fa-solid fa-cart-shopping"></i>
+        <i class="fa-solid fa-cart-shopping"></i>
 
-                <span id="cartCount">0</span>
+        <span id="cartCount">0</span>
 
-            </a>
+    </a>
 
-        </div>
+    <button
+        id="menuToggle"
+        class="menu-toggle"
+        type="button"
+        aria-label="Open Menu">
 
-    </nav>
+        <i class="fa-solid fa-bars"></i>
+
+    </button>
+
+</div>
 
 </header>
+
+<!-- ==========================================================
+MOBILE MENU
+========================================================== -->
+
+<div
+    id="menuOverlay"
+    class="menu-overlay">
+</div>
+
+<nav
+    id="mobileMenu"
+    class="mobile-menu">
+
+    <button
+        id="menuClose"
+        class="menu-close"
+        type="button"
+        aria-label="Close Menu">
+
+        <i class="fa-solid fa-xmark"></i>
+
+    </button>
+
+    <a href="index.html">Home</a>
+
+    <a href="Html/Shop.html">Shop</a>
+
+    <a href="Html/Masks.html">Masks</a>
+
+    <a href="Html/Gloves.html">Gloves</a>
+
+    <a href="Html/Webshooters.html">Web Shooters</a>
+
+    <a href="Html/Comics.html">Comics</a>
+
+    <a href="Html/Collectibles.html">Collectibles</a>
+
+    <a href="Html/Contact.html">Contact</a>
+
+    <div class="mobile-icons">
+
+        <a href="Html/Wishlist.html">
+
+            <i class="fa-regular fa-heart"></i>
+
+        </a>
+
+        <a href="Html/account.html">
+
+            <i class="fa-regular fa-user"></i>
+
+        </a>
+
+        <a href="Html/Cart.html">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+        </a>
+
+    </div>
+
+</nav>
+
+
 
     <!-- ==========================================================
          HERO
@@ -735,10 +808,10 @@ HEADER
 
     <h3>Customer</h3>
 
-    <a href="account.html">My Account</a>
-    <a href="Wishlist.html">Wishlist</a>
-    <a href="Cart.html">Shopping Cart</a>
-    <a href="Contact.html">Contact Us</a>
+    <a href="Html/account.html">My Account</a>
+    <a href="Html/Wishlist.html">Wishlist</a>
+    <a href="Html/Cart.html">Shopping Cart</a>
+    <a href="Html/Contact.html">Contact Us</a>
 
 
 </div>
@@ -827,34 +900,7 @@ HEADER
          JAVASCRIPT
     =========================================================== -->
 
-<script>
- document.addEventListener('DOMContentLoaded', function() {
- const menuToggle = document.getElementById('menuToggle');
- const menuClose = document.getElementById('menuClose');
- const mobileMenu = document.getElementById('mobileMenu');
- const menuOverlay = document.getElementById('menuOverlay');
- const mobileLinks = mobileMenu? mobileMenu.querySelectorAll('a'): [];
 
- function openMenu() {
- mobileMenu.classList.add('active');
- menuOverlay.classList.add('active');
- document.body.style.overflow = 'hidden';
- }
-
- function closeMenu() {
- mobileMenu.classList.remove('active');
- menuOverlay.classList.remove('active');
- document.body.style.overflow = '';
- }
-
- if (menuToggle) menuToggle.addEventListener('click', openMenu);
- if (menuClose) menuClose.addEventListener('click', closeMenu);
- if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
- mobileLinks.forEach(function(link) {
- link.addEventListener('click', closeMenu);
- });
- });
-</script>
 
     <script src="js/products.js"></script>
     <script src="js/store.js"></script>

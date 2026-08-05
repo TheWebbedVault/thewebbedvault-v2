@@ -269,7 +269,7 @@ const products = [
    
     ecwidId: 853020945,
    
-    category: "Collectibles",
+    category: "Masks",
 
     price: 100,
 
@@ -279,10 +279,10 @@ const products = [
 
     stock: 10,
 
-    image: "Images/Collectibles/ironman-helmet.webp",
+    image: "Images/Masks/ironman-helmet.webp",
 
     images: [
-        "Images/Collectibles/ironman-helmet.webp"
+        "Images/Masks/ironman-helmet.webp"
     ],
 
     description: "Premium Iron Man display helmet.",
@@ -732,12 +732,12 @@ const products = [
 
         stock: 3,
 
-        image: "Images/Accessories/bagpic2,jpeg",
+        image: "Images/Accessories/bagpic2.jpeg",
 
         images: [
-            "Images/Accessories/bagpic2,jpeg",
+            "Images/Accessories/bagpic2.jpeg",
             "Images/Accessories/bagleftside.jpeg",
-            "Images/Accessories/dloorbag.jpeg",
+            "Images/Accessories/floorbag.jpeg",
             "Images/Accessories/bagshowinggloves.jpeg",
             "Images/Accessories/bagprops.jpeg",
             "Images/Accessories/behindbag.jpeg",

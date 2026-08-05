@@ -4,7 +4,7 @@
 ========================================================== */
 
 "use strict";
-
+console.log("Product.js loaded");
 /* ==========================================================
 GET PRODUCT
 ========================================================== */
@@ -57,6 +57,10 @@ const productCartBtn = document.getElementById("productCartBtn");
 
 const productWishlistBtn = document.getElementById("productWishlistBtn");
 
+
+console.log("Wishlist button:", productWishlistBtn);
+console.log("Cart button:", productCartBtn);
+
 const mainImage = document.getElementById("mainImage");
 
 const thumbnails = document.getElementById("thumbnails");
@@ -88,7 +92,10 @@ if (productCartBtn) {
 if (productWishlistBtn && Store.isInWishlist(product.id)) {
 
     productWishlistBtn.innerHTML =
-        '<i class="fa-solid fa-heart"></i>';
+'<i class="fa-solid fa-heart"></i>';
+
+productWishlistBtn.classList.add("active");
+
 
 }
 /* ==========================================================
@@ -195,31 +202,45 @@ if (productCartBtn) {
 
 }
 
+/* ==========================================================
+   WISHLIST BUTTON
+========================================================== */
+
 if (productWishlistBtn) {
 
-    productWishlistBtn.addEventListener("click", () => {
+    console.log("Wishlist listener attached");
 
-        if (Store.isInWishlist(product.id)) {
+    productWishlistBtn.onclick = function (event) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        const inWishlist = Store.isInWishlist(product.id);
+
+        if (inWishlist) {
 
             Store.removeFromWishlist(product.id);
 
-            Store.showToast("Removed from wishlist ❤️");
-
             productWishlistBtn.innerHTML =
-                '<i class="fa-regular fa-heart"></i>';
+       '<i class="fa-regular fa-heart"></i>';
+
+       productWishlistBtn.classList.remove("active");
+            Store.showToast("Removed from wishlist ❤️");
 
         } else {
 
             Store.addToWishlist(product.id);
 
-            Store.showToast("Added to wishlist ❤️");
-
             productWishlistBtn.innerHTML =
                 '<i class="fa-solid fa-heart"></i>';
 
+            Store.showToast("Added to wishlist ❤️");
+
         }
 
-    });
+        Store.updateWishlistCount();
+
+    };
 
 }
 /* ==========================================================
