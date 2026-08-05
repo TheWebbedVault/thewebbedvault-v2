@@ -3268,9 +3268,22 @@ p{
         translateY(0);
 }
 
-
 /* ==========================================================
    RESPONSIVE
+========================================================== */
+
+/* ==========================================================
+   DESKTOP DEFAULT
+========================================================== */
+
+.menu-toggle,
+.mobile-menu,
+.menu-overlay{
+    display:none;
+}
+
+/* ==========================================================
+   LARGE LAPTOP
 ========================================================== */
 
 @media (max-width:1200px){
@@ -3280,7 +3293,7 @@ p{
     }
 
     .navbar{
-        padding:18px 6%;
+        padding:20px 6%;
     }
 
     .hero,
@@ -3293,62 +3306,70 @@ p{
     }
 
     .footer-grid{
-        grid-template-columns:
-            repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 
 }
 
+/* ==========================================================
+   TABLET
+========================================================== */
+
 @media (max-width:992px){
 
-    .nav-search{
-        display:none;
-    }
-
+    .nav-search,
     .nav-links{
         display:none;
     }
 
     .menu-toggle{
         display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .mobile-menu,
+    .menu-overlay{
+        display:block;
+    }
+
+    .navbar{
+        padding:24px 6%;
+        min-height:105px;
+    }
+
+    .logo img{
+        width:145px;
     }
 
     .product-page{
-
         grid-template-columns:1fr;
-
         gap:60px;
     }
 
     .product-gallery{
-
         position:relative;
-
         top:0;
     }
 
-    .cart-layout{
-
-        grid-template-columns:1fr;
-    }
-
+    .cart-layout,
     .contact-grid{
-
         grid-template-columns:1fr;
     }
 
     .account-grid{
-
-        grid-template-columns:
-            repeat(auto-fit,minmax(260px,1fr));
+        grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     }
 
     .footer-grid{
-
         grid-template-columns:1fr 1fr;
     }
 
 }
+
+/* ==========================================================
+   MOBILE
+========================================================== */
 
 @media (max-width:768px){
 
@@ -3357,8 +3378,13 @@ p{
     }
 
     .navbar{
-        padding:18px 20px;
-        gap:15px;
+        padding:28px 20px;
+        min-height:115px;
+        gap:18px;
+    }
+
+    .logo img{
+        width:150px;
     }
 
     .hero{
@@ -3378,16 +3404,45 @@ p{
     }
 
     .products,
-    .products-grid{
-        grid-template-columns:1fr;
-    }
-
+    .products-grid,
     .category-grid,
     .social-grid,
     .why-grid,
     .review-grid,
     .features-grid{
         grid-template-columns:1fr;
+    }
+
+    .product{
+        border-radius:24px;
+    }
+
+    .product-image{
+        height:300px;
+        padding:30px;
+    }
+
+    .product-content{
+        padding:28px;
+    }
+
+    .product-content h3{
+        font-size:1.45rem;
+        margin-bottom:12px;
+    }
+
+    .price{
+        font-size:1.9rem;
+    }
+
+    .full-cart-btn{
+        padding:16px;
+        border-radius:14px;
+    }
+
+    .wishlist-floating{
+        width:42px;
+        height:42px;
     }
 
     .shop-toolbar{
@@ -3422,54 +3477,57 @@ p{
 
 }
 
+/* ==========================================================
+   SMALL MOBILE
+========================================================== */
+
 @media (max-width:576px){
 
     h1{
-
         font-size:2.3rem;
     }
 
     h2{
-
         font-size:1.9rem;
     }
 
     section{
-
         padding:70px 20px;
     }
 
     .announcement-bar{
-
         font-size:.8rem;
     }
 
-    .logo img{
+    .navbar{
+        min-height:110px;
+        padding:24px 18px;
+    }
 
-        width:130px;
+    .logo img{
+        width:135px;
     }
 
     .main-product-image{
-
         min-height:420px;
-
         padding:20px;
     }
 
-    .product-content{
+    .product-image{
+        height:260px;
+    }
 
+    .product-content{
         padding:22px;
     }
 
     .cart-summary,
     .contact-form,
     .account-card{
-
         padding:24px;
     }
 
     .footer-grid{
-
         grid-template-columns:1fr;
     }
 
