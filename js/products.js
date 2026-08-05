@@ -20,7 +20,7 @@ const products = [
 
         price: 75,
 
-        badge: "Out of stock",
+        badge: "Coming Soon!",
 
         featured: true,
 
@@ -41,7 +41,7 @@ const products = [
             "Raised 3D webbing",
             "Magnetic lenses",
             "Premium lycra fabric",
-            "Collector quality",
+            "Magnetic front and back shell",
             "Comfortable fit"
         ],
 
@@ -62,7 +62,8 @@ const products = [
 
         price: 75,
 
-        badge: "Out of stock",
+        badge: "Coming Soon!",
+
 
         featured: false,
 
@@ -83,7 +84,7 @@ const products = [
             "Raised 3D webbing",
             "Magnetic lenses",
             "Premium lycra fabric",
-            "Collector quality",
+            "Magnetic front and back shell",
             "Comfortable fit"
         ],
 
@@ -104,7 +105,7 @@ const products = [
 
         price: 75,
 
-        badge: "Out of stock",
+        badge: "Coming Soon!",
 
         featured: true,
 
@@ -125,8 +126,8 @@ const products = [
             "Raised 3D webbing",
             "Magnetic lenses",
             "Premium lycra fabric",
-            "Collector quality",
-            "Comfortable fit"
+            "Magnetic front and back shell",
+            "Detachable fabric"
         ],
 
         shipping: "Ships within 1–2 business days.",
@@ -146,7 +147,7 @@ const products = [
 
         price: 75,
 
-        badge: "Out of stock",
+        badge: "Coming Soon!",
 
         featured: true,
 
@@ -167,8 +168,8 @@ const products = [
             "Raised 3D webbing",
             "Magnetic lenses",
             "Premium lycra fabric",
-            "Collector quality",
-            "Comfortable fit"
+            "Magnetic front and back shell",
+            "Detachable fabric"
         ],
 
         shipping: "Ships within 1–2 business days.",
@@ -188,7 +189,7 @@ const products = [
 
         price: 75,
 
-        badge: "Out of stock",
+        badge: "Coming Soon!",
 
         featured: true,
 
@@ -209,8 +210,8 @@ const products = [
             "Raised 3D webbing",
             "Magnetic lenses",
             "Premium lycra fabric",
-            "Collector quality",
-            "Comfortable fit"
+            "Magnetic front and back shell",
+            "Detachable fabric"
         ],
 
         shipping: "Ships within 1–2 business days.",
@@ -230,7 +231,7 @@ const products = [
 
         price: 75,
 
-        badge: "Out of stock",
+        badge: "Coming Soon!",
 
         featured: true,
 
@@ -251,8 +252,8 @@ const products = [
             "Raised 3D webbing",
             "Magnetic lenses",
             "Premium lycra fabric",
-            "Collector quality",
-            "Comfortable fit"
+            "Magnetic front and back shell",
+            "Detachable fabric"
         ],
 
         shipping: "Ships within 1–2 business days.",
@@ -273,7 +274,7 @@ const products = [
 
     price: 100,
 
-    badge: "Out of stock",
+    badge: "Collectible",
 
     featured: true,
 
@@ -312,7 +313,7 @@ const products = [
 
         price: 75,
 
-        badge: "Out of stock",
+        badge: "Coming Soon!",
 
         featured: true,
 
@@ -333,8 +334,8 @@ const products = [
             "Raised 3D webbing",
             "Magnetic lenses",
             "Premium lycra fabric",
-            "Collector quality",
-            "Comfortable fit"
+            "Magnetic front and back shell",
+            "Detachable fabric"
         ],
 
         shipping: "Ships within 1–2 business days.",
@@ -343,6 +344,7 @@ const products = [
 
     },
 
+    
     /* ==========================================================
        GLOVES
     ========================================================== */
@@ -397,7 +399,7 @@ const products = [
 
         price: 51.99,
 
-        badge: "Out of stock",
+        badge: "Coming Soon!",
 
         featured: false,
 
@@ -436,7 +438,7 @@ const products = [
 
         price: 51.99,
 
-        badge: "Out of stock",
+        badge: "Coming Soon!",
 
         featured: true,
 
@@ -476,7 +478,7 @@ const products = [
 
         price: 51.99,
 
-        badge: "Out of stock",
+        badge: "Coming Soon!",
 
         featured: false,
 
@@ -516,7 +518,7 @@ const products = [
 
     price: 52,
 
-    badge: "Out of stock",
+    badge: "Coming Soon!",
 
     featured: true,
 
@@ -712,6 +714,7 @@ const products = [
 
     },
 
+    
     /* ==========================================================
        ACCESSORIES
     ========================================================== */ 
@@ -772,7 +775,7 @@ const products = [
 
     price: 65,
 
-    badge: "New",
+    badge: "Coming Soon!",
 
     featured: true,
 
@@ -799,7 +802,138 @@ const products = [
     returns: "30-day returns accepted."
 },
 
+/* ==========================================================
+   BUDGET MASKS (V2)
+========================================================== */
+
+{
+    id: 20,
+    ecwidId: 0,
+    name: "Tobey Red Mask V2",
+    category: "Masks",
+    price: 55,
+    image: "Images/Masks/tobey-red-v2.webp",
+    badge: "Budget",
+    featured: false,
+    description: "Affordable Raimi-inspired Spider-Man mask with premium comfort and clean detailing.",
+    shipping: "Free UK shipping over £150",
+    returns: "30-day returns",
+    features: [
+        "Raised 3D webbing",
+        "Magnetic lenses",
+        "Comfortable fit",
+        "Breathable fabric",
+        "Budget Edition"
+    ]
+},
+
+{
+    id: 21,
+    ecwidId: 0,
+    name: "Tobey Black Mask V2",
+    category: "Masks",
+    price: 55,
+    image: "Images/Masks/tobey-black-v2.webp",
+    badge: "Budget",
+    featured: false,
+    description: "Affordable Symbiote-inspired Spider-Man mask with premium comfort and clean detailing.",
+    shipping: "Free UK shipping over £150",
+    returns: "30-day returns",
+    features: [
+        "Raised 3D webbing",
+        "Magnetic lenses",
+        "Comfortable fit",
+        "Breathable fabric",
+        "Budget Edition"
+    ]
+},
+
+{
+    id: 22,
+    ecwidId: 0,
+    name: "Amazing Spider-Man V1 Mask V2",
+    category: "Masks",
+    price: 55,
+    image: "Images/Masks/tasm1-v2.webp",
+    badge: "Budget",
+    featured: false,
+    description: "Budget-friendly Amazing Spider-Man V1 mask with premium styling and everyday comfort.",
+    shipping: "Free UK shipping over £150",
+    returns: "30-day returns",
+    features: [
+        "Raised 3D webbing",
+        "Magnetic lenses",
+        "Comfortable fit",
+        "Breathable fabric",
+        "Budget Edition"
+    ]
+},
+
+{
+    id: 23,
+    ecwidId: 0,
+    name: "Amazing Spider-Man V2 Mask V2",
+    category: "Masks",
+    price: 55,
+    image: "Images/Masks/tasm2-v2.webp",
+    badge: "Budget",
+    featured: true,
+    description: "Budget-friendly Amazing Spider-Man V2 mask with premium styling and everyday comfort.",
+    shipping: "Free UK shipping over £150",
+    returns: "30-day returns",
+    features: [
+        "Raised 3D webbing",
+        "Magnetic lenses",
+        "Comfortable fit",
+        "Breathable fabric",
+        "Budget Edition"
+    ]
+},
+
+{
+    id: 24,
+    ecwidId: 0,
+    name: "Spider-Verse Mask V2",
+    category: "Masks",
+    price: 55,
+    image: "Images/Masks/spiderverse-v2.webp",
+    badge: "Budget",
+    featured: false,
+    description: "Affordable Spider-Verse inspired mask with premium comfort and clean detailing.",
+    shipping: "Free UK shipping over £150",
+    returns: "30-day returns",
+    features: [
+        "Raised 3D webbing",
+        "Magnetic lenses",
+        "Comfortable fit",
+        "Breathable fabric",
+        "Budget Edition"
+    ]
+},
+
+{
+    id: 25,
+    ecwidId: 0,
+    name: "BND Mask V2",
+    category: "Masks",
+    price: 60,
+    image: "Images/Masks/bnd-v2.webp",
+    badge: "Budget",
+    featured: false,
+    description: "Budget-friendly BND Spider-Man mask with premium styling and everyday comfort.",
+    shipping: "Free UK shipping over £150",
+    returns: "30-day returns",
+    features: [
+        "Raised 3D webbing",
+        "Magnetic lenses",
+        "Comfortable fit",
+        "Breathable fabric",
+        "Budget Edition"
+    ]
+},
+
 ];
+
 
 /* ==========================================================
    PROTECT PRODUCT DATABASE

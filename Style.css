@@ -503,45 +503,38 @@ p{
     width:48px;
     height:48px;
 
-    border-radius:50%;
-
-    background:#171717;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    color:var(--white);
+    color:#fff;
 
     font-size:1.15rem;
 
-    transition:
-        color .3s ease,
-        border-color .3s ease,
-        transform .3s ease;
+    transition:.35s ease;
 }
 
 .nav-icons a i{
+
     display:block;
 
     line-height:1;
 
-    transition:transform .3s ease;
+    transform:translateY(0);
+
 }
 
-/* Account icon alignment */
-.nav-icons .fa-circle-user{
-    transform:translateY(2px);
-}
+/* Fix Account Icon */
+
 
 .nav-icons a:hover{
+
     color:var(--blue);
 
-    border-color:var(--blue);
-
     transform:translateY(-3px);
+
 }
+
 
 #wishlistCount,
 #cartCount{
+
     position:absolute;
 
     top:-6px;
@@ -562,6 +555,7 @@ p{
 
     font-size:.7rem;
     font-weight:700;
+
 }
 
 /* ==========================================================

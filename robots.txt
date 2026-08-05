@@ -1,0 +1,8 @@
+User-agent: *
+
+Allow: /
+
+Disallow: /Html/Cart.html
+Disallow: /Html/account.html
+
+Sitemap: https://thewebbedvault.com/sitemap.xml

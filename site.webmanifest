@@ -1,0 +1,15 @@
+{
+    "name": "The Webbed Vault",
+    "short_name": "Webbed Vault",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0d1117",
+    "theme_color": "#0d1117",
+    "icons": [
+        {
+            "src": "Images/Logo/Logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
