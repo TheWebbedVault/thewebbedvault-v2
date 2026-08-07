@@ -20,11 +20,11 @@ const products = [
 
         price: 75,
 
-        badge: "Coming Soon!",
+        badge: "Perfect!",
 
         featured: true,
 
-        stock: 0,
+        stock: 3,
 
         image: "Images/Masks/Mask-pictures/tobey-red.front.png",
 
@@ -62,12 +62,12 @@ const products = [
 
         price: 75,
 
-        badge: "Coming Soon!",
+        badge: "Collectible!",
 
 
         featured: false,
 
-        stock: 0,
+        stock: 5,
 
         image: "Images/Masks/Mask-pictures/tobey-black.front.png",
 
@@ -105,11 +105,11 @@ const products = [
 
         price: 75,
 
-        badge: "Coming Soon!",
+        badge: "Desirable!",
 
         featured: true,
 
-        stock: 0,
+        stock: 5,
 
         image: "Images/Masks/Mask-pictures/amazing-v1.front.png",
 
@@ -235,7 +235,7 @@ const products = [
 
         featured: true,
 
-        stock: 10,
+        stock: 0,
 
         image: "Images/Masks/Mask-pictures/brand-new-day.front.png",
 
@@ -278,7 +278,7 @@ const products = [
 
     featured: true,
 
-    stock: 10,
+    stock: 2,
 
     image: "Images/Masks/ironman-helmet.webp",
 
@@ -364,7 +364,7 @@ const products = [
 
         featured: false,
 
-        stock: 10,
+        stock: 5,
 
         image: "Images/Gloves/symbiote-gloves.webp",
 
@@ -399,11 +399,11 @@ const products = [
 
         price: 51.99,
 
-        badge: "Coming Soon!",
+        badge: "Popular",
 
         featured: false,
 
-        stock: 10,
+        stock: 5,
 
         image: "Images/Gloves/amazing-v1gloves.webp",
 
