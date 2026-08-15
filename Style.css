@@ -5655,3 +5655,22 @@ p{
     }
 
 }
+
+/* ==========================================================
+   PRODUCT THUMBNAILS — MOBILE TOUCH FIX
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .product-gallery .thumbnail {
+
+        cursor: pointer;
+
+        touch-action: manipulation;
+
+        -webkit-tap-highlight-color:
+            transparent;
+
+    }
+
+}
