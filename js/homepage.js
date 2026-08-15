@@ -646,3 +646,31 @@ document.addEventListener(
 
     }
 );
+
+/* ==========================================================
+   MOBILE MENU SEARCH
+========================================================== */
+
+const mobileSearchForm =
+    document.getElementById("mobileSearchForm");
+
+const mobileSearchInput =
+    document.getElementById("mobileSearchInput");
+
+
+mobileSearchForm?.addEventListener(
+    "submit",
+    event => {
+
+        event.preventDefault();
+
+        const query =
+            mobileSearchInput.value.trim();
+
+        if (!query) return;
+
+        window.location.href =
+            `Html/Shop.html?search=${encodeURIComponent(query)}`;
+
+    }
+);

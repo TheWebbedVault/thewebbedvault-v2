@@ -285,7 +285,7 @@ const products = [
 
     price: 100,
 
-    badge: "Collectible",
+    badge: "Limited Edition!",
 
     featured: true,
 
