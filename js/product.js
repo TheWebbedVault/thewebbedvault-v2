@@ -227,34 +227,59 @@ if (thumbnails && product.images) {
         ) {
 
             const videoThumbnail =
-                document.createElement(
-                    "button"
-                );
+    document.createElement(
+        "button"
+    );
+
+videoThumbnail.type =
+    "button";
+
+videoThumbnail.className =
+    "thumbnail video-thumbnail";
+
+videoThumbnail.setAttribute(
+    "aria-label",
+    `Play video for ${product.name}`
+);
 
 
-            videoThumbnail.type =
-                "button";
+videoThumbnail.innerHTML = `
+
+    <video
+        class="video-thumbnail-preview"
+        muted
+        playsinline
+        preload="auto">
+
+        <source
+            src="../${product.video}"
+            type="video/mp4">
+
+    </video>
+
+    <span class="video-thumbnail-icon">
+
+        <i class="fa-solid fa-play"></i>
+
+    </span>
+
+`;
 
 
-            videoThumbnail.className =
-                "thumbnail video-thumbnail";
+const thumbnailPreview =
+    videoThumbnail.querySelector(
+        ".video-thumbnail-preview"
+    );
 
 
-            videoThumbnail.setAttribute(
-                "aria-label",
-                `Play video for ${product.name}`
-            );
+thumbnailPreview.addEventListener(
+    "loadeddata",
+    () => {
 
+        thumbnailPreview.currentTime = 0;
 
-            videoThumbnail.innerHTML = `
-
-                <span class="video-thumbnail-icon">
-
-                    <i class="fa-solid fa-play"></i>
-
-                </span>
-
-            `;
+    }
+);
 
 
             videoThumbnail.addEventListener(
