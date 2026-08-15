@@ -3783,6 +3783,37 @@ p{
     display: block;
 }
 
+/* ==========================================================
+   PRODUCT CARD VIDEO — HOVER TO PLAY
+========================================================== */
+
+.product .product-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.product .product-card-image,
+.product .product-card-video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.product .product-card-video {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+/* Show video when hovering the product card */
+.product:hover .product-card-video {
+    opacity: 1;
+}
+
+
 
 /* ==========================================================
    MOBILE — 2 PRODUCTS SIDE BY SIDE
@@ -5534,6 +5565,100 @@ p{
 
         font-size: .82rem;
 
+    }
+
+}
+
+/* ==========================================================
+   MOBILE PRODUCT VIDEO THUMBNAIL
+   Video is only added by product.js on mobile
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .video-thumbnail {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 0;
+
+        overflow: hidden;
+
+        cursor: pointer;
+
+        border: none;
+
+        background:
+            #111;
+
+        appearance: none;
+        -webkit-appearance: none;
+    }
+
+
+    .video-thumbnail-inner,
+    .video-thumbnail-icon {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        background:
+            rgba(0, 0, 0, 0.35);
+
+        color: #fff;
+
+        font-size: 1.2rem;
+    }
+
+
+    .video-thumbnail-icon i {
+        width: 36px;
+        height: 36px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background:
+            rgba(0, 0, 0, 0.75);
+
+        font-size: .85rem;
+
+        padding-left: 2px;
+    }
+
+
+    .video-thumbnail.active {
+        border: 2px solid var(--blue);
+    }
+
+
+    .video-thumbnail:active {
+        transform: scale(.97);
+    }
+
+
+    /* Main video */
+
+    .main-product-video {
+        width: 100%;
+        height: 100%;
+
+        display: block;
+
+        object-fit: contain;
+
+        background: #000;
     }
 
 }

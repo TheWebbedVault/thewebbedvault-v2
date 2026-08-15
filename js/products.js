@@ -74,6 +74,9 @@ const products = [
 
         image: "Images/Masks/Mask-pictures/tobey-black.front.png",
 
+        video: "Videos/symbiote.mp4",
+
+
         images: [
             "Images/Masks/Mask-pictures/tobey-black.front.png",
             "Images/Model/Modeel-Symbiote-back.jpeg",
@@ -118,6 +121,8 @@ const products = [
         stock: 5,
 
         image: "Images/Masks/Mask-pictures/amazing-v1.front.png",
+        
+        video: "Videos/tasm1.mp4",
 
         images: [
             "Images/Masks/Mask-pictures/amazing-v1.front.png",
@@ -247,6 +252,9 @@ const products = [
         stock: 0,
 
         image: "Images/Masks/Mask-pictures/brand-new-day.front.png",
+
+        video: "Videos/bnd.mp4",
+
 
         images: [
             "Images/Masks/Mask-pictures/brand-new-day.front.png",
@@ -595,6 +603,9 @@ const products = [
 
     image: "Images/Gloves/bnd-gloves-front.png",
 
+    video: "Videos/bnd,mask,gloves,wb.mp4",
+
+
     images: [
         "Images/Gloves/bnd-gloves-front.png",
         "Images/Gloves/bnd-gloves-close.png",
@@ -678,6 +689,9 @@ const products = [
         stock: 10,
 
         image: "Images/Webshooters/tasm2-webshooters-front.png",
+
+        video: "Videos/tasm2-wbshooters.mp4",
+
 
         images: [
             "Images/Webshooters/tasm2-webshooters-front.png",
@@ -876,6 +890,8 @@ const products = [
     price: 55,
     image: "Images/Budget/Budget-tasm2-front.jpeg",
 
+    
+
     images: [
         "Images/Budget/Budget-tasm2-front.jpeg",
         "Images/Model/Modelbudget-tasm2-front.jpeg",
@@ -883,6 +899,8 @@ const products = [
         "Images/Budget/Budget.tasm2-side.jpeg",
         "Images/Budget/Budget-tasm2-inside.jpeg"
     ],
+
+    video: "Videos/tasm2.mp4",
 
     badge: "Budget",
     featured: true,

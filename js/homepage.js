@@ -30,40 +30,33 @@ function createProductCard(product) {
         Store.isInWishlist(product.id);
 
 
-    const mediaContent =
-        product.video
+   const mediaContent =
+    product.video
+        ? `
+            <img
+                src="${product.image}"
+                alt="${product.name}"
+                class="product-card-image"
+                loading="lazy">
 
-            ? `
+            <video
+                class="product-card-video"
+                muted
+                loop
+                playsinline
+                preload="metadata">
 
-                <video
-                    class="product-card-video"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    preload="metadata">
-
-                    <source
-                        src="${product.video}"
-                        type="video/mp4">
-
-                    <img
-                        src="${product.image}"
-                        alt="${product.name}">
-
-                </video>
-
-              `
-
-            : `
-
-                <img
-                    src="${product.image}"
-                    alt="${product.name}"
-                    loading="lazy">
-
-              `;
-
+                <source
+                    src="${product.video}"
+                    type="video/mp4">
+            </video>
+          `
+        : `
+            <img
+                src="${product.image}"
+                alt="${product.name}"
+                loading="lazy">
+          `;
 
     return `
 
@@ -209,6 +202,41 @@ renderProducts(
         product.badge === "Best Seller"
 );
 
+/* ==========================================================
+   PRODUCT CARD VIDEO — HOVER TO PLAY
+========================================================== */
+
+document.addEventListener("mouseover", event => {
+
+    const productCard = event.target.closest(".product");
+
+    if (!productCard) return;
+
+    const video = productCard.querySelector(".product-card-video");
+
+    if (!video) return;
+
+    video.play().catch(() => {});
+});
+
+
+document.addEventListener("mouseout", event => {
+
+    const productCard = event.target.closest(".product");
+
+    if (!productCard) return;
+
+    /* Don't trigger when moving between elements
+       inside the same product card */
+    if (productCard.contains(event.relatedTarget)) return;
+
+    const video = productCard.querySelector(".product-card-video");
+
+    if (!video) return;
+
+    video.pause();
+    video.currentTime = 0;
+});
 
 /* ==========================================================
    BUTTON EVENTS

@@ -127,60 +127,233 @@ mainImage.src = `../${product.image}`;
 mainImage.alt = product.name;
 
 /* ==========================================================
-IMAGE GALLERY
+   IMAGE GALLERY
 ========================================================== */
-
-function setMainImage(image) {
-
-    mainImage.classList.add("changing");
-
-    setTimeout(() => {
-
-        mainImage.src = `../${image}`;
-
-    }, 150);
-
-}
-
-mainImage.addEventListener("load", () => {
-
-    mainImage.classList.remove("changing");
-
-});
 
 if (thumbnails && product.images) {
 
     thumbnails.innerHTML = "";
 
+
+    /* ======================================================
+       CHECK IF MOBILE
+    ====================================================== */
+
+    const isMobile =
+        window.innerWidth <= 768;
+
+
     product.images.forEach((image, index) => {
 
-        const thumbnail = document.createElement("img");
+        const thumbnail =
+            document.createElement("img");
 
-        thumbnail.src = `../${image}`;
 
-        thumbnail.alt = `${product.name} ${index + 1}`;
+        thumbnail.src =
+            `../${image}`;
 
-        thumbnail.classList.add("thumbnail");
+
+        thumbnail.alt =
+            `${product.name} ${index + 1}`;
+
+
+        thumbnail.classList.add(
+            "thumbnail"
+        );
+
 
         if (index === 0) {
 
-            thumbnail.classList.add("active");
+            thumbnail.classList.add(
+                "active"
+            );
 
         }
 
-        thumbnail.addEventListener("click", () => {
 
-            setMainImage(image);
+        thumbnail.addEventListener(
+            "click",
+            () => {
 
-            document
-                .querySelectorAll(".thumbnail")
-                .forEach(img => img.classList.remove("active"));
+                setMainImage(image);
 
-            thumbnail.classList.add("active");
 
-        });
+                document
+                    .querySelectorAll(
+                        ".thumbnail"
+                    )
+                    .forEach(img =>
+                        img.classList.remove(
+                            "active"
+                        )
+                    );
 
-        thumbnails.appendChild(thumbnail);
+
+                document
+                    .querySelectorAll(
+                        ".video-thumbnail"
+                    )
+                    .forEach(video =>
+                        video.classList.remove(
+                            "active"
+                        )
+                    );
+
+
+                thumbnail.classList.add(
+                    "active"
+                );
+
+            }
+        );
+
+
+        thumbnails.appendChild(
+            thumbnail
+        );
+
+
+        /* ==================================================
+           MOBILE VIDEO SLOT
+           
+           ONLY INSERTS ON MOBILE
+           AND ONLY AFTER FIRST IMAGE
+        ================================================== */
+
+        if (
+            isMobile &&
+            index === 0 &&
+            product.video
+        ) {
+
+            const videoThumbnail =
+                document.createElement(
+                    "button"
+                );
+
+
+            videoThumbnail.type =
+                "button";
+
+
+            videoThumbnail.className =
+                "thumbnail video-thumbnail";
+
+
+            videoThumbnail.setAttribute(
+                "aria-label",
+                `Play video for ${product.name}`
+            );
+
+
+            videoThumbnail.innerHTML = `
+
+                <span class="video-thumbnail-icon">
+
+                    <i class="fa-solid fa-play"></i>
+
+                </span>
+
+            `;
+
+
+            videoThumbnail.addEventListener(
+                "click",
+                () => {
+
+                    document
+                        .querySelectorAll(
+                            ".thumbnail"
+                        )
+                        .forEach(img =>
+                            img.classList.remove(
+                                "active"
+                            )
+                        );
+
+
+                    document
+                        .querySelectorAll(
+                            ".video-thumbnail"
+                        )
+                        .forEach(video =>
+                            video.classList.remove(
+                                "active"
+                            )
+                        );
+
+
+                    videoThumbnail.classList.add(
+                        "active"
+                    );
+
+
+                    mainImage.style.display =
+                        "none";
+
+
+                    let mainVideo =
+                        document.getElementById(
+                            "mainProductVideo"
+                        );
+
+
+                    if (!mainVideo) {
+
+                        mainVideo =
+                            document.createElement(
+                                "video"
+                            );
+
+
+                        mainVideo.id =
+                            "mainProductVideo";
+
+
+                        mainVideo.className =
+                            "main-product-video";
+
+
+                        mainVideo.controls =
+                            true;
+
+
+                        mainVideo.playsInline =
+                            true;
+
+
+                        mainVideo.preload =
+                            "metadata";
+
+
+                        mainImage
+                            .parentElement
+                            .appendChild(
+                                mainVideo
+                            );
+
+                    }
+
+
+                    mainVideo.src =
+                        `../${product.video}`;
+
+
+                    mainVideo.style.display =
+                        "block";
+
+
+                    mainVideo.load();
+
+                }
+            );
+
+
+            thumbnails.appendChild(
+                videoThumbnail
+            );
+
+        }
 
     });
 
