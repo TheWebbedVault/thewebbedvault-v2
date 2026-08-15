@@ -278,7 +278,7 @@ HEADER
 </header>
 
 <!-- ==========================================================
-MOBILE MENU
+     MOBILE MENU
 ========================================================== -->
 
 <div
@@ -290,6 +290,7 @@ MOBILE MENU
     id="mobileMenu"
     class="mobile-menu">
 
+    <!-- CLOSE -->
     <button
         id="menuClose"
         class="menu-close"
@@ -300,37 +301,86 @@ MOBILE MENU
 
     </button>
 
-    <a href="index.html">Home</a>
 
-    <a href="Html/Shop.html">Shop</a>
+    <!-- MOBILE SEARCH -->
+    <form
+        class="mobile-search"
+        id="mobileSearchForm">
 
-    <a href="Html/Masks.html">Masks</a>
+        <input
+            id="mobileSearchInput"
+            type="search"
+            placeholder="Search products..."
+            autocomplete="off">
 
-    <a href="Html/Gloves.html">Gloves</a>
+        <button
+            type="submit"
+            aria-label="Search">
 
-    <a href="Html/Webshooters.html">Web Shooters</a>
+            <i class="fa-solid fa-magnifying-glass"></i>
 
-    <a href="Html/Comics.html">Comics</a>
+        </button>
 
-    <a href="Html/Collectibles.html">Collectibles</a>
+    </form>
 
-    <a href="Html/Contact.html">Contact</a>
 
+    <!-- NAVIGATION -->
+    <div class="mobile-nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="Html/Shop.html">
+            Shop
+        </a>
+
+        <a href="Html/Masks.html">
+            Masks
+        </a>
+
+        <a href="Html/Gloves.html">
+            Gloves
+        </a>
+
+        <a href="Html/Webshooters.html">
+            Web Shooters
+        </a>
+
+        <a href="Html/Comics.html">
+            Comics
+        </a>
+
+        <a href="Html/Collectibles.html">
+            Collectibles
+        </a>
+
+        <a href="Html/Contact.html">
+            Contact
+        </a>
+
+    </div>
+
+
+    <!-- MOBILE ICONS -->
     <div class="mobile-icons">
 
-        <a href="Html/Wishlist.html">
+        <a href="Html/Wishlist.html"
+           aria-label="Wishlist">
 
             <i class="fa-regular fa-heart"></i>
 
         </a>
 
-        <a href="Html/account.html">
+        <a href="Html/account.html"
+           aria-label="Account">
 
             <i class="fa-regular fa-user"></i>
 
         </a>
 
-        <a href="Html/Cart.html">
+        <a href="Html/Cart.html"
+           aria-label="Cart">
 
             <i class="fa-solid fa-cart-shopping"></i>
 
@@ -339,8 +389,6 @@ MOBILE MENU
     </div>
 
 </nav>
-
-
 
     <!-- ==========================================================
          HERO

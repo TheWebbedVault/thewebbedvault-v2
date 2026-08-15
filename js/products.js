@@ -471,7 +471,7 @@ const products = [
 
         images: [
             "Images/Gloves/amazing2-gloves.png",
-            "Images/Gloves/amazing2-gloves.close.png",
+            "Images/Gloves/amzing2-gloves.close.png",
             "Images/Gloves/Tasm2-gloves-front.jpeg",
             "Images/Gloves/Tasm2-gloves-back.jpeg",
         ],
@@ -1020,7 +1020,7 @@ const products = [
         "Images/Budget/budgettom-front.png",
         "Images/Budget/budgettom-side.png",
         "Images/Budget/budgettom-inst.png",
-        "Images/Masks/budgettom-show.jpg",
+        "Images/Budget/budgettom-show.jpg",
     ],
 
     description:
