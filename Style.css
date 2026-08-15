@@ -2036,6 +2036,13 @@ p{
         );
 }
 
+.product-card-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 /* ==========================================================
    PRODUCT WISHLIST BUTTON
 ========================================================== */
@@ -3366,6 +3373,21 @@ p{
 ========================================================== */
 
 @media (max-width:768px){
+    
+
+    .currency-button{
+    min-width:72px;
+
+    height:38px;
+
+    padding:0 9px;
+
+    font-size:.78rem;
+}
+
+.currency-menu{
+    right:-10px;
+}
 
     section{
         padding:80px 20px;
@@ -3477,6 +3499,8 @@ p{
 
 @media (max-width:576px){
 
+
+
     h1{
         font-size:2.3rem;
     }
@@ -3523,6 +3547,549 @@ p{
 
     .footer-grid{
         grid-template-columns:1fr;
+    }
+
+}
+
+
+
+/* ==========================================================
+   CURRENCY SELECTOR
+========================================================== */
+
+.currency-selector{
+    position:relative;
+    display:flex;
+    align-items:center;
+}
+
+.currency-button{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:7px;
+
+    min-width:82px;
+    height:40px;
+
+    padding:0 12px;
+
+    background:var(--card) !important;
+    color:#fff !important;
+
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    font-family:inherit;
+    font-size:.85rem;
+    font-weight:600;
+
+    cursor:pointer;
+
+    box-shadow:none;
+
+    transition:.3s ease;
+}
+
+.currency-button:hover{
+    background:rgba(37,99,235,.10) !important;
+
+    border-color:var(--blue);
+
+    color:#fff !important;
+}
+
+.currency-button i{
+    font-size:.65rem;
+
+    color:#fff;
+
+    transition:.3s ease;
+}
+
+.currency-selector.active .currency-button i{
+    transform:rotate(180deg);
+}
+
+/* ==========================================================
+   CURRENCY DROPDOWN
+========================================================== */
+
+.currency-menu{
+    position:absolute;
+
+    top:calc(100% + 10px);
+    right:0;
+
+    min-width:135px;
+
+    padding:8px;
+
+    background:var(--card) !important;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.45);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(-8px);
+
+    transition:.25s ease;
+
+    z-index:9999;
+}
+
+.currency-selector.active .currency-menu{
+    opacity:1;
+    visibility:visible;
+
+    transform:translateY(0);
+}
+
+.currency-menu button{
+    display:block;
+
+    width:100%;
+
+    padding:10px 12px;
+
+    border:0;
+
+    border-radius:8px;
+
+    background:transparent !important;
+
+    color:#fff !important;
+
+    font-family:inherit;
+
+    font-size:.85rem;
+
+    font-weight:500;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+}
+
+.currency-menu button:hover{
+    background:rgba(37,99,235,.15) !important;
+
+    color:var(--blue-light) !important;
+}
+
+.currency-menu button.active{
+    background:rgba(37,99,235,.18) !important;
+
+    color:var(--blue-light) !important;
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width:768px){
+
+    .currency-button{
+        min-width:72px;
+        height:38px;
+
+        padding:0 9px;
+
+        font-size:.78rem;
+    }
+
+    .currency-menu{
+        right:-10px;
+    }
+
+}
+
+@media (max-width:576px){
+
+    .currency-button{
+        min-width:68px;
+
+        font-size:.75rem;
+    }
+
+}
+
+/* ==========================================================
+   PRODUCT CARD IMAGE SIZING + MOBILE 2-COLUMN GRID
+========================================================== */
+
+/* ----------------------------------------------------------
+   PRODUCT CARD IMAGE AREA
+   Makes every product-card image the exact same size
+---------------------------------------------------------- */
+
+.product .product-image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
+}
+
+
+/* ----------------------------------------------------------
+   PRODUCT CARD IMAGE
+---------------------------------------------------------- */
+
+.product .product-image {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+/* ----------------------------------------------------------
+   PRODUCT CARD PHOTOS
+---------------------------------------------------------- */
+
+.product .product-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* ----------------------------------------------------------
+   PRODUCT CARD VIDEOS
+---------------------------------------------------------- */
+
+.product .product-image .product-card-video {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* ==========================================================
+   MOBILE — 2 PRODUCTS SIDE BY SIDE
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .products,
+    .products-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 16px;
+
+    }
+
+
+    /* Keep image boxes identical */
+
+    .product .product-image-wrapper {
+
+        aspect-ratio: 1 / 1;
+
+    }
+
+
+    .product .product-image {
+
+        height: 100%;
+
+        padding: 12px;
+
+    }
+
+
+    /* Smaller card content so 2 cards fit nicely */
+
+    .product-content {
+
+        padding: 16px;
+
+    }
+
+
+    .product-content h3 {
+
+        font-size: 1rem;
+
+        line-height: 1.35;
+
+        margin-bottom: 8px;
+
+    }
+
+
+    .price {
+
+        font-size: 1.2rem;
+
+        margin-bottom: 14px;
+
+    }
+
+
+    .full-cart-btn {
+
+        padding: 12px 8px;
+
+        font-size: .8rem;
+
+        gap: 6px;
+
+        border-radius: 12px;
+
+    }
+
+
+    .wishlist-floating {
+
+        width: 36px;
+
+        height: 36px;
+
+        top: 10px;
+
+        right: 10px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   SMALL MOBILE
+========================================================== */
+
+@media (max-width: 576px) {
+
+    .products,
+    .products-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+
+    }
+
+
+    .product .product-image {
+
+        padding: 8px;
+
+    }
+
+
+    .product-content {
+
+        padding: 13px;
+
+    }
+
+
+    .product-content h3 {
+
+        font-size: .9rem;
+
+    }
+
+
+    .price {
+
+        font-size: 1.05rem;
+
+    }
+
+
+    .full-cart-btn {
+
+        padding: 11px 6px;
+
+        font-size: .75rem;
+
+    }
+
+
+    .wishlist-floating {
+
+        width: 32px;
+
+        height: 32px;
+
+        top: 8px;
+
+        right: 8px;
+
+    }
+
+}
+
+/* ==========================================================
+   PRODUCT PAGE GALLERY — CONSISTENT IMAGE SIZING
+   This only affects the individual product page.
+   It does NOT affect product cards.
+========================================================== */
+
+
+/* ----------------------------------------------------------
+   MAIN PRODUCT IMAGE AREA
+---------------------------------------------------------- */
+
+.product-gallery .main-product-image {
+
+    width: 100%;
+
+    height: 620px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    position: relative;
+
+}
+
+
+/* ----------------------------------------------------------
+   EVERY MAIN PRODUCT PHOTO
+---------------------------------------------------------- */
+
+.product-gallery .main-product-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    display: block;
+
+}
+
+
+/* ----------------------------------------------------------
+   THUMBNAIL BOXES
+   Every thumbnail is exactly the same size.
+---------------------------------------------------------- */
+
+.product-gallery .thumbnails {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-top: 22px;
+
+}
+
+
+/* ----------------------------------------------------------
+   EVERY THUMBNAIL
+---------------------------------------------------------- */
+
+.product-gallery .thumbnails img {
+
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    height: auto;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    display: block;
+
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 992px) {
+
+    .product-gallery .main-product-image {
+
+        height: 550px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .product-gallery .main-product-image {
+
+        height: 460px;
+
+    }
+
+
+    .product-gallery .thumbnails {
+
+        grid-template-columns:
+            repeat(5, minmax(0, 1fr));
+
+        gap: 10px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   SMALL MOBILE
+========================================================== */
+
+@media (max-width: 576px) {
+
+    .product-gallery .main-product-image {
+
+        height: 400px;
+
+    }
+
+
+    .product-gallery .thumbnails {
+
+        gap: 8px;
+
     }
 
 }

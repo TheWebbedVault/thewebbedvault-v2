@@ -1,4 +1,3 @@
-
 /* ==========================================================
    THE WEBBED VAULT
    HOMEPAGE.JS
@@ -6,19 +5,65 @@
 
 "use strict";
 
+
 /* ==========================================================
-ELEMENTS
+   ELEMENTS
 ========================================================== */
 
-const featuredProductsContainer = document.querySelector("#featuredProducts");
+const featuredProductsContainer =
+    document.querySelector("#featuredProducts");
 
-const newDropsContainer = document.querySelector("#newDrops");
+const newDropsContainer =
+    document.querySelector("#newDrops");
+
+const bestSellersContainer =
+    document.querySelector("#bestSellers");
+
 
 /* ==========================================================
-PRODUCT CARD
+   PRODUCT CARD
 ========================================================== */
 
 function createProductCard(product) {
+
+    const isWishlisted =
+        Store.isInWishlist(product.id);
+
+
+    const mediaContent =
+        product.video
+
+            ? `
+
+                <video
+                    class="product-card-video"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata">
+
+                    <source
+                        src="${product.video}"
+                        type="video/mp4">
+
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}">
+
+                </video>
+
+              `
+
+            : `
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    loading="lazy">
+
+              `;
+
 
     return `
 
@@ -29,38 +74,49 @@ function createProductCard(product) {
             <div class="product-image-wrapper">
 
                 <span class="product-badge">
-
-                    ${product.badge}
-
+                    ${product.badge || ""}
                 </span>
 
-                <button
-                    class="wishlist-floating"
-                    data-id="${product.id}"
-                    aria-label="Add ${product.name} to wishlist">
 
-                    <i class="fa-regular fa-heart"></i>
+                <button
+                    class="wishlist-floating ${
+                        isWishlisted
+                            ? "active"
+                            : ""
+                    }"
+                    data-id="${product.id}"
+                    aria-label="${
+                        isWishlisted
+                            ? "Remove from wishlist"
+                            : "Add to wishlist"
+                    }">
+
+                    <i class="${
+                        isWishlisted
+                            ? "fa-solid fa-heart"
+                            : "fa-regular fa-heart"
+                    }"></i>
 
                 </button>
+
 
                 <a
                     href="Html/product.html?id=${product.id}"
                     class="product-image">
 
-                    <img
-                        src="${product.image}"
-                        alt="${product.name}"
-                        loading="lazy">
+                    ${mediaContent}
 
                 </a>
 
             </div>
 
+
             <div class="product-content">
 
                 <h3>
 
-                    <a href="Html/product.html?id=${product.id}">
+                    <a
+                        href="Html/product.html?id=${product.id}">
 
                         ${product.name}
 
@@ -68,11 +124,17 @@ function createProductCard(product) {
 
                 </h3>
 
-                <p class="price">
 
-                    £${product.price.toFixed(2)}
+                <p
+                    class="price"
+                    data-gbp-price="${product.price}">
+
+                    ${Store.formatCurrency(
+                        product.price
+                    )}
 
                 </p>
+
 
                 <button
                     class="full-cart-btn"
@@ -93,249 +155,494 @@ function createProductCard(product) {
 
 }
 
+
 /* ==========================================================
-RENDER PRODUCTS
+   RENDER PRODUCTS
 ========================================================== */
 
-function renderProducts(container, filter) {
+function renderProducts(
+    container,
+    filter = () => true
+) {
 
     if (!container) return;
 
-    container.innerHTML = Store
-        .getProducts()
-        .filter(filter)
-        .map(createProductCard)
-        .join("");
+
+    container.innerHTML =
+        Store
+            .getProducts()
+            .filter(filter)
+            .map(createProductCard)
+            .join("");
 
 }
 
+
 /* ==========================================================
-FEATURED PRODUCTS
+   FEATURED PRODUCTS
 ========================================================== */
 
 renderProducts(
-
     featuredProductsContainer,
-
     product => product.featured
-
 );
 
+
 /* ==========================================================
-NEW DROPS
+   NEW DROPS
 ========================================================== */
 
 renderProducts(
-
     newDropsContainer,
-
-    product => product.badge === "New Drop"
-
+    product =>
+        product.badge === "New Drop"
 );
 
-/* ==========================================================
-BEST SELLERS
-(Ready if you add a section later)
-========================================================== */
 
-const bestSellersContainer = document.querySelector("#bestSellers");
+/* ==========================================================
+   BEST SELLERS
+========================================================== */
 
 renderProducts(
-
     bestSellersContainer,
-
-    product => product.badge === "Best Seller"
-
+    product =>
+        product.badge === "Best Seller"
 );
 
+
 /* ==========================================================
-BUTTON EVENTS
+   BUTTON EVENTS
 ========================================================== */
 
-document.addEventListener("click", event => {
+document.addEventListener(
+    "click",
+    event => {
 
-    console.log("DOCUMENT CLICK");
-    const wishlistButton = event.target.closest(".wishlist-floating");
+        /* --------------------------------------------------
+           WISHLIST
+        -------------------------------------------------- */
 
-    if (wishlistButton) {
+        const wishlistButton =
+            event.target.closest(
+                ".wishlist-floating"
+            );
 
-        event.preventDefault();
 
-        event.stopPropagation();
+        if (wishlistButton) {
 
-        const id = Number(wishlistButton.dataset.id);
-        
-        console.log("Wishlist clicked", id);
+            event.preventDefault();
 
-        if (Store.addToWishlist(id)) {
+            event.stopPropagation();
 
-    wishlistButton.innerHTML =
-        '<i class="fa-solid fa-heart"></i>';
 
-    wishlistButton.classList.add("active");
+            const id =
+                Number(
+                    wishlistButton.dataset.id
+                );
 
-    Store.showToast("Added to wishlist ❤️");
 
-} else {
+            if (
+                Store.isInWishlist(id)
+            ) {
 
-    Store.removeFromWishlist(id);
+                Store.removeFromWishlist(id);
 
-    wishlistButton.innerHTML =
-        '<i class="fa-regular fa-heart"></i>';
 
-    wishlistButton.classList.remove("active");
+                wishlistButton.innerHTML =
+                    '<i class="fa-regular fa-heart"></i>';
 
-    Store.showToast("Removed from wishlist ❤️");
+                wishlistButton.classList.remove(
+                    "active"
+                );
 
-}
 
-        return;
+                wishlistButton.setAttribute(
+                    "aria-label",
+                    "Add to wishlist"
+                );
+
+
+                Store.showToast(
+                    "Removed from wishlist ❤️"
+                );
+
+            }
+
+            else {
+
+                Store.addToWishlist(id);
+
+
+                wishlistButton.innerHTML =
+                    '<i class="fa-solid fa-heart"></i>';
+
+                wishlistButton.classList.add(
+                    "active"
+                );
+
+
+                wishlistButton.setAttribute(
+                    "aria-label",
+                    "Remove from wishlist"
+                );
+
+
+                Store.showToast(
+                    "Added to wishlist ❤️"
+                );
+
+            }
+
+
+            return;
+
+        }
+
+
+        /* --------------------------------------------------
+           CART
+        -------------------------------------------------- */
+
+        const cartButton =
+            event.target.closest(
+                ".full-cart-btn"
+            );
+
+
+        if (cartButton) {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+
+            const id =
+                Number(
+                    cartButton.dataset.id
+                );
+
+
+            const product =
+                Store.getProduct(id);
+
+
+            if (!product) return;
+
+
+            Store.addToCart(id);
+
+
+            Store.showToast(
+                `${product.name} added to cart 🛒`
+            );
+
+
+            return;
+
+        }
 
     }
+);
 
-    const cartButton = event.target.closest(".full-cart-btn");
 
-    if (cartButton) {
+/* ==========================================================
+   PRODUCT CARD NAVIGATION
+========================================================== */
 
-        event.preventDefault();
+document.addEventListener(
+    "click",
+    event => {
 
-        event.stopPropagation();
+        const productCard =
+            event.target.closest(
+                ".product"
+            );
 
-        const id = Number(cartButton.dataset.id);
 
-        Store.addToCart(id);
+        if (!productCard) return;
 
-        Store.showToast("Added to cart 🛒");
+
+        if (
+            event.target.closest(
+                "button"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        if (
+            event.target.closest(
+                "a"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        window.location.href =
+            `Html/product.html?id=${
+                productCard.dataset.id
+            }`;
 
     }
+);
 
-});
-/* ==========================================================
-PRODUCT CARD NAVIGATION
-========================================================== */
-
-document.addEventListener("click", event => {
-
-    const productCard = event.target.closest(".product");
-
-    if (!productCard) return;
-
-    if (event.target.closest("button")) return;
-
-    if (event.target.closest("a")) return;
-
-    window.location.href = `Html/product.html?id=${productCard.dataset.id}`;
-
-});
 
 /* ==========================================================
-INITIALISE
+   SEARCH
 ========================================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
 
-    Store.updateCartCount();
 
-    Store.updateWishlistCount();
+const searchButton =
+    document.querySelector(
+        ".nav-search button"
+    );
 
-});
-
-/* ==========================================================
-   HOMEPAGE SEARCH
-========================================================== */
-
-const searchInput = document.getElementById("searchInput");
-const searchButton = document.querySelector(".nav-search button");
 
 function performSearch() {
 
     if (!searchInput) return;
 
-    const query = searchInput.value.trim();
 
-    if (query === "") return;
+    const query =
+        searchInput.value.trim();
+
+
+    if (!query) return;
+
 
     window.location.href =
-        `Html/Shop.html?search=${encodeURIComponent(query)}`;
+        `Html/Shop.html?search=${
+            encodeURIComponent(query)
+        }`;
 
 }
+
 
 if (searchInput) {
 
-    searchInput.addEventListener("keydown", event => {
+    searchInput.addEventListener(
+        "keydown",
+        event => {
 
-        if (event.key === "Enter") {
+            if (
+                event.key === "Enter"
+            ) {
 
-            performSearch();
+                performSearch();
+
+            }
 
         }
-
-    });
+    );
 
 }
+
 
 if (searchButton) {
 
-    searchButton.addEventListener("click", performSearch);
+    searchButton.addEventListener(
+        "click",
+        performSearch
+    );
 
 }
 
-// =========================================
-// Smooth Navbar Effects
-// =========================================
 
-const header = document.querySelector(".header");
+/* ==========================================================
+   NAVBAR
+========================================================== */
 
-let lastScrollY = window.scrollY;
+const header =
+    document.querySelector(
+        ".header"
+    );
+
+
+let lastScrollY =
+    window.scrollY;
+
 let ticking = false;
+
 
 function updateNavbar() {
 
-    const currentScroll = window.scrollY;
+    if (!header) return;
 
-    // Shrink
-    if (currentScroll > 60) {
-        header.classList.add("shrink");
-    } else {
-        header.classList.remove("shrink");
+
+    const currentScroll =
+        window.scrollY;
+
+
+    if (
+        currentScroll > 60
+    ) {
+
+        header.classList.add(
+            "shrink"
+        );
+
     }
 
-    // Hide / Show
-    if (currentScroll > lastScrollY && currentScroll > 150) {
-        header.classList.add("hide");
-    } else if (currentScroll < lastScrollY) {
-        header.classList.remove("hide");
+    else {
+
+        header.classList.remove(
+            "shrink"
+        );
+
     }
 
-    lastScrollY = currentScroll;
+
+    if (
+        currentScroll >
+            lastScrollY &&
+        currentScroll > 150
+    ) {
+
+        header.classList.add(
+            "hide"
+        );
+
+    }
+
+    else if (
+        currentScroll <
+        lastScrollY
+    ) {
+
+        header.classList.remove(
+            "hide"
+        );
+
+    }
+
+
+    lastScrollY =
+        currentScroll;
+
     ticking = false;
+
 }
 
-window.addEventListener("scroll", () => {
 
-    if (!ticking) {
-        window.requestAnimationFrame(updateNavbar);
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if (ticking) return;
+
+
+        window.requestAnimationFrame(
+            updateNavbar
+        );
+
+
         ticking = true;
+
     }
+);
 
-});
 
-const menuToggle = document.getElementById("menuToggle");
-const mobileMenu = document.getElementById("mobileMenu");
-const menuClose = document.getElementById("menuClose");
-const menuOverlay = document.getElementById("menuOverlay");
+/* ==========================================================
+   MOBILE MENU
+========================================================== */
+
+const menuToggle =
+    document.getElementById(
+        "menuToggle"
+    );
+
+
+const mobileMenu =
+    document.getElementById(
+        "mobileMenu"
+    );
+
+
+const menuClose =
+    document.getElementById(
+        "menuClose"
+    );
+
+
+const menuOverlay =
+    document.getElementById(
+        "menuOverlay"
+    );
+
 
 function openMenu() {
-    mobileMenu.classList.add("active");
-    menuOverlay.classList.add("active");
+
+    if (!mobileMenu) return;
+
+
+    mobileMenu.classList.add(
+        "active"
+    );
+
+
+    menuOverlay?.classList.add(
+        "active"
+    );
+
 }
+
 
 function closeMenu() {
-    mobileMenu.classList.remove("active");
-    menuOverlay.classList.remove("active");
+
+    mobileMenu?.classList.remove(
+        "active"
+    );
+
+
+    menuOverlay?.classList.remove(
+        "active"
+    );
+
 }
 
-menuToggle?.addEventListener("click", openMenu);
-menuClose?.addEventListener("click", closeMenu);
-menuOverlay?.addEventListener("click", closeMenu);
 
+menuToggle?.addEventListener(
+    "click",
+    openMenu
+);
+
+
+menuClose?.addEventListener(
+    "click",
+    closeMenu
+);
+
+
+menuOverlay?.addEventListener(
+    "click",
+    closeMenu
+);
+
+
+/* ==========================================================
+   INITIALISE
+========================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        Store.updateCartCount();
+
+        Store.updateWishlistCount();
+
+        Store.updateCurrencyDisplay();
+
+    }
+);

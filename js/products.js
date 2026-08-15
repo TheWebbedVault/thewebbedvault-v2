@@ -20,7 +20,7 @@ const products = [
 
         price: 75,
 
-        badge: "Perfect!",
+        badge: "Collectible!",
 
         featured: true,
 
@@ -30,6 +30,9 @@ const products = [
 
         images: [
             "Images/Masks/Mask-pictures/tobey-red.front.png",
+            "Images/Model/Model-red-back.jpeg",
+            "Images/Model/Model-red-pos.jpeg",
+            "Images/Model/Model-red-handsonhead.jpeg",
             "Images/Masks/Mask-pictures/tobey-red.eyes-close.png",
             "Images/Masks/Mask-pictures/tobey-red.side-left.png",
             "Images/Masks/Mask-pictures/tobey-red.side-right.png"
@@ -73,6 +76,9 @@ const products = [
 
         images: [
             "Images/Masks/Mask-pictures/tobey-black.front.png",
+            "Images/Model/Modeel-Symbiote-back.jpeg",
+            "Images/Model/Model-symbiote-pose.jpeg",
+            "Images/Model/Model-symbiote-comic.jpeg",
             "Images/Masks/Mask-pictures/tobey-black.eyes-close.png",
             "Images/Masks/Mask-pictures/tobey-black.side-left.png",
             "Images/Masks/Mask-pictures/tobey-black.side-right.png"
@@ -107,7 +113,7 @@ const products = [
 
         badge: "Desirable!",
 
-        featured: true,
+        featured: false,
 
         stock: 5,
 
@@ -115,6 +121,9 @@ const products = [
 
         images: [
             "Images/Masks/Mask-pictures/amazing-v1.front.png",
+            "Images/Model/Model-tasm1-look.jpeg",
+            "Images/Model/Model-tasm1-sidelook.jpeg",
+            "Images/Model/Model-tasm1-handsonhead.jpeg",
             "Images/Masks/Mask-pictures/amazing-v1.eyes-close.png",
             "Images/Masks/Mask-pictures/amazing-v1.side-left.png",
             "Images/Masks/Mask-pictures/amazing-v1.close.png"
@@ -241,6 +250,8 @@ const products = [
 
         images: [
             "Images/Masks/Mask-pictures/brand-new-day.front.png",
+            "Images/Model/Model-bnd-shoot.jpeg",
+            "Images/Model/BND-comic-holding.jpeg",
             "Images/Masks/Mask-pictures/brand-new-day.eyes-close.png",
             "Images/Masks/Mask-pictures/brand-new-day.side-left.png",
             "Images/Masks/Mask-pictures/brand-new-day.close.png"
@@ -280,10 +291,15 @@ const products = [
 
     stock: 2,
 
-    image: "Images/Masks/ironman-helmet.webp",
+    image: "Images/Masks/Mask-pictures/im-front.png",
 
     images: [
-        "Images/Masks/ironman-helmet.webp"
+        "Images/Masks/Mask-pictures/im-front.png",
+        "Images/Masks/Mask-pictures/imfrontt.png",
+        "Images/Masks/Mask-pictures/im2.png",
+        "Images/Masks/Mask-pictures/im.inst.png",
+        "Images/Masks/Mask-pictures/im2-inst.png",
+        "Images/Masks/Mask-pictures/im3-size.png",
     ],
 
     description: "Premium Iron Man display helmet.",
@@ -315,7 +331,7 @@ const products = [
 
         badge: "Coming Soon!",
 
-        featured: true,
+        featured: false,
 
         stock: 0,
 
@@ -366,10 +382,14 @@ const products = [
 
         stock: 5,
 
-        image: "Images/Gloves/symbiote-gloves.webp",
+        image: "Images/Gloves/Symbiote-gloves-front.jpeg",
 
         images: [
-            "Images/Gloves/symbiote-gloves.webp"
+            "Images/Gloves/Symbiote-gloves-front.jpeg",
+            "Images/Gloves/Symbiote-gloves.close.jpeg",
+            "Images/Gloves/Symbiote-gloves-on.jpeg",
+            "Images/Gloves/Symbiote-gloves-pose.jpeg",
+            "Images/Gloves/Symbiote-gloves-on2.jpeg"
         ],
 
         description: "Black Symbiote suit gloves.",
@@ -405,10 +425,13 @@ const products = [
 
         stock: 5,
 
-        image: "Images/Gloves/amazing-v1gloves.webp",
+        image: "Images/Gloves/Tasm1-gloves.front.jpeg",
 
         images: [
-            "Images/Gloves/amazing-v1gloves.webp"
+            "Images/Gloves/Tasm1-gloves.front.jpeg",
+            "Images/Gloves/Tasm1-gloves.back.jpeg",
+            "Images/Gloves/Tasm1-gloves.on.jpeg",
+            "Images/Gloves/Tasm1-gloves.close.jpeg"
         ],
 
         description: "The Amazing Spider 1 gloves.",
@@ -438,7 +461,7 @@ const products = [
 
         price: 51.99,
 
-        badge: "Coming Soon!",
+        badge: "Amazing!",
 
         featured: true,
 
@@ -449,6 +472,8 @@ const products = [
         images: [
             "Images/Gloves/amazing2-gloves.png",
             "Images/Gloves/amazing2-gloves.close.png",
+            "Images/Gloves/Tasm2-gloves-front.jpeg",
+            "Images/Gloves/Tasm2-gloves-back.jpeg",
         ],
 
         description: "The Amazing Spider 2 gloves.",
@@ -478,16 +503,21 @@ const products = [
 
         price: 51.99,
 
-        badge: "Coming Soon!",
+        badge: "Amazing!",
+
 
         featured: false,
 
         stock: 10,
 
-        image: "Images/Gloves/tobey-red-gloves.webp",
+        image: "Images/Gloves/Red-gloves-back.jpeg",
 
         images: [
-            "Images/Gloves/tobey-red-gloves.webp"
+            "Images/Gloves/Red-gloves-back.jpeg",
+            "Images/Gloves/Red-glove-close.jpeg",
+            "Images/Gloves/Red-gloves-pose.jpeg",
+            "Images/Gloves/Red-gloves-on.jpeg",
+
         ],
 
         description: "Raimi Spider gloves.",
@@ -520,7 +550,7 @@ const products = [
 
     badge: "Coming Soon!",
 
-    featured: true,
+    featured: false,
 
     stock: 10,
 
@@ -686,7 +716,7 @@ const products = [
 
         badge: "New Drop",
 
-        featured: true,
+        featured: false,
 
         stock: 10,
 
@@ -777,7 +807,7 @@ const products = [
 
     badge: "Coming Soon!",
 
-    featured: true,
+    featured: false,
 
     stock: 10,
 
@@ -809,54 +839,23 @@ const products = [
 {
     id: 20,
     ecwidId: 0,
-    name: "Tobey Red Mask V2",
+    name: "Amazing Spider V1 Mask V2",
     category: "Masks",
     price: 55,
-    image: "Images/Masks/tobey-red-v2.webp",
-    badge: "Budget",
-    featured: false,
-    description: "Affordable Raimi-inspired Spider-Man mask with premium comfort and clean detailing.",
-    shipping: "Free UK shipping over £150",
-    returns: "30-day returns",
-    features: [
-        "Raised 3D webbing",
-        "Magnetic lenses",
-        "Comfortable fit",
-        "Breathable fabric",
-        "Budget Edition"
-    ]
-},
+    
+    image: "Images/Budget/Budget-tasm1-front.jpeg",
+           
+    images: [
+        "Images/Budget/Budget-tasm1-front.jpeg",
+        "Images/Model/Model-Budget-tasm1-sidee.jpeg",
+        "Images/Model/Model-tasm1-budgetpose.jpeg",
+        "Images/Budget/Budget-tasm1-close.jpeg ",
+        "Images/Budget/Budget-tasm1-backshell.jpeg",
+      
+    ],
 
-{
-    id: 21,
-    ecwidId: 0,
-    name: "Tobey Black Mask V2",
-    category: "Masks",
-    price: 55,
-    image: "Images/Masks/tobey-black-v2.webp",
     badge: "Budget",
-    featured: false,
-    description: "Affordable Symbiote-inspired Spider-Man mask with premium comfort and clean detailing.",
-    shipping: "Free UK shipping over £150",
-    returns: "30-day returns",
-    features: [
-        "Raised 3D webbing",
-        "Magnetic lenses",
-        "Comfortable fit",
-        "Breathable fabric",
-        "Budget Edition"
-    ]
-},
-
-{
-    id: 22,
-    ecwidId: 0,
-    name: "Amazing Spider-Man V1 Mask V2",
-    category: "Masks",
-    price: 55,
-    image: "Images/Masks/tasm1-v2.webp",
-    badge: "Budget",
-    featured: false,
+    featured: true,
     description: "Budget-friendly Amazing Spider-Man V1 mask with premium styling and everyday comfort.",
     shipping: "Free UK shipping over £150",
     returns: "30-day returns",
@@ -865,17 +864,26 @@ const products = [
         "Magnetic lenses",
         "Comfortable fit",
         "Breathable fabric",
-        "Budget Edition"
+        "Non magnetic back shell",
     ]
 },
 
 {
-    id: 23,
+    id: 21,
     ecwidId: 0,
-    name: "Amazing Spider-Man V2 Mask V2",
+    name: "Amazing Spider V2 Mask V2",
     category: "Masks",
     price: 55,
-    image: "Images/Masks/tasm2-v2.webp",
+    image: "Images/Budget/Budget-tasm2-front.jpeg",
+
+    images: [
+        "Images/Budget/Budget-tasm2-front.jpeg",
+        "Images/Model/Modelbudget-tasm2-front.jpeg",
+        "Images/Model/Modelbudget-tasm2-side.jpeg",
+        "Images/Budget/Budget.tasm2-side.jpeg",
+        "Images/Budget/Budget-tasm2-inside.jpeg"
+    ],
+
     badge: "Budget",
     featured: true,
     description: "Budget-friendly Amazing Spider-Man V2 mask with premium styling and everyday comfort.",
@@ -886,17 +894,25 @@ const products = [
         "Magnetic lenses",
         "Comfortable fit",
         "Breathable fabric",
-        "Budget Edition"
+        "No back shell"
     ]
 },
 
 {
-    id: 24,
+    id: 22,
     ecwidId: 0,
     name: "Spider-Verse Mask V2",
     category: "Masks",
     price: 55,
-    image: "Images/Masks/spiderverse-v2.webp",
+    image: "Images/Budget/milesbudget-front.png",
+
+    images: [
+        "Images/Budget/milesbudget-front.png",
+        "Images/Budget/milesbudget-light.png",
+        "Images/Budget/milesbudget-ring.png",
+        "Images/Budget/milesbudgetpic.png"
+    ],
+
     badge: "Budget",
     featured: false,
     description: "Affordable Spider-Verse inspired mask with premium comfort and clean detailing.",
@@ -912,12 +928,20 @@ const products = [
 },
 
 {
-    id: 25,
+    id: 23,
     ecwidId: 0,
     name: "BND Mask V2",
     category: "Masks",
     price: 60,
-    image: "Images/Masks/bnd-v2.webp",
+    image: "Images/Budget/Budgeet-bnd-front.jpeg",
+
+    images: [
+        "Images/Budget/Budgeet-bnd-front.jpeg",
+        "Images/Budget/Budget-bnd-back.jpeg",
+        "Images/Budget/Budget-bndside-eye.jpeg",
+        "Images/Budget/budget-bnd.eye.jpeg",
+    ],
+
     badge: "Budget",
     featured: false,
     description: "Budget-friendly BND Spider-Man mask with premium styling and everyday comfort.",
@@ -930,6 +954,133 @@ const products = [
         "Breathable fabric",
         "Budget Edition"
     ]
+},
+{
+    id: 24,
+    ecwidId: 0,
+
+    name: "Basic Web Shooter",
+
+    category: "Web Shooters",
+
+    price: 15,
+
+    badge: "Budget",
+
+    featured: false,
+
+    stock: 10,
+
+    image: "Images/Webshooters/web1.png",
+
+    images: [
+        "Images/Webshooters/web1.png",
+        "Images/Webshooters/web2.png",
+        "Images/Webshooters/web3.png",
+        "Images/Webshooters/web4.png",
+
+    
+    ],
+
+    description:
+        "A budget-friendly single web shooter that actually shoots, supplied with a basic glove.",
+
+    features: [
+        "Actually shoots",
+        "Single web shooter",
+        "Includes basic glove",
+        "Lightweight design",
+        "Budget friendly"
+    ],
+
+    shipping: "Ships within 1–2 business days.",
+
+    returns: "30-day returns accepted."
+},
+
+{
+    id: 27,
+    ecwidId: 0,
+
+    name: "Tom Stark Suit Mask - Red",
+
+    category: "Masks",
+
+    price: 20,
+
+    badge: "Budget",
+
+    featured: true,
+
+    stock: 10,
+
+    image: "Images/Budget/budgettom-front.png",
+
+    images: [
+        "Images/Budget/budgettom-front.png",
+        "Images/Budget/budgettom-side.png",
+        "Images/Budget/budgettom-inst.png",
+        "Images/Masks/budgettom-show.jpg",
+    ],
+
+    description:
+        "A budget-friendly Tom Stark Suit inspired mask featuring chin-controlled movement and moving eyes.",
+
+    features: [
+        "Chin movement",
+        "Moving eyes",
+        "Eyes controlled by chin movement",
+        "Lightweight design",
+        "No back shell",
+        "Budget Edition"
+    ],
+
+    shipping: "Ships within 1–2 business days.",
+
+    returns: "30-day returns accepted."
+},
+
+{
+    id: 28,
+    ecwidId: 0,
+
+    name: "Tom Stark Suit Mask - Black",
+
+    category: "Masks",
+
+    price: 20,
+
+    badge: "Budget",
+
+    featured: false,
+
+    stock: 10,
+
+    image: "Images/Budget/tomblackfront.png",
+
+    images: [
+        
+        "Images/Budget/tomblackfront.png",
+        "Images/Budget/tomblackinst.png",
+        "Images/Budget/tomblack2.png",
+        "Images/Budget/tomblack3.png",
+    ],
+
+    description:
+        "A budget-friendly Tom Stark Suit inspired mask featuring chin-controlled movement and moving eyes.",
+
+    features: [
+        "Chin movement",
+        "Moving eyes",
+        "Eyes controlled by chin movement",
+        "Lightweight design",
+        "No back shell",
+        "Budget Edition"
+    ],
+
+    shipping: "Ships within 1–2 business days.",
+
+    returns: "30-day returns accepted."
 },
 
 ];

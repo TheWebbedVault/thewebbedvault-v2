@@ -5,7 +5,13 @@
 
 "use strict";
 
+
+/* ==========================================================
+   ECWID PRODUCT IDS
+========================================================== */
+
 const ECWID_PRODUCT_IDS = {
+
     "Amazing Spider V1": 846610119,
     "Amazing Spider V2": 846610118,
     "Black Symbiote Mask": 846610124,
@@ -14,57 +20,45 @@ const ECWID_PRODUCT_IDS = {
     "Tobey Red Mask": 846610126,
     "Iron Man Helmet": 853020945,
     "Stark Suit Mask": 853014984,
-    
- 
+
     "Amazing 1 Gloves": 849846652,
     "Amazing 2 Gloves": 849849183,
     "Black Spider Gloves": 846610121,
     "Brand New Day Gloves": 849849194,
     "Tobey Red Gloves": 849846654,
     "Miles Morales Gloves": 853014986,
-   
+
     "Amazing 2 Web Shooters": 846610120,
     "Brand New Day Web Shooters": 846610123,
     "Web Shooters": 849846650
+
 };
+
+
 /* ==========================================================
-ELEMENTS
+   ELEMENTS
 ========================================================== */
 
-const cartItemsContainer = document.querySelector("#cartItems");
+const cartItemsContainer =
+    document.querySelector(
+        "#cartItems"
+    );
 
-const subtotalElement = document.querySelector("#subtotal");
 
-const totalElement = document.querySelector("#total");
+const subtotalElement =
+    document.querySelector(
+        "#subtotal"
+    );
 
-/* ==========================================================
-ADD TO CART
-========================================================== */
 
-document.querySelectorAll(".cart-btn").forEach(button => {
+const totalElement =
+    document.querySelector(
+        "#total"
+    );
 
-    button.addEventListener("click", event => {
-
-        event.preventDefault();
-
-        event.stopPropagation();
-
-        const id = Number(button.dataset.id);
-
-        const product = Store.getProduct(id);
-
-        if (!product) return;
-
-        Store.addToCart(id);
-
-        Store.showToast(`${product.name} added to cart 🛒`);
-
-    });
-
-});
 
 /* ==========================================================
-CART ITEM
+   CART ITEM
 ========================================================== */
 
 function createCartItem(item) {
@@ -80,36 +74,34 @@ function createCartItem(item) {
             <div class="cart-info">
 
                 <h3>
-
                     ${item.name}
-
                 </h3>
 
                 <p>
-
-                    £${item.price.toFixed(2)}
-
+                    ${Store.formatCurrency(
+                        item.price
+                    )}
                 </p>
 
                 <div class="quantity">
 
                     <button
                         class="minus"
-                        data-id="${item.id}">
+                        data-id="${item.id}"
+                        aria-label="Decrease quantity">
 
                         −
 
                     </button>
 
                     <span>
-
                         ${item.quantity}
-
                     </span>
 
                     <button
                         class="plus"
-                        data-id="${item.id}">
+                        data-id="${item.id}"
+                        aria-label="Increase quantity">
 
                         +
 
@@ -134,15 +126,27 @@ function createCartItem(item) {
 
 }
 
+
 /* ==========================================================
-RENDER CART
+   RENDER CART
 ========================================================== */
 
 function renderCart() {
 
-    if (!cartItemsContainer) return;
+    if (!cartItemsContainer) {
 
-    const cart = Store.getCart();
+        return;
+
+    }
+
+
+    const cart =
+        Store.getCart();
+
+
+    /* ------------------------------------------------------
+       EMPTY CART
+    ------------------------------------------------------ */
 
     if (cart.length === 0) {
 
@@ -152,12 +156,13 @@ function renderCart() {
 
                 <i class="fa-solid fa-cart-shopping"></i>
 
-                <h2>Your cart is empty</h2>
+                <h2>
+                    Your cart is empty
+                </h2>
 
                 <p>
-
-                    Looks like you haven't added anything yet.
-
+                    Looks like you haven't added
+                    anything yet.
                 </p>
 
                 <a
@@ -172,17 +177,36 @@ function renderCart() {
 
         `;
 
+
         if (subtotalElement) {
 
-            subtotalElement.textContent = "£0.00";
+            subtotalElement.textContent =
+                Store.formatCurrency(0);
 
         }
+
+
+        const shippingElement =
+            document.querySelector(
+                "#shipping"
+            );
+
+
+        if (shippingElement) {
+
+            shippingElement.textContent =
+                Store.formatCurrency(0);
+
+        }
+
 
         if (totalElement) {
 
-            totalElement.textContent = "£0.00";
+            totalElement.textContent =
+                Store.formatCurrency(0);
 
         }
+
 
         Store.updateCartCount();
 
@@ -190,257 +214,575 @@ function renderCart() {
 
     }
 
-    cartItemsContainer.innerHTML = cart
-        .map(createCartItem)
-        .join("");
 
-           
-    /* ==========================================================
-    TOTALS
-    ========================================================== */
+    /* ------------------------------------------------------
+       CART ITEMS
+    ------------------------------------------------------ */
 
-    const subtotal = Store.getCartTotal();
+    cartItemsContainer.innerHTML =
+        cart
+            .map(createCartItem)
+            .join("");
+
+
+    /* ------------------------------------------------------
+       TOTALS + SHIPPING
+    ------------------------------------------------------ */
+
+    const subtotal =
+        Store.getCartTotal();
+
+
+    const shipping =
+        Store.getShippingCost();
+
+
+    const total =
+        subtotal + shipping;
+
+
+    /* ------------------------------------------------------
+       SUBTOTAL
+    ------------------------------------------------------ */
 
     if (subtotalElement) {
 
-        subtotalElement.textContent = `£${subtotal.toFixed(2)}`;
+        subtotalElement.textContent =
+            Store.formatCurrency(
+                subtotal
+            );
 
     }
+
+
+    /* ------------------------------------------------------
+       SHIPPING
+    ------------------------------------------------------ */
+
+    const shippingElement =
+        document.querySelector(
+            "#shipping"
+        );
+
+
+    if (shippingElement) {
+
+        shippingElement.textContent =
+            shipping === 0
+                ? "FREE"
+                : Store.formatCurrency(
+                    shipping
+                );
+
+    }
+
+
+    /* ------------------------------------------------------
+       TOTAL
+    ------------------------------------------------------ */
 
     if (totalElement) {
 
-        totalElement.textContent = `£${subtotal.toFixed(2)}`;
+        totalElement.textContent =
+            Store.formatCurrency(
+                total
+            );
 
     }
+
 
     Store.updateCartCount();
 
 }
 
+
 /* ==========================================================
-CART EVENTS
+   CART EVENTS
 ========================================================== */
 
-document.addEventListener("click", event => {
+document.addEventListener(
+    "click",
+    event => {
 
-    const plusButton = event.target.closest(".plus");
 
-    if (plusButton) {
+        /* --------------------------------------------------
+           PLUS
+        -------------------------------------------------- */
 
-        const id = Number(plusButton.dataset.id);
+        const plusButton =
+            event.target.closest(
+                ".plus"
+            );
 
-        Store.updateQuantity(id, 1);
 
-        renderCart();
+        if (plusButton) {
 
-        return;
+            event.preventDefault();
 
-    }
 
-    const minusButton = event.target.closest(".minus");
+            const id =
+                Number(
+                    plusButton.dataset.id
+                );
 
-    if (minusButton) {
 
-        const id = Number(minusButton.dataset.id);
+            Store.updateQuantity(
+                id,
+                1
+            );
 
-        Store.updateQuantity(id, -1);
 
-        renderCart();
+            renderCart();
 
-        return;
+            return;
 
-    }
+        }
 
-    const removeButton = event.target.closest(".remove-item");
 
-    if (removeButton) {
+        /* --------------------------------------------------
+           MINUS
+        -------------------------------------------------- */
 
-        const id = Number(removeButton.dataset.id);
+        const minusButton =
+            event.target.closest(
+                ".minus"
+            );
 
-        const product = Store.getProduct(id);
 
-        Store.removeFromCart(id);
+        if (minusButton) {
 
-        renderCart();
+            event.preventDefault();
 
-        if (product) {
 
-            Store.showToast(`${product.name} removed from cart 🗑️`);
+            const id =
+                Number(
+                    minusButton.dataset.id
+                );
+
+
+            Store.updateQuantity(
+                id,
+                -1
+            );
+
+
+            renderCart();
+
+            return;
+
+        }
+
+
+        /* --------------------------------------------------
+           REMOVE
+        -------------------------------------------------- */
+
+        const removeButton =
+            event.target.closest(
+                ".remove-item"
+            );
+
+
+        if (removeButton) {
+
+            event.preventDefault();
+
+
+            const id =
+                Number(
+                    removeButton.dataset.id
+                );
+
+
+            const product =
+                Store.getProduct(id);
+
+
+            Store.removeFromCart(id);
+
+
+            renderCart();
+
+
+            if (product) {
+
+                Store.showToast(
+                    `${product.name} removed from cart 🗑️`
+                );
+
+            }
+
+            return;
 
         }
 
     }
+);
 
-});
 
 /* ==========================================================
-CLEAR CART
+   CLEAR CART
 ========================================================== */
 
-const clearCartButton = document.querySelector("#clearCart");
+const clearCartButton =
+    document.querySelector(
+        "#clearCart"
+    );
+
 
 if (clearCartButton) {
 
-    clearCartButton.addEventListener("click", () => {
+    clearCartButton.addEventListener(
+        "click",
+        () => {
 
-        if (Store.getCart().length === 0) return;
+            if (
+                Store.getCart().length === 0
+            ) {
 
-        Store.clearCart();
+                return;
 
-        renderCart();
+            }
 
-        Store.showToast("Cart cleared 🛒");
 
-    });
+            Store.clearCart();
+
+
+            renderCart();
+
+
+            Store.showToast(
+                "Cart cleared 🛒"
+            );
+
+        }
+    );
 
 }
 
 
-
 /* ==========================================================
-CHECKOUT
+   CHECKOUT
 ========================================================== */
 
-const checkoutButton = document.querySelector("#checkoutBtn");
+const checkoutButton =
+    document.querySelector(
+        "#checkoutBtn"
+    );
+
 
 if (checkoutButton) {
 
-    checkoutButton.addEventListener("click", async () => {
+    checkoutButton.addEventListener(
+        "click",
+        async () => {
 
-        const cart = Store.getCart();
+            const cart =
+                Store.getCart();
 
-        if (cart.length === 0) {
-            Store.showToast("Your cart is empty.");
-            return;
-        }
 
-        Store.showToast("Preparing secure checkout...");
+            if (
+                cart.length === 0
+            ) {
 
-        // Hide custom cart
-        document.querySelector(".cart-layout").style.display = "none";
+                Store.showToast(
+                    "Your cart is empty."
+                );
 
-        // Show Ecwid
-       
+                return;
 
-        // Wait until Ecwid is ready
-        const waitForEcwid = () => new Promise(resolve => {
-
-            const check = () => {
-
-                if (
-                    window.Ecwid &&
-                    Ecwid.Cart &&
-                    Ecwid.Cart.clear &&
-                    Ecwid.Cart.addProduct
-                ) {
-                    resolve();
-                } else {
-                    setTimeout(check, 100);
-                }
-
-            };
-
-            check();
-
-        });
-
-        await waitForEcwid();
-
-        // Clear old Ecwid cart
-        await new Promise(resolve => {
-
-            Ecwid.Cart.clear(() => resolve());
-
-        });
-
-        // Add every item from your custom cart
-        for (const item of cart) {
-
-            const ecwidId = ECWID_PRODUCT_IDS[item.name];
-
-            if (!ecwidId) {
-                console.warn("Missing Ecwid ID:", item.name);
-                continue;
             }
 
-            await new Promise(resolve => {
 
-                Ecwid.Cart.addProduct({
+            Store.showToast(
+                "Preparing secure checkout..."
+            );
 
-                    id: ecwidId,
 
-                    quantity: item.quantity,
+            /* --------------------------------------------------
+               HIDE CUSTOM CART
+            -------------------------------------------------- */
 
-                    callback: function () {
+            const cartLayout =
+                document.querySelector(
+                    ".cart-layout"
+                );
 
-                        resolve();
+
+            if (cartLayout) {
+
+                cartLayout.style.display =
+                    "none";
+
+            }
+
+
+            /* --------------------------------------------------
+               WAIT FOR ECWID
+            -------------------------------------------------- */
+
+            const waitForEcwid =
+                () =>
+                    new Promise(
+                        resolve => {
+
+                            const check =
+                                () => {
+
+                                    if (
+
+                                        window.Ecwid &&
+
+                                        Ecwid.Cart &&
+
+                                        Ecwid.Cart.clear &&
+
+                                        Ecwid.Cart.addProduct
+
+                                    ) {
+
+                                        resolve();
+
+                                    }
+
+                                    else {
+
+                                        setTimeout(
+                                            check,
+                                            100
+                                        );
+
+                                    }
+
+                                };
+
+
+                            check();
+
+                        }
+                    );
+
+
+            await waitForEcwid();
+
+
+            /* --------------------------------------------------
+               CLEAR OLD ECWID CART
+            -------------------------------------------------- */
+
+            await new Promise(
+                resolve => {
+
+                    Ecwid.Cart.clear(
+                        () =>
+                            resolve()
+                    );
+
+                }
+            );
+
+
+            /* --------------------------------------------------
+               ADD CUSTOM CART ITEMS
+            -------------------------------------------------- */
+
+            for (
+                const item of cart
+            ) {
+
+                const ecwidId =
+                    ECWID_PRODUCT_IDS[
+                        item.name
+                    ];
+
+
+                if (!ecwidId) {
+
+                    console.warn(
+                        "Missing Ecwid ID:",
+                        item.name
+                    );
+
+                    continue;
+
+                }
+
+
+                await new Promise(
+                    resolve => {
+
+                        Ecwid.Cart.addProduct({
+
+                            id:
+                                ecwidId,
+
+                            quantity:
+                                item.quantity,
+
+                            callback:
+                                function() {
+
+                                    resolve();
+
+                                }
+
+                        });
 
                     }
+                );
 
-                });
+            }
+
+
+            /* --------------------------------------------------
+               OPEN ECWID CART
+            -------------------------------------------------- */
+
+            Ecwid.openPage(
+                "cart"
+            );
+
+
+            const ionosStore =
+                document.querySelector(
+                    "#ionos-store"
+                );
+
+
+            if (ionosStore) {
+
+                ionosStore.style.display =
+                    "block";
+
+            }
+
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
 
             });
 
         }
-
-        // Open Ecwid cart
-        Ecwid.openPage("cart");
-
-        document.querySelector("#ionos-store").style.display = "block";
-
-        window.scrollTo({
-
-            top: 0,
-
-            behavior: "smooth"
-
-        });
-
-    });
+    );
 
 }
-/* ==========================================================
-REFRESH COUNTERS
-========================================================== */
 
-window.addEventListener("storage", () => {
-
-    Store.reset();
-
-    renderCart();
-
-});
 
 /* ==========================================================
-INITIALISE
+   REFRESH COUNTERS
 ========================================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener(
+    "storage",
+    () => {
 
-    Store.updateCartCount();
+        Store.reset();
 
-    renderCart();
+        renderCart();
 
-    const page = sessionStorage.getItem("ecwidPage");
+    }
+);
 
-    if (!page) return;
 
-    sessionStorage.removeItem("ecwidPage");
+/* ==========================================================
+   CURRENCY CHANGE
+========================================================== */
 
-    document.querySelector(".cart-layout").style.display = "none";
+document.addEventListener(
+    "currencyChanged",
+    () => {
 
-    document.querySelector("#ionos-store").style.display = "block";
+        renderCart();
 
-    const wait = setInterval(() => {
+    }
+);
 
-        if (window.Ecwid && Ecwid.openPage) {
 
-            clearInterval(wait);
+/* ==========================================================
+   INITIALISE
+========================================================== */
 
-            Ecwid.openPage(page);
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        Store.updateCartCount();
+
+        renderCart();
+
+
+        const page =
+            sessionStorage.getItem(
+                "ecwidPage"
+            );
+
+
+        if (!page) {
+
+            return;
 
         }
 
-    }, 100);
 
-});
+        sessionStorage.removeItem(
+            "ecwidPage"
+        );
+
+
+        const cartLayout =
+            document.querySelector(
+                ".cart-layout"
+            );
+
+
+        const ionosStore =
+            document.querySelector(
+                "#ionos-store"
+            );
+
+
+        if (cartLayout) {
+
+            cartLayout.style.display =
+                "none";
+
+        }
+
+
+        if (ionosStore) {
+
+            ionosStore.style.display =
+                "block";
+
+        }
+
+
+        const wait =
+            setInterval(
+                () => {
+
+                    if (
+                        window.Ecwid &&
+                        Ecwid.openPage
+                    ) {
+
+                        clearInterval(
+                            wait
+                        );
+
+
+                        Ecwid.openPage(
+                            page
+                        );
+
+                    }
+
+                },
+                100
+            );
+
+    }
+);
