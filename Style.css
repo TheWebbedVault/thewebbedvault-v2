@@ -5207,3 +5207,333 @@ p{
 /* ==========================================================
    END OF FINAL MOBILE OVERRIDES
 ========================================================== */
+
+/* ==========================================================
+   PRODUCT BADGES — CLEANER / SMALLER
+========================================================== */
+
+.product-badge {
+
+    padding: 5px 10px;
+
+    font-size: .62rem;
+
+    line-height: 1.15;
+
+    letter-spacing: .4px;
+
+    border-radius: 999px;
+
+    white-space: nowrap;
+
+    max-width: calc(100% - 20px);
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+
+/* ----------------------------------------------------------
+   MOBILE
+---------------------------------------------------------- */
+
+@media (max-width:768px) {
+
+    .product-badge {
+
+        top: 7px;
+        left: 7px;
+
+        padding: 4px 7px;
+
+        font-size: .5rem;
+
+        line-height: 1.1;
+
+        letter-spacing: .25px;
+
+        max-width: calc(100% - 14px);
+
+    }
+
+}
+
+
+/* ----------------------------------------------------------
+   VERY SMALL PHONES
+---------------------------------------------------------- */
+
+@media (max-width:576px) {
+
+    .product-badge {
+
+        top: 6px;
+        left: 6px;
+
+        padding: 3px 6px;
+
+        font-size: .46rem;
+
+        letter-spacing: .15px;
+
+    }
+
+}
+
+/* ==========================================================
+   CART QUANTITY CONTROLS — MODERN
+   Desktop + Mobile
+========================================================== */
+
+
+/* ----------------------------------------------------------
+   QUANTITY WRAPPER
+---------------------------------------------------------- */
+
+.quantity {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    width: fit-content;
+
+    height: 42px;
+
+    padding: 3px;
+
+    gap: 0;
+
+    background: #151515;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    box-sizing: border-box;
+
+}
+
+
+/* ----------------------------------------------------------
+   PLUS / MINUS
+---------------------------------------------------------- */
+
+.quantity .minus,
+.quantity .plus {
+
+    width: 36px;
+
+    height: 34px;
+
+    min-width: 36px;
+
+    padding: 0;
+
+    margin: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #fff;
+
+    font-family: inherit;
+
+    font-size: 1.15rem;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+
+}
+
+
+/* Hover */
+
+.quantity .minus:hover,
+.quantity .plus:hover {
+
+    background: rgba(37,99,235,.15);
+
+    color: var(--blue);
+
+}
+
+
+/* ----------------------------------------------------------
+   NUMBER
+---------------------------------------------------------- */
+
+.quantity span {
+
+    min-width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #fff;
+
+    font-size: .9rem;
+
+    font-weight: 600;
+
+    user-select: none;
+
+}
+
+
+/* ----------------------------------------------------------
+   REMOVE / BIN
+---------------------------------------------------------- */
+
+.quantity .remove-item {
+
+    width: 38px;
+
+    height: 38px;
+
+    min-width: 38px;
+
+    margin-left: 10px;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid rgba(214,40,40,.35);
+
+    border-radius: 10px;
+
+    background: rgba(214,40,40,.08);
+
+    color: #e05252;
+
+    font-size: .9rem;
+
+    cursor: pointer;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease;
+
+}
+
+
+/* Hover */
+
+.quantity .remove-item:hover {
+
+    background: rgba(214,40,40,.16);
+
+    border-color: rgba(214,40,40,.65);
+
+    color: #ff5c5c;
+
+}
+
+
+/* ----------------------------------------------------------
+   MAKE SURE GENERIC BUTTON STYLES DON'T OVERRIDE IT
+---------------------------------------------------------- */
+
+.quantity button {
+
+    box-shadow: none;
+
+    transform: none;
+
+}
+
+.quantity button:hover {
+
+    transform: none;
+
+}
+
+
+/* ==========================================================
+   MOBILE CART QUANTITY
+========================================================== */
+
+@media (max-width:768px) {
+
+    .quantity {
+
+        height: 40px;
+
+        padding: 3px;
+
+        border-radius: 11px;
+
+    }
+
+
+    .quantity .minus,
+    .quantity .plus {
+
+        width: 34px;
+
+        height: 32px;
+
+        min-width: 34px;
+
+        font-size: 1.05rem;
+
+    }
+
+
+    .quantity span {
+
+        min-width: 30px;
+
+        height: 32px;
+
+        font-size: .85rem;
+
+    }
+
+
+    .quantity .remove-item {
+
+        width: 36px;
+
+        height: 36px;
+
+        min-width: 36px;
+
+        margin-left: 8px;
+
+        border-radius: 9px;
+
+        font-size: .82rem;
+
+    }
+
+}
