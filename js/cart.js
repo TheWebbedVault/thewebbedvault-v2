@@ -58,24 +58,33 @@ const totalElement =
 
 
 /* ==========================================================
-   CART ITEM
+   CREATE CART ITEM
 ========================================================== */
 
-function createCartItem(item) {
+function createCartItem(
+    item
+) {
 
     return `
 
-        <div class="cart-item">
+        <div
+            class="cart-item"
+        >
 
             <img
                 src="../${item.image}"
-                alt="${item.name}">
+                alt="${item.name}"
+            >
 
-            <div class="cart-info">
+
+            <div
+                class="cart-info"
+            >
 
                 <h3>
                     ${item.name}
                 </h3>
+
 
                 <p>
                     ${Store.formatCurrency(
@@ -83,36 +92,46 @@ function createCartItem(item) {
                     )}
                 </p>
 
-                <div class="quantity">
+
+                <div
+                    class="quantity"
+                >
 
                     <button
+                        type="button"
                         class="minus"
                         data-id="${item.id}"
-                        aria-label="Decrease quantity">
-
+                        aria-label="Decrease quantity"
+                    >
                         −
-
                     </button>
+
 
                     <span>
                         ${item.quantity}
                     </span>
 
+
                     <button
+                        type="button"
                         class="plus"
                         data-id="${item.id}"
-                        aria-label="Increase quantity">
-
+                        aria-label="Increase quantity"
+                    >
                         +
-
                     </button>
 
+
                     <button
+                        type="button"
                         class="remove-item"
                         data-id="${item.id}"
-                        aria-label="Remove ${item.name}">
+                        aria-label="Remove ${item.name}"
+                    >
 
-                        <i class="fa-solid fa-trash"></i>
+                        <i
+                            class="fa-solid fa-trash"
+                        ></i>
 
                     </button>
 
@@ -144,33 +163,41 @@ function renderCart() {
         Store.getCart();
 
 
-    /* ------------------------------------------------------
+    /* ======================================================
        EMPTY CART
-    ------------------------------------------------------ */
+    ====================================================== */
 
-    if (cart.length === 0) {
+    if (
+        cart.length === 0
+    ) {
 
         cartItemsContainer.innerHTML = `
 
-            <div class="empty-cart">
+            <div
+                class="empty-cart"
+            >
 
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i
+                    class="fa-solid fa-cart-shopping"
+                ></i>
+
 
                 <h2>
                     Your cart is empty
                 </h2>
 
+
                 <p>
-                    Looks like you haven't added
-                    anything yet.
+                    Looks like you haven't
+                    added anything yet.
                 </p>
+
 
                 <a
                     href="shop.html"
-                    class="continue-shopping">
-
+                    class="continue-shopping"
+                >
                     Continue Shopping
-
                 </a>
 
             </div>
@@ -181,7 +208,19 @@ function renderCart() {
         if (subtotalElement) {
 
             subtotalElement.textContent =
-                Store.formatCurrency(0);
+                Store.formatCurrency(
+                    0
+                );
+
+        }
+
+
+        if (totalElement) {
+
+            totalElement.textContent =
+                Store.formatCurrency(
+                    0
+                );
 
         }
 
@@ -195,55 +234,55 @@ function renderCart() {
         if (shippingElement) {
 
             shippingElement.textContent =
-                Store.formatCurrency(0);
+                "FREE";
 
         }
 
-
-        if (totalElement) {
-
-            totalElement.textContent =
-                Store.formatCurrency(0);
-
-        }
 
 
         Store.updateCartCount();
+
 
         return;
 
     }
 
 
-    /* ------------------------------------------------------
+    /* ======================================================
        CART ITEMS
-    ------------------------------------------------------ */
+    ====================================================== */
 
     cartItemsContainer.innerHTML =
         cart
-            .map(createCartItem)
+            .map(
+                createCartItem
+            )
             .join("");
 
 
-    /* ------------------------------------------------------
-       TOTALS + SHIPPING
-    ------------------------------------------------------ */
+    /* ======================================================
+       TOTALS
+    ====================================================== */
 
     const subtotal =
         Store.getCartTotal();
 
 
-    const shipping =
-        Store.getShippingCost();
+   /* ======================================================
+   TOTALS
+
+   Shipping is calculated by IONOS/Ecwid
+   at checkout, so the custom cart does
+   NOT add a shipping charge here.
+====================================================== */
+
+const total =
+    subtotal;
 
 
-    const total =
-        subtotal + shipping;
-
-
-    /* ------------------------------------------------------
+    /* ======================================================
        SUBTOTAL
-    ------------------------------------------------------ */
+    ====================================================== */
 
     if (subtotalElement) {
 
@@ -255,31 +294,26 @@ function renderCart() {
     }
 
 
-    /* ------------------------------------------------------
+    /* ======================================================
        SHIPPING
-    ------------------------------------------------------ */
+    ====================================================== */
 
     const shippingElement =
         document.querySelector(
             "#shipping"
         );
 
+if (shippingElement) {
 
-    if (shippingElement) {
+    shippingElement.textContent =
+        "Calculated at checkout";
 
-        shippingElement.textContent =
-            shipping === 0
-                ? "FREE"
-                : Store.formatCurrency(
-                    shipping
-                );
-
-    }
+}
 
 
-    /* ------------------------------------------------------
+    /* ======================================================
        TOTAL
-    ------------------------------------------------------ */
+    ====================================================== */
 
     if (totalElement) {
 
@@ -290,6 +324,11 @@ function renderCart() {
 
     }
 
+
+
+    /* ======================================================
+       CART COUNT
+    ====================================================== */
 
     Store.updateCartCount();
 
@@ -305,9 +344,9 @@ document.addEventListener(
     event => {
 
 
-        /* --------------------------------------------------
+        /* ==================================================
            PLUS
-        -------------------------------------------------- */
+        ================================================== */
 
         const plusButton =
             event.target.closest(
@@ -334,14 +373,15 @@ document.addEventListener(
 
             renderCart();
 
+
             return;
 
         }
 
 
-        /* --------------------------------------------------
+        /* ==================================================
            MINUS
-        -------------------------------------------------- */
+        ================================================== */
 
         const minusButton =
             event.target.closest(
@@ -368,14 +408,15 @@ document.addEventListener(
 
             renderCart();
 
+
             return;
 
         }
 
 
-        /* --------------------------------------------------
+        /* ==================================================
            REMOVE
-        -------------------------------------------------- */
+        ================================================== */
 
         const removeButton =
             event.target.closest(
@@ -395,10 +436,14 @@ document.addEventListener(
 
 
             const product =
-                Store.getProduct(id);
+                Store.getProduct(
+                    id
+                );
 
 
-            Store.removeFromCart(id);
+            Store.removeFromCart(
+                id
+            );
 
 
             renderCart();
@@ -411,6 +456,7 @@ document.addEventListener(
                 );
 
             }
+
 
             return;
 
@@ -437,7 +483,8 @@ if (clearCartButton) {
         () => {
 
             if (
-                Store.getCart().length === 0
+                Store.getCart().length ===
+                0
             ) {
 
                 return;
@@ -481,6 +528,10 @@ if (checkoutButton) {
                 Store.getCart();
 
 
+            /* ==================================================
+               EMPTY CART
+            ================================================== */
+
             if (
                 cart.length === 0
             ) {
@@ -499,187 +550,348 @@ if (checkoutButton) {
             );
 
 
-            /* --------------------------------------------------
-               HIDE CUSTOM CART
-            -------------------------------------------------- */
-
-            const cartLayout =
-                document.querySelector(
-                    ".cart-layout"
-                );
-
-
-            if (cartLayout) {
-
-                cartLayout.style.display =
-                    "none";
-
-            }
-
-
-            /* --------------------------------------------------
-               WAIT FOR ECWID
-            -------------------------------------------------- */
+            /* ==================================================
+               WAIT FOR IONOS / ECWID API
+            ================================================== */
 
             const waitForEcwid =
                 () =>
                     new Promise(
                         resolve => {
 
-                            const check =
-                                () => {
+                            /*
+                               Already loaded.
+                            */
 
-                                    if (
+                            if (
+                                window.Ecwid &&
+                                Ecwid.Cart &&
+                                Ecwid.Cart.addProduct
+                            ) {
 
-                                        window.Ecwid &&
+                                resolve();
 
-                                        Ecwid.Cart &&
+                                return;
 
-                                        Ecwid.Cart.clear &&
+                            }
 
-                                        Ecwid.Cart.addProduct
 
-                                    ) {
+                            /*
+                               Wait for Ecwid to finish loading.
+                            */
+
+                            if (
+                                window.Ecwid &&
+                                Ecwid.OnAPILoaded
+                            ) {
+
+                                Ecwid.OnAPILoaded.add(
+                                    () => {
 
                                         resolve();
 
                                     }
+                                );
 
-                                    else {
+                                return;
 
-                                        setTimeout(
-                                            check,
-                                            100
-                                        );
-
-                                    }
-
-                                };
+                            }
 
 
-                            check();
+                            /*
+                               Fallback check.
+                            */
+
+                            const check =
+                                setInterval(
+                                    () => {
+
+                                        if (
+                                            window.Ecwid &&
+                                            Ecwid.Cart &&
+                                            Ecwid.Cart.addProduct
+                                        ) {
+
+                                            clearInterval(
+                                                check
+                                            );
+
+                                            resolve();
+
+                                        }
+
+                                    },
+                                    100
+                                );
 
                         }
                     );
 
 
-            await waitForEcwid();
+            try {
+
+                await waitForEcwid();
 
 
-            /* --------------------------------------------------
-               CLEAR OLD ECWID CART
-            -------------------------------------------------- */
-
-            await new Promise(
-                resolve => {
-
-                    Ecwid.Cart.clear(
-                        () =>
-                            resolve()
-                    );
-
-                }
-            );
-
-
-            /* --------------------------------------------------
-               ADD CUSTOM CART ITEMS
-            -------------------------------------------------- */
-
-            for (
-                const item of cart
-            ) {
-
-                const ecwidId =
-                    ECWID_PRODUCT_IDS[
-                        item.name
-                    ];
-
-
-                if (!ecwidId) {
-
-                    console.warn(
-                        "Missing Ecwid ID:",
-                        item.name
-                    );
-
-                    continue;
-
-                }
-
+                /* ==================================================
+                   CLEAR IONOS / ECWID CART
+                ================================================== */
 
                 await new Promise(
-                    resolve => {
+                    (
+                        resolve,
+                        reject
+                    ) => {
 
-                        Ecwid.Cart.addProduct({
+                        Ecwid.Cart.clear(
+                            () => {
 
-                            id:
-                                ecwidId,
+                                resolve();
 
-                            quantity:
-                                item.quantity,
-
-                            callback:
-                                function() {
-
-                                    resolve();
-
-                                }
-
-                        });
+                            }
+                        );
 
                     }
                 );
 
-            }
+
+                /* ==================================================
+                   ADD CUSTOM CART ITEMS
+                ================================================== */
+
+                for (
+                    const item of cart
+                ) {
+
+                    /*
+                       IMPORTANT:
+
+                       Use the Ecwid ID directly
+                       from the product database.
+
+                       This is safer than matching
+                       product names.
+                    */
+
+                    const product =
+                        Store.getProduct(
+                            item.id
+                        );
 
 
-            /* --------------------------------------------------
-               OPEN ECWID CART
-            -------------------------------------------------- */
-
-            Ecwid.openPage(
-                "cart"
-            );
+                    const ecwidId =
+                        product?.ecwidId;
 
 
-            const ionosStore =
-                document.querySelector(
-                    "#ionos-store"
+                    /*
+                       Product doesn't have
+                       an Ecwid ID.
+                    */
+
+                    if (
+                        !ecwidId ||
+                        Number(ecwidId) <= 0
+                    ) {
+
+                        throw new Error(
+                            `${item.name} does not have a valid Ecwid product ID.`
+                        );
+
+                    }
+
+
+                    /*
+                       Add product and WAIT
+                       for Ecwid to confirm it.
+                    */
+
+                    await new Promise(
+                        (
+                            resolve,
+                            reject
+                        ) => {
+
+                            Ecwid.Cart.addProduct({
+
+                                id:
+                                    Number(
+                                        ecwidId
+                                    ),
+
+                                quantity:
+                                    Number(
+                                        item.quantity
+                                    ),
+
+                                callback:
+                                    function(
+                                        success,
+                                        addedProduct,
+                                        ecwidCart,
+                                        error
+                                    ) {
+
+                                        if (
+                                            success
+                                        ) {
+
+                                            resolve();
+
+                                        }
+
+                                        else {
+
+                                            reject(
+                                                new Error(
+                                                    error ||
+                                                    `Ecwid could not add ${item.name}.`
+                                                )
+                                            );
+
+                                        }
+
+                                    }
+
+                            });
+
+                        }
+                    );
+
+                }
+
+
+                /* ==================================================
+                   EVERYTHING SUCCESSFULLY COPIED
+                ================================================== */
+
+                const customCart =
+                    document.querySelector(
+                        ".cart-layout"
+                    );
+
+
+                const ionosStore =
+                    document.querySelector(
+                        "#ionos-store"
+                    );
+
+
+                /*
+                   NOW hide our custom cart.
+                */
+
+                if (
+                    customCart
+                ) {
+
+                    customCart.style.display =
+                        "none";
+
+                }
+
+
+                /*
+                   NOW show IONOS.
+                */
+
+                if (
+                    ionosStore
+                ) {
+
+                    ionosStore.style.display =
+                        "block";
+
+                }
+
+
+                /*
+                   Open the real IONOS /
+                   Ecwid shopping cart.
+                */
+
+                Ecwid.openPage(
+                    "cart"
                 );
 
 
-            if (ionosStore) {
+                window.scrollTo({
 
-                ionosStore.style.display =
-                    "block";
+                    top: 0,
+
+                    behavior:
+                        "smooth"
+
+                });
+
 
             }
 
+            catch (error) {
 
-            window.scrollTo({
+                console.error(
+                    "IONOS / Ecwid checkout error:",
+                    error
+                );
 
-                top: 0,
 
-                behavior: "smooth"
+                /*
+                   IMPORTANT:
 
-            });
+                   If something failed,
+                   DO NOT leave the custom
+                   cart hidden.
+                */
+
+                const customCart =
+                    document.querySelector(
+                        ".cart-layout"
+                    );
+
+
+                if (
+                    customCart
+                ) {
+
+                    customCart.style.display =
+                        "";
+
+                }
+
+
+                const ionosStore =
+                    document.querySelector(
+                        "#ionos-store"
+                    );
+
+
+                if (
+                    ionosStore
+                ) {
+
+                    ionosStore.style.display =
+                        "none";
+
+                }
+
+
+                Store.showToast(
+                    "Checkout could not be prepared. Please try again."
+                );
+
+            }
 
         }
     );
 
 }
 
-
 /* ==========================================================
-   REFRESH COUNTERS
+   STORAGE CHANGE
 ========================================================== */
 
 window.addEventListener(
     "storage",
     () => {
-
-        Store.reset();
 
         renderCart();
 
@@ -702,6 +914,20 @@ document.addEventListener(
 
 
 /* ==========================================================
+   SHIPPING CHANGE
+========================================================== */
+
+document.addEventListener(
+    "shippingChanged",
+    () => {
+
+        renderCart();
+
+    }
+);
+
+
+/* ==========================================================
    INITIALISE
 ========================================================== */
 
@@ -711,8 +937,17 @@ document.addEventListener(
 
         Store.updateCartCount();
 
+
+        Store.updateWishlistCount();
+
+
         renderCart();
 
+
+        /*
+           Preserve existing Ecwid page
+           restoration behaviour.
+        */
 
         const page =
             sessionStorage.getItem(
@@ -785,4 +1020,6 @@ document.addEventListener(
             );
 
     }
+
 );
+

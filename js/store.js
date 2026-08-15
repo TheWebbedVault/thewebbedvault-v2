@@ -12,8 +12,11 @@ const Store = (() => {
        STORAGE KEYS
     ========================================================== */
 
-    const CART_KEY = "cart";
-    const WISHLIST_KEY = "wishlist";
+    const CART_KEY =
+        "cart";
+
+    const WISHLIST_KEY =
+        "wishlist";
 
 
     /* ==========================================================
@@ -25,18 +28,24 @@ const Store = (() => {
         try {
 
             const data =
-                localStorage.getItem(key);
+                localStorage.getItem(
+                    key
+                );
+
 
             return data
                 ? JSON.parse(data)
                 : [];
 
-        } catch (error) {
+        }
+
+        catch (error) {
 
             console.error(
                 `Failed to load ${key}:`,
                 error
             );
+
 
             return [];
 
@@ -45,7 +54,10 @@ const Store = (() => {
     }
 
 
-    function save(key, data) {
+    function save(
+        key,
+        data
+    ) {
 
         try {
 
@@ -54,7 +66,9 @@ const Store = (() => {
                 JSON.stringify(data)
             );
 
-        } catch (error) {
+        }
+
+        catch (error) {
 
             console.error(
                 `Failed to save ${key}:`,
@@ -71,10 +85,15 @@ const Store = (() => {
     ========================================================== */
 
     let cart =
-        load(CART_KEY);
+        load(
+            CART_KEY
+        );
+
 
     let wishlist =
-        load(WISHLIST_KEY);
+        load(
+            WISHLIST_KEY
+        );
 
 
     /* ==========================================================
@@ -92,7 +111,8 @@ const Store = (() => {
 
         return products.find(
             product =>
-                product.id === Number(id)
+                product.id ===
+                Number(id)
         );
 
     }
@@ -114,6 +134,7 @@ const Store = (() => {
         const product =
             getProduct(id);
 
+
         if (!product) {
 
             return false;
@@ -124,7 +145,8 @@ const Store = (() => {
         const existingItem =
             cart.find(
                 item =>
-                    item.id === product.id
+                    item.id ===
+                    product.id
             );
 
 
@@ -132,7 +154,9 @@ const Store = (() => {
 
             existingItem.quantity++;
 
-        } else {
+        }
+
+        else {
 
             cart.push({
 
@@ -150,7 +174,9 @@ const Store = (() => {
             cart
         );
 
+
         updateCartCount();
+
 
         return true;
 
@@ -162,13 +188,16 @@ const Store = (() => {
         cart =
             cart.filter(
                 item =>
-                    item.id !== Number(id)
+                    item.id !==
+                    Number(id)
             );
+
 
         save(
             CART_KEY,
             cart
         );
+
 
         updateCartCount();
 
@@ -179,22 +208,28 @@ const Store = (() => {
 
         cart = [];
 
+
         save(
             CART_KEY,
             cart
         );
+
 
         updateCartCount();
 
     }
 
 
-    function updateQuantity(id, change) {
+    function updateQuantity(
+        id,
+        change
+    ) {
 
         const item =
             cart.find(
                 item =>
-                    item.id === Number(id)
+                    item.id ===
+                    Number(id)
             );
 
 
@@ -205,12 +240,17 @@ const Store = (() => {
         }
 
 
-        item.quantity += change;
+        item.quantity +=
+            change;
 
 
-        if (item.quantity <= 0) {
+        if (
+            item.quantity <= 0
+        ) {
 
-            removeFromCart(id);
+            removeFromCart(
+                id
+            );
 
             return;
 
@@ -221,6 +261,7 @@ const Store = (() => {
             CART_KEY,
             cart
         );
+
 
         updateCartCount();
 
@@ -234,10 +275,27 @@ const Store = (() => {
     function getCartTotal() {
 
         return cart.reduce(
-            (total, item) =>
+            (
+                total,
+                item
+            ) =>
+
                 total +
-                (Number(item.price) || 0) *
-                (Number(item.quantity) || 0),
+
+                (
+                    Number(
+                        item.price
+                    ) || 0
+                )
+
+                *
+
+                (
+                    Number(
+                        item.quantity
+                    ) || 0
+                ),
+
             0
         );
 
@@ -247,9 +305,19 @@ const Store = (() => {
     function getCartQuantity() {
 
         return cart.reduce(
-            (total, item) =>
+            (
+                total,
+                item
+            ) =>
+
                 total +
-                (Number(item.quantity) || 0),
+
+                (
+                    Number(
+                        item.quantity
+                    ) || 0
+                ),
+
             0
         );
 
@@ -260,7 +328,8 @@ const Store = (() => {
 
         return cart.some(
             item =>
-                item.id === Number(id)
+                item.id ===
+                Number(id)
         );
 
     }
@@ -270,7 +339,8 @@ const Store = (() => {
 
         return wishlist.some(
             item =>
-                item.id === Number(id)
+                item.id ===
+                Number(id)
         );
 
     }
@@ -286,12 +356,14 @@ const Store = (() => {
             .querySelectorAll(
                 "#cartCount"
             )
-            .forEach(element => {
+            .forEach(
+                element => {
 
-                element.textContent =
-                    count;
+                    element.textContent =
+                        count;
 
-            });
+                }
+            );
 
     }
 
@@ -306,12 +378,14 @@ const Store = (() => {
             .querySelectorAll(
                 "#wishlistCount"
             )
-            .forEach(element => {
+            .forEach(
+                element => {
 
-                element.textContent =
-                    count;
+                    element.textContent =
+                        count;
 
-            });
+                }
+            );
 
     }
 
@@ -332,6 +406,7 @@ const Store = (() => {
         const product =
             getProduct(id);
 
+
         if (!product) {
 
             return false;
@@ -342,7 +417,8 @@ const Store = (() => {
         if (
             wishlist.some(
                 item =>
-                    item.id === product.id
+                    item.id ===
+                    product.id
             )
         ) {
 
@@ -351,14 +427,19 @@ const Store = (() => {
         }
 
 
-        wishlist.push(product);
+        wishlist.push(
+            product
+        );
+
 
         save(
             WISHLIST_KEY,
             wishlist
         );
 
+
         updateWishlistCount();
+
 
         return true;
 
@@ -370,13 +451,16 @@ const Store = (() => {
         wishlist =
             wishlist.filter(
                 item =>
-                    item.id !== Number(id)
+                    item.id !==
+                    Number(id)
             );
+
 
         save(
             WISHLIST_KEY,
             wishlist
         );
+
 
         updateWishlistCount();
 
@@ -387,32 +471,189 @@ const Store = (() => {
 
         wishlist = [];
 
+
         save(
             WISHLIST_KEY,
             wishlist
         );
 
+
         updateWishlistCount();
 
     }
 
-/* ==========================================================
+    /* ==========================================================
    SHIPPING SYSTEM
+========================================================== */
+
+
+/* ==========================================================
+   SHIPPING REGIONS
 ========================================================== */
 
 const shipping = {
 
-    rates: {
+    /* ======================================================
+       UK
+    ====================================================== */
 
-        S: 3.99,
+    UK: {
 
-        M: 5.49,
+        options: [
 
-        L: 7.49
+            {
+                id:
+                    "royalmail-tracked-24",
+
+                name:
+                    "Royal Mail Tracked 24",
+
+                price:
+                    5.49
+
+            },
+
+            {
+                id:
+                    "royalmail-tracked-48",
+
+                name:
+                    "Royal Mail Tracked 48",
+
+                price:
+                    4.49
+
+            },
+
+            {
+                id:
+                    "evri-tracked",
+
+                name:
+                    "Evri Tracked",
+
+                price:
+                    3.99
+
+            }
+
+        ],
+
+        freeShippingThreshold:
+            150
 
     },
 
-    freeShippingThreshold: 150
+
+    /* ======================================================
+       EUROPE
+    ====================================================== */
+
+    EUROPE: {
+
+        options: [
+
+            {
+                id:
+                    "royalmail-international-europe",
+
+                name:
+                    "Royal Mail International Tracked",
+
+                price:
+                    18.99
+
+            },
+
+            {
+                id:
+                    "evri-international-europe",
+
+                name:
+                    "Evri International",
+
+                price:
+                    16.99
+
+            }
+
+        ]
+
+    },
+
+
+    /* ======================================================
+       USA
+    ====================================================== */
+
+    USA: {
+
+        options: [
+
+            {
+                id:
+                    "royalmail-international-usa",
+
+                name:
+                    "Royal Mail International Tracked",
+
+                price:
+                    20.99
+
+            },
+
+            {
+                id:
+                    "evri-international-usa",
+
+                name:
+                    "Evri International",
+
+                price:
+                    18.99
+
+            }
+
+        ]
+
+    },
+
+
+    /* ======================================================
+       ASIA
+    ====================================================== */
+
+    ASIA: {
+
+        options: [
+
+            {
+                id:
+                    "royalmail-international-asia",
+
+                name:
+                    "Royal Mail International Tracked",
+
+                price:
+                    24.99
+
+            },
+
+            {
+                id:
+                    "evri-international-asia",
+
+                name:
+                    "Evri International",
+
+                price:
+                    22.99
+
+            }
+
+        ]
+
+    }
 
 };
 
@@ -421,7 +662,9 @@ const shipping = {
    GET PRODUCT SHIPPING SIZE
 ========================================================== */
 
-function getShippingSize(product) {
+function getShippingSize(
+    product
+) {
 
     if (!product) {
 
@@ -439,11 +682,7 @@ function getShippingSize(product) {
 
 
     /*
-       MEDIUM PACKAGE
-
-       Masks
-       Bags (Accessories in products.js)
-       Collectibles
+       MEDIUM
     */
 
     if (
@@ -462,11 +701,7 @@ function getShippingSize(product) {
 
 
     /*
-       SMALL PACKAGE
-
-       Gloves
-       Web Shooters
-       Comics
+       SMALL
     */
 
     if (
@@ -504,54 +739,280 @@ function getCartShippingSize() {
     }
 
 
-    let mediumItems = 0;
+    let mediumItems =
+        0;
 
 
-    cart.forEach(item => {
+    cart.forEach(
+        item => {
 
-        const size =
-            getShippingSize(item);
-
-
-        if (size === "M") {
-
-            mediumItems +=
-                Number(
-                    item.quantity || 0
+            const size =
+                getShippingSize(
+                    item
                 );
 
+
+            if (
+                size === "M"
+            ) {
+
+                mediumItems +=
+                    Number(
+                        item.quantity || 0
+                    );
+
+            }
+
         }
+    );
 
-    });
 
-
-    /*
-       2 OR MORE M ITEMS = L
-    */
-
-    if (mediumItems >= 2) {
+    if (
+        mediumItems >= 2
+    ) {
 
         return "L";
 
     }
 
 
-    /*
-       1 M ITEM = M
-    */
-
-    if (mediumItems === 1) {
+    if (
+        mediumItems === 1
+    ) {
 
         return "M";
 
     }
 
 
+    return "S";
+
+}
+
+
+/* ==========================================================
+   GET CURRENT SHIPPING REGION
+========================================================== */
+
+function getShippingRegion() {
+
+    const savedRegion =
+        localStorage.getItem(
+            "shippingRegion"
+        );
+
+
+    if (
+        savedRegion &&
+        shipping[
+            savedRegion
+        ]
+    ) {
+
+        return savedRegion;
+
+    }
+
+
+    return "UK";
+
+}
+
+
+/* ==========================================================
+   SET SHIPPING REGION
+========================================================== */
+
+function setShippingRegion(
+    region
+) {
+
+    if (
+        !shipping[
+            region
+        ]
+    ) {
+
+        return false;
+
+    }
+
+
+    localStorage.setItem(
+        "shippingRegion",
+        region
+    );
+
+
     /*
-       ONLY S ITEMS = S
+       When the destination changes,
+       clear the previous method.
+
+       This prevents a UK shipping method
+       being accidentally carried into
+       an international order.
     */
 
-    return "S";
+    localStorage.removeItem(
+        "shippingMethod"
+    );
+
+
+    document.dispatchEvent(
+        new CustomEvent(
+            "shippingChanged"
+        )
+    );
+
+
+    return true;
+
+}
+
+
+/* ==========================================================
+   GET SHIPPING OPTIONS
+========================================================== */
+
+function getShippingOptions() {
+
+    const region =
+        getShippingRegion();
+
+
+    const regionData =
+        shipping[
+            region
+        ];
+
+
+    if (!regionData) {
+
+        return [];
+
+    }
+
+
+    /*
+       UK FREE SHIPPING
+    */
+
+    if (
+
+        region === "UK" &&
+
+        getCartTotal() >=
+            regionData.freeShippingThreshold
+
+    ) {
+
+        return [
+
+            {
+
+                id:
+                    "free-uk-shipping",
+
+                name:
+                    "FREE UK Shipping",
+
+                price:
+                    0
+
+            }
+
+        ];
+
+    }
+
+
+    return [
+        ...regionData.options
+    ];
+
+}
+
+
+/* ==========================================================
+   GET SELECTED SHIPPING METHOD
+========================================================== */
+
+function getSelectedShippingMethod() {
+
+    const savedMethod =
+        localStorage.getItem(
+            "shippingMethod"
+        );
+
+
+    const options =
+        getShippingOptions();
+
+
+    const existing =
+        options.find(
+            option =>
+                option.id ===
+                savedMethod
+        );
+
+
+    if (existing) {
+
+        return existing;
+
+    }
+
+
+    return (
+        options[0] ||
+        null
+    );
+
+}
+
+
+/* ==========================================================
+   SET SHIPPING METHOD
+========================================================== */
+
+function setShippingMethod(
+    methodId
+) {
+
+    const options =
+        getShippingOptions();
+
+
+    const method =
+        options.find(
+            option =>
+                option.id ===
+                methodId
+        );
+
+
+    if (!method) {
+
+        return false;
+
+    }
+
+
+    localStorage.setItem(
+        "shippingMethod",
+        methodId
+    );
+
+
+    document.dispatchEvent(
+        new CustomEvent(
+            "shippingChanged"
+        )
+    );
+
+
+    return true;
 
 }
 
@@ -569,37 +1030,20 @@ function getShippingCost() {
     }
 
 
-    const subtotal =
-        getCartTotal();
+    const method =
+        getSelectedShippingMethod();
 
 
-    /*
-       £150 OR MORE = FREE UK SHIPPING
-    */
-
-    if (
-
-        subtotal >=
-        shipping.freeShippingThreshold
-
-    ) {
+    if (!method) {
 
         return 0;
 
     }
 
 
-    const packageSize =
-        getCartShippingSize();
-
-
-    return (
-
-        shipping.rates[
-            packageSize
-        ] || 0
-
-    );
+    return Number(
+        method.price
+    ) || 0;
 
 }
 
@@ -617,295 +1061,46 @@ function getShippingLabel() {
     }
 
 
-    const subtotal =
-        getCartTotal();
+    const method =
+        getSelectedShippingMethod();
 
 
-    if (
+    if (!method) {
 
-        subtotal >=
-        shipping.freeShippingThreshold
-
-    ) {
-
-        return "FREE UK Shipping";
+        return "Select shipping";
 
     }
 
 
-    const packageSize =
-        getCartShippingSize();
-
-
-    if (
-
-        packageSize === "L"
-
-    ) {
-
-        return "Large Parcel Shipping";
-
-    }
-
-
-    return "Standard UK Shipping";
+    return method.name;
 
 }
-
-/* ==========================================================
-   TOAST NOTIFICATIONS
-========================================================== */
-
-function showToast(
-    message,
-    duration = 2500
-) {
-
-    const existingToast =
-        document.querySelector(
-            ".toast"
-        );
-
-
-    if (existingToast) {
-
-        existingToast.remove();
-
-    }
-
-
-    const toast =
-        document.createElement(
-            "div"
-        );
-
-
-    toast.className =
-        "toast";
-
-
-    toast.textContent =
-        message;
-
-
-    document.body.appendChild(
-        toast
-    );
-
-
-    requestAnimationFrame(() => {
-
-        toast.classList.add(
-            "show"
-        );
-
-    });
-
-
-    setTimeout(() => {
-
-        toast.classList.remove(
-            "show"
-        );
-
-
-        setTimeout(() => {
-
-            if (
-                toast.parentNode
-            ) {
-
-                toast.remove();
-
-            }
-
-        }, 300);
-
-    }, duration);
-
-}
-
-
-/* ==========================================================
-   RESET
-========================================================== */
-
-function reset() {
-
-    cart =
-        load(CART_KEY);
-
-    wishlist =
-        load(WISHLIST_KEY);
-
-
-    updateCartCount();
-
-    updateWishlistCount();
-
-}
-
-
-/* ==========================================================
-   INITIALISE
-========================================================== */
-
-function init() {
-
-    reset();
-
-}
-
-
-/* ==========================================================
-   PUBLIC API
-========================================================== */
-
-const api = {
-
-    /* Products */
-
-    getProducts,
-
-    getProduct,
-
-
-    /* Cart */
-
-    getCart,
-
-    addToCart,
-
-    removeFromCart,
-
-    clearCart,
-
-    updateQuantity,
-
-    getCartTotal,
-
-    getCartQuantity,
-
-    isInCart,
-
-
-    /* Wishlist */
-
-    getWishlist,
-
-    addToWishlist,
-
-    removeFromWishlist,
-
-    clearWishlist,
-
-    isInWishlist,
-
-
-    /* UI */
-
-    updateCartCount,
-
-    updateWishlistCount,
-
-    showToast,
-
-
-    /* Helpers */
-
-    reset,
-
-
-    /* Shipping */
-
-    getShippingSize,
-
-    getCartShippingSize,
-
-    getShippingCost,
-
-    getShippingLabel
-
-};
-
-
-init();
-
-
-return api;
-
-})();
-
 /* ==========================================================
    CURRENCY SYSTEM
 ========================================================== */
 
-Store.currency = {
-
-    /*
-       GBP IS THE BASE CURRENCY
-
-       Product prices remain in GBP.
-
-       Example:
-
-       Mask              = £75
-       Gloves            = £52
-       Webshooters       = £38
-       WB Webshooters    = £25
-
-       Foreign currencies are calculated from
-       these GBP prices.
-    */
+const currency = {
 
     current:
-        localStorage.getItem("currency")
-        || "GBP",
+        localStorage.getItem(
+            "currency"
+        ) || "GBP",
 
-
-    /* ======================================================
-       EXCHANGE RATES
-
-       These fallback rates are used only if the
-       live exchange-rate request is unavailable.
-
-       The live API will replace these automatically.
-    ====================================================== */
 
     rates: {
 
         GBP: 1,
 
-        USD: 1.35,
+        USD: 1.3521,
 
-        EUR: 1.17,
+        EUR: 1.1709,
 
-        CAD: 1.85,
+        CAD: 1.8750,
 
-        AUD: 2.10
+        AUD: 2.1000
 
     },
 
-
-    /* ======================================================
-       INTERNATIONAL PRICE PROTECTION
-
-       5% is added to converted foreign-currency prices.
-
-       This helps protect the GBP value against:
-       - payment processing costs
-       - FX conversion costs
-       - small exchange-rate movements
-
-       GBP itself is NOT marked up.
-    ====================================================== */
-
-    internationalMarkup: 0.05,
-
-
-    /* ======================================================
-       CURRENCY SYMBOLS
-    ====================================================== */
 
     symbols: {
 
@@ -925,345 +1120,120 @@ Store.currency = {
 
 
 /* ==========================================================
-   LOAD EXCHANGE RATES
-========================================================== */
-
-Store.loadCurrencyRates =
-    async function() {
-
-        try {
-
-            const response =
-                await fetch(
-                    "https://api.frankfurter.dev/v2/rates?base=GBP&quotes=USD,EUR,CAD,AUD",
-                    {
-                        cache: "no-store"
-                    }
-                );
-
-
-            if (!response.ok) {
-
-                throw new Error(
-                    "Currency API failed."
-                );
-
-            }
-
-
-            const data =
-                await response.json();
-
-
-            /* ==================================================
-               UPDATE LIVE RATES
-            ================================================== */
-
-            if (
-                data &&
-                data.rates
-            ) {
-
-                Object.keys(
-                    data.rates
-                ).forEach(currency => {
-
-                    if (
-                        Object.prototype.hasOwnProperty.call(
-                            Store.currency.rates,
-                            currency
-                        )
-                    ) {
-
-                        const rate =
-                            Number(
-                                data.rates[
-                                    currency
-                                ]
-                            );
-
-
-                        if (
-                            Number.isFinite(
-                                rate
-                            ) &&
-                            rate > 0
-                        ) {
-
-                            Store.currency.rates[
-                                currency
-                            ] = rate;
-
-                        }
-
-                    }
-
-                });
-
-            }
-
-
-            /*
-               Update the page after the live
-               rates have loaded.
-            */
-
-            Store.updateCurrencyDisplay();
-
-            Store.convertPrices();
-
-
-            document.dispatchEvent(
-                new CustomEvent(
-                    "currencyChanged"
-                )
-            );
-
-        }
-
-        catch (error) {
-
-            /*
-               IMPORTANT:
-
-               NEVER replace failed rates with 1.
-
-               The fallback rates defined above
-               remain active instead.
-            */
-
-            console.warn(
-                "Live currency rates unavailable. Using fallback rates.",
-                error
-            );
-
-
-            Store.updateCurrencyDisplay();
-
-            Store.convertPrices();
-
-
-            document.dispatchEvent(
-                new CustomEvent(
-                    "currencyChanged"
-                )
-            );
-
-        }
-
-    };
-
-    /* ==========================================================
    FORMAT CURRENCY
 ========================================================== */
 
-Store.formatCurrency =
-    function(amount) {
+function formatCurrency(
+    amount
+) {
 
-        const currency =
-            Store.currency.current;
-
-
-        const baseAmount =
-            Number(amount);
+    const selectedCurrency =
+        currency.current;
 
 
-        if (
-            !Number.isFinite(
-                baseAmount
-            )
-        ) {
-
-            return new Intl.NumberFormat(
-                undefined,
-                {
-                    style: "currency",
-                    currency: currency,
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                }
-            ).format(0);
-
-        }
+    const rate =
+        currency.rates[
+            selectedCurrency
+        ] || 1;
 
 
-        /* ==================================================
-           GBP
+    const converted =
+        Number(amount) * rate;
 
-           GBP IS ALWAYS THE ORIGINAL PRODUCT PRICE.
 
-           £75 stays £75.
-           £52 stays £52.
-           £38 stays £38.
-           £25 stays £25.
+    return new Intl.NumberFormat(
+        undefined,
+        {
 
-           NO INTERNATIONAL MARKUP.
-        ================================================== */
+            style:
+                "currency",
 
-        if (
-            currency === "GBP"
-        ) {
+            currency:
+                selectedCurrency,
 
-            return new Intl.NumberFormat(
-                undefined,
-                {
-                    style: "currency",
-                    currency: "GBP",
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                }
-            ).format(
-                baseAmount
-            );
+            minimumFractionDigits:
+                2,
+
+            maximumFractionDigits:
+                2
 
         }
+    ).format(
+        converted
+    );
+
+}
 
 
-        /* ==================================================
-           FOREIGN CURRENCY
-        ================================================== */
-
-        const rate =
-            Number(
-                Store.currency.rates[
-                    currency
-                ]
-            );
-
-
-        if (
-            !Number.isFinite(rate) ||
-            rate <= 0
-        ) {
-
-            return new Intl.NumberFormat(
-                undefined,
-                {
-                    style: "currency",
-                    currency: currency,
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                }
-            ).format(0);
-
-        }
-
-
-        /* ==================================================
-           CONVERT GBP → FOREIGN CURRENCY
-        ================================================== */
-
-        const converted =
-            baseAmount *
-            rate;
-
-
-        /* ==================================================
-           INTERNATIONAL PROTECTION
-
-           Example:
-
-           £75
-           × USD rate
-           × 1.05
-
-           This gives us a small buffer against
-           FX/payment conversion costs.
-
-           GBP itself never reaches this section.
-        ================================================== */
-
-        const protectedAmount =
-            converted *
-            (
-                1 +
-                Store.currency.internationalMarkup
-            );
-
-
-        return new Intl.NumberFormat(
-            undefined,
-            {
-                style: "currency",
-                currency: currency,
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }
-        ).format(
-            protectedAmount
-        );
-
-    };
-
-    /* ==========================================================
+/* ==========================================================
    UPDATE CURRENCY DISPLAY
 ========================================================== */
 
-Store.updateCurrencyDisplay =
-    function() {
+function updateCurrencyDisplay() {
 
-        const symbol =
-            document.querySelector(
-                "#currencySymbol"
-            );
-
-
-        const code =
-            document.querySelector(
-                "#currencyCode"
-            );
+    const symbol =
+        document.querySelector(
+            "#currencySymbol"
+        );
 
 
-        if (symbol) {
-
-            symbol.textContent =
-                Store.currency.symbols[
-                    Store.currency.current
-                ];
-
-        }
+    const code =
+        document.querySelector(
+            "#currencyCode"
+        );
 
 
-        if (code) {
+    if (symbol) {
 
-            code.textContent =
-                Store.currency.current;
+        symbol.textContent =
+            currency.symbols[
+                currency.current
+            ];
 
-        }
+    }
 
 
-        document
-            .querySelectorAll(
-                ".currency-menu button"
-            )
-            .forEach(button => {
+    if (code) {
+
+        code.textContent =
+            currency.current;
+
+    }
+
+
+    document
+        .querySelectorAll(
+            ".currency-menu button"
+        )
+        .forEach(
+            button => {
 
                 button.classList.toggle(
-
                     "active",
 
                     button.dataset.currency ===
-                    Store.currency.current
+                    currency.current
 
                 );
 
-            });
+            }
+        );
 
-    };
+}
 
 
 /* ==========================================================
    CONVERT DISPLAYED PRICES
 ========================================================== */
 
-Store.convertPrices =
-    function() {
+function convertPrices() {
 
-        document
-            .querySelectorAll(
-                "[data-gbp-price]"
-            )
-            .forEach(element => {
+    document
+        .querySelectorAll(
+            "[data-gbp-price]"
+        )
+        .forEach(
+            element => {
 
                 const gbp =
                     Number(
@@ -1276,60 +1246,134 @@ Store.convertPrices =
                 ) {
 
                     element.textContent =
-                        Store.formatCurrency(
+                        formatCurrency(
                             gbp
                         );
 
                 }
 
-            });
+            }
+        );
 
-    };
+}
 
-    /* ==========================================================
+
+/* ==========================================================
    SET CURRENCY
 ========================================================== */
 
-Store.setCurrency =
-    function(currency) {
+function setCurrency(
+    selectedCurrency
+) {
 
-        /* ----------------------------------------------
-           Make sure the currency exists
-        ---------------------------------------------- */
+    if (
+        !Object.prototype.hasOwnProperty.call(
+            currency.rates,
+            selectedCurrency
+        )
+    ) {
 
-        if (
-            !Object.prototype.hasOwnProperty.call(
-                Store.currency.rates,
-                currency
-            )
-        ) {
+        return false;
 
-            return;
+    }
+
+
+    currency.current =
+        selectedCurrency;
+
+
+    localStorage.setItem(
+        "currency",
+        selectedCurrency
+    );
+
+
+    updateCurrencyDisplay();
+
+    convertPrices();
+
+
+    document.dispatchEvent(
+        new CustomEvent(
+            "currencyChanged"
+        )
+    );
+
+
+    return true;
+
+}
+
+
+/* ==========================================================
+   LOAD LIVE CURRENCY RATES
+========================================================== */
+
+async function loadCurrencyRates() {
+
+    try {
+
+        const response =
+            await fetch(
+                "https://api.frankfurter.dev/v2/rates?base=GBP&quotes=USD,EUR,CAD,AUD",
+                {
+                    cache:
+                        "no-store"
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Currency API failed."
+            );
 
         }
 
 
-        /* ----------------------------------------------
-           Save selected currency
-        ---------------------------------------------- */
-
-        Store.currency.current =
-            currency;
+        const data =
+            await response.json();
 
 
-        localStorage.setItem(
-            "currency",
-            currency
-        );
+        if (
+            data &&
+            data.rates
+        ) {
+
+            Object.keys(
+                data.rates
+            )
+            .forEach(
+                selectedCurrency => {
+
+                    if (
+                        Object.prototype.hasOwnProperty.call(
+                            currency.rates,
+                            selectedCurrency
+                        )
+                    ) {
+
+                        currency.rates[
+                            selectedCurrency
+                        ] =
+                            Number(
+                                data.rates[
+                                    selectedCurrency
+                                ]
+                            );
+
+                    }
+
+                }
+            );
+
+        }
 
 
-        /* ----------------------------------------------
-           Refresh everything
-        ---------------------------------------------- */
+        updateCurrencyDisplay();
 
-        Store.updateCurrencyDisplay();
-
-        Store.convertPrices();
+        convertPrices();
 
 
         document.dispatchEvent(
@@ -1338,7 +1382,23 @@ Store.setCurrency =
             )
         );
 
-    };
+    }
+
+    catch (error) {
+
+        console.warn(
+            "Live currency rates unavailable. Using fallback rates.",
+            error
+        );
+
+
+        updateCurrencyDisplay();
+
+        convertPrices();
+
+    }
+
+}
 
 
 /* ==========================================================
@@ -1367,10 +1427,6 @@ document.addEventListener(
             );
 
 
-        /* ----------------------------------------------
-           OPEN / CLOSE CURRENCY MENU
-        ---------------------------------------------- */
-
         if (currencyButton) {
 
             event.preventDefault();
@@ -1386,21 +1442,13 @@ document.addEventListener(
         }
 
 
-        /* ----------------------------------------------
-           SELECT CURRENCY
-        ---------------------------------------------- */
-
         if (currencyOption) {
 
             event.preventDefault();
 
 
-            const selectedCurrency =
-                currencyOption.dataset.currency;
-
-
-            Store.setCurrency(
-                selectedCurrency
+            setCurrency(
+                currencyOption.dataset.currency
             );
 
 
@@ -1413,10 +1461,6 @@ document.addEventListener(
 
         }
 
-
-        /* ----------------------------------------------
-           CLICK OUTSIDE → CLOSE MENU
-        ---------------------------------------------- */
 
         if (
 
@@ -1439,21 +1483,236 @@ document.addEventListener(
 
 
 /* ==========================================================
-   INITIALISE CURRENCY
+   TOAST
+========================================================== */
+
+function showToast(
+    message
+) {
+
+    let toast =
+        document.getElementById(
+            "storeToast"
+        );
+
+
+    if (!toast) {
+
+        toast =
+            document.createElement(
+                "div"
+            );
+
+
+        toast.id =
+            "storeToast";
+
+
+        toast.style.position =
+            "fixed";
+
+
+        toast.style.bottom =
+            "30px";
+
+
+        toast.style.left =
+            "50%";
+
+
+        toast.style.transform =
+            "translateX(-50%)";
+
+
+        toast.style.zIndex =
+            "99999";
+
+
+        toast.style.padding =
+            "12px 20px";
+
+
+        toast.style.borderRadius =
+            "10px";
+
+
+        toast.style.background =
+            "#111";
+
+
+        toast.style.color =
+            "#fff";
+
+
+        toast.style.fontSize =
+            "14px";
+
+
+        toast.style.boxShadow =
+            "0 5px 20px rgba(0,0,0,.25)";
+
+
+        toast.style.pointerEvents =
+            "none";
+
+
+        document.body.appendChild(
+            toast
+        );
+
+    }
+
+
+    toast.textContent =
+        message;
+
+
+    toast.style.display =
+        "block";
+
+
+    clearTimeout(
+        toast._timeout
+    );
+
+
+    toast._timeout =
+        setTimeout(
+            () => {
+
+                toast.style.display =
+                    "none";
+
+            },
+            2500
+        );
+
+}
+
+/* ==========================================================
+   PUBLIC STORE API
+========================================================== */
+
+const api = {
+
+    /* ======================================================
+       PRODUCTS
+    ====================================================== */
+
+    getProducts,
+
+    getProduct,
+
+
+    /* ======================================================
+       CART
+    ====================================================== */
+
+    getCart,
+
+    addToCart,
+
+    removeFromCart,
+
+    clearCart,
+
+    updateQuantity,
+
+    getCartTotal,
+
+    getCartQuantity,
+
+    isInCart,
+
+    updateCartCount,
+
+
+    /* ======================================================
+       WISHLIST
+    ====================================================== */
+
+    getWishlist,
+
+    addToWishlist,
+
+    removeFromWishlist,
+
+    clearWishlist,
+
+    isInWishlist,
+
+    updateWishlistCount,
+
+
+    /* ======================================================
+       SHIPPING
+    ====================================================== */
+
+    getShippingSize,
+
+    getCartShippingSize,
+
+    getShippingRegion,
+
+    setShippingRegion,
+
+    getShippingOptions,
+
+    getSelectedShippingMethod,
+
+    setShippingMethod,
+
+    getShippingCost,
+
+    getShippingLabel,
+
+
+    /* ======================================================
+       CURRENCY
+    ====================================================== */
+
+    formatCurrency,
+
+    setCurrency,
+
+    updateCurrencyDisplay,
+
+    convertPrices,
+
+    loadCurrencyRates,
+
+
+    /* ======================================================
+       TOAST
+    ====================================================== */
+
+    showToast
+
+};
+
+
+/* ==========================================================
+   RETURN STORE
+========================================================== */
+
+return api;
+
+})();
+
+
+/* ==========================================================
+   STORE INITIALISATION
 ========================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
     () => {
 
+        Store.updateCartCount();
+
+        Store.updateWishlistCount();
+
         Store.updateCurrencyDisplay();
-
-        Store.convertPrices();
-
-        Store.loadCurrencyRates();
 
     }
 );
-
-
-

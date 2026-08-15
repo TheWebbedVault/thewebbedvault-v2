@@ -931,7 +931,7 @@ const products = [
         "Images/Budget/milesbudgetpic.png"
     ],
 
-    badge: "Budget",
+    badge: "Coming Soon",
     featured: false,
     description: "Affordable Spider-Verse inspired mask with premium comfort and clean detailing.",
     shipping: "Free UK shipping over £150",
@@ -983,7 +983,7 @@ const products = [
 
     price: 15,
 
-    badge: "Budget",
+    badge: "Coming Soon",
 
     featured: false,
 
@@ -1026,7 +1026,7 @@ const products = [
 
     price: 20,
 
-    badge: "Budget",
+    badge: "Coming Soon",
 
     featured: true,
 
@@ -1068,7 +1068,7 @@ const products = [
 
     price: 20,
 
-    badge: "Budget",
+    badge: "Coming Soon",
 
     featured: false,
 
