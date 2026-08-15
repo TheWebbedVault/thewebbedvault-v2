@@ -652,13 +652,20 @@ document.addEventListener(
 ========================================================== */
 
 const mobileSearchForm =
-    document.getElementById("mobileSearchForm");
+    document.getElementById(
+        "mobileSearchForm"
+    );
 
 const mobileSearchInput =
-    document.getElementById("mobileSearchInput");
+    document.getElementById(
+        "mobileSearchInput"
+    );
 
 
-if (mobileSearchForm && mobileSearchInput) {
+if (
+    mobileSearchForm &&
+    mobileSearchInput
+) {
 
     mobileSearchForm.addEventListener(
         "submit",
@@ -678,3 +685,5 @@ if (mobileSearchForm && mobileSearchInput) {
     );
 
 }
+
+
