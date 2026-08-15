@@ -842,23 +842,70 @@ return api;
 
 Store.currency = {
 
+    /*
+       GBP IS THE BASE CURRENCY
+
+       Product prices remain in GBP.
+
+       Example:
+
+       Mask              = £75
+       Gloves            = £52
+       Webshooters       = £38
+       WB Webshooters    = £25
+
+       Foreign currencies are calculated from
+       these GBP prices.
+    */
+
     current:
         localStorage.getItem("currency")
         || "GBP",
+
+
+    /* ======================================================
+       EXCHANGE RATES
+
+       These fallback rates are used only if the
+       live exchange-rate request is unavailable.
+
+       The live API will replace these automatically.
+    ====================================================== */
 
     rates: {
 
         GBP: 1,
 
-        USD: 1,
+        USD: 1.35,
 
-        EUR: 1,
+        EUR: 1.17,
 
-        CAD: 1,
+        CAD: 1.85,
 
-        AUD: 1
+        AUD: 2.10
 
     },
+
+
+    /* ======================================================
+       INTERNATIONAL PRICE PROTECTION
+
+       5% is added to converted foreign-currency prices.
+
+       This helps protect the GBP value against:
+       - payment processing costs
+       - FX conversion costs
+       - small exchange-rate movements
+
+       GBP itself is NOT marked up.
+    ====================================================== */
+
+    internationalMarkup: 0.05,
+
+
+    /* ======================================================
+       CURRENCY SYMBOLS
+    ====================================================== */
 
     symbols: {
 
@@ -888,7 +935,10 @@ Store.loadCurrencyRates =
 
             const response =
                 await fetch(
-                    "https://api.frankfurter.dev/v2/rates?base=GBP&quotes=USD,EUR,CAD,AUD"
+                    "https://api.frankfurter.dev/v2/rates?base=GBP&quotes=USD,EUR,CAD,AUD",
+                    {
+                        cache: "no-store"
+                    }
                 );
 
 
@@ -905,22 +955,9 @@ Store.loadCurrencyRates =
                 await response.json();
 
 
-            /*
-               Frankfurter returns:
-
-               {
-                   base: "GBP",
-                   date: "...",
-                   rates: {
-                       USD: ...,
-                       EUR: ...,
-                       CAD: ...,
-                       AUD: ...
-                   }
-               }
-
-               Support that original format.
-            */
+            /* ==================================================
+               UPDATE LIVE RATES
+            ================================================== */
 
             if (
                 data &&
@@ -938,12 +975,26 @@ Store.loadCurrencyRates =
                         )
                     ) {
 
-                        Store.currency.rates[
-                            currency
-                        ] =
-                            data.rates[
+                        const rate =
+                            Number(
+                                data.rates[
+                                    currency
+                                ]
+                            );
+
+
+                        if (
+                            Number.isFinite(
+                                rate
+                            ) &&
+                            rate > 0
+                        ) {
+
+                            Store.currency.rates[
                                 currency
-                            ];
+                            ] = rate;
+
+                        }
 
                     }
 
@@ -952,9 +1003,15 @@ Store.loadCurrencyRates =
             }
 
 
+            /*
+               Update the page after the live
+               rates have loaded.
+            */
+
             Store.updateCurrencyDisplay();
 
             Store.convertPrices();
+
 
             document.dispatchEvent(
                 new CustomEvent(
@@ -966,17 +1023,37 @@ Store.loadCurrencyRates =
 
         catch (error) {
 
+            /*
+               IMPORTANT:
+
+               NEVER replace failed rates with 1.
+
+               The fallback rates defined above
+               remain active instead.
+            */
+
             console.warn(
-                "Currency rates could not be loaded.",
+                "Live currency rates unavailable. Using fallback rates.",
                 error
+            );
+
+
+            Store.updateCurrencyDisplay();
+
+            Store.convertPrices();
+
+
+            document.dispatchEvent(
+                new CustomEvent(
+                    "currencyChanged"
+                )
             );
 
         }
 
     };
 
-
-/* ==========================================================
+    /* ==========================================================
    FORMAT CURRENCY
 ========================================================== */
 
@@ -987,37 +1064,138 @@ Store.formatCurrency =
             Store.currency.current;
 
 
-        const rate =
-            Store.currency.rates[
-                currency
-            ] || 1;
+        const baseAmount =
+            Number(amount);
 
+
+        if (
+            !Number.isFinite(
+                baseAmount
+            )
+        ) {
+
+            return new Intl.NumberFormat(
+                undefined,
+                {
+                    style: "currency",
+                    currency: currency,
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }
+            ).format(0);
+
+        }
+
+
+        /* ==================================================
+           GBP
+
+           GBP IS ALWAYS THE ORIGINAL PRODUCT PRICE.
+
+           £75 stays £75.
+           £52 stays £52.
+           £38 stays £38.
+           £25 stays £25.
+
+           NO INTERNATIONAL MARKUP.
+        ================================================== */
+
+        if (
+            currency === "GBP"
+        ) {
+
+            return new Intl.NumberFormat(
+                undefined,
+                {
+                    style: "currency",
+                    currency: "GBP",
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }
+            ).format(
+                baseAmount
+            );
+
+        }
+
+
+        /* ==================================================
+           FOREIGN CURRENCY
+        ================================================== */
+
+        const rate =
+            Number(
+                Store.currency.rates[
+                    currency
+                ]
+            );
+
+
+        if (
+            !Number.isFinite(rate) ||
+            rate <= 0
+        ) {
+
+            return new Intl.NumberFormat(
+                undefined,
+                {
+                    style: "currency",
+                    currency: currency,
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }
+            ).format(0);
+
+        }
+
+
+        /* ==================================================
+           CONVERT GBP → FOREIGN CURRENCY
+        ================================================== */
 
         const converted =
-            Number(amount) * rate;
+            baseAmount *
+            rate;
+
+
+        /* ==================================================
+           INTERNATIONAL PROTECTION
+
+           Example:
+
+           £75
+           × USD rate
+           × 1.05
+
+           This gives us a small buffer against
+           FX/payment conversion costs.
+
+           GBP itself never reaches this section.
+        ================================================== */
+
+        const protectedAmount =
+            converted *
+            (
+                1 +
+                Store.currency.internationalMarkup
+            );
 
 
         return new Intl.NumberFormat(
             undefined,
             {
-
                 style: "currency",
-
                 currency: currency,
-
                 minimumFractionDigits: 2,
-
                 maximumFractionDigits: 2
-
             }
         ).format(
-            converted
+            protectedAmount
         );
 
     };
 
-
-/* ==========================================================
+    /* ==========================================================
    UPDATE CURRENCY DISPLAY
 ========================================================== */
 
@@ -1108,13 +1286,16 @@ Store.convertPrices =
 
     };
 
-
-/* ==========================================================
+    /* ==========================================================
    SET CURRENCY
 ========================================================== */
 
 Store.setCurrency =
     function(currency) {
+
+        /* ----------------------------------------------
+           Make sure the currency exists
+        ---------------------------------------------- */
 
         if (
             !Object.prototype.hasOwnProperty.call(
@@ -1128,6 +1309,10 @@ Store.setCurrency =
         }
 
 
+        /* ----------------------------------------------
+           Save selected currency
+        ---------------------------------------------- */
+
         Store.currency.current =
             currency;
 
@@ -1137,6 +1322,10 @@ Store.setCurrency =
             currency
         );
 
+
+        /* ----------------------------------------------
+           Refresh everything
+        ---------------------------------------------- */
 
         Store.updateCurrencyDisplay();
 
@@ -1178,26 +1367,40 @@ document.addEventListener(
             );
 
 
+        /* ----------------------------------------------
+           OPEN / CLOSE CURRENCY MENU
+        ---------------------------------------------- */
+
         if (currencyButton) {
 
             event.preventDefault();
 
+
             selector?.classList.toggle(
                 "active"
             );
+
 
             return;
 
         }
 
 
+        /* ----------------------------------------------
+           SELECT CURRENCY
+        ---------------------------------------------- */
+
         if (currencyOption) {
 
             event.preventDefault();
 
 
+            const selectedCurrency =
+                currencyOption.dataset.currency;
+
+
             Store.setCurrency(
-                currencyOption.dataset.currency
+                selectedCurrency
             );
 
 
@@ -1205,10 +1408,15 @@ document.addEventListener(
                 "active"
             );
 
+
             return;
 
         }
 
+
+        /* ----------------------------------------------
+           CLICK OUTSIDE → CLOSE MENU
+        ---------------------------------------------- */
 
         if (
 
@@ -1240,8 +1448,12 @@ document.addEventListener(
 
         Store.updateCurrencyDisplay();
 
+        Store.convertPrices();
+
         Store.loadCurrencyRates();
 
     }
 );
+
+
 
