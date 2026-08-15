@@ -265,7 +265,6 @@ videoThumbnail.innerHTML = `
 
 `;
 
-
 const thumbnailPreview =
     videoThumbnail.querySelector(
         ".video-thumbnail-preview"
@@ -273,13 +272,24 @@ const thumbnailPreview =
 
 
 thumbnailPreview.addEventListener(
-    "loadeddata",
+    "loadedmetadata",
     () => {
 
-        thumbnailPreview.currentTime = 0;
+        thumbnailPreview.currentTime = 0.01;
 
     }
 );
+
+
+thumbnailPreview.addEventListener(
+    "loadeddata",
+    () => {
+
+        thumbnailPreview.pause();
+
+    }
+);
+
 
 
             videoThumbnail.addEventListener(
