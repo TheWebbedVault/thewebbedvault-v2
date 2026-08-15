@@ -522,22 +522,47 @@ if (
                and mobile touch devices.
             */
 
-            thumbnail.addEventListener(
-                "click",
-                event => {
+           /* ==========================================================
+   THUMBNAIL POINTER
+   Works with mouse + touchscreen
+========================================================== */
 
-                    event.preventDefault();
+thumbnail.style.touchAction =
+    "manipulation";
 
-                    event.stopPropagation();
+thumbnail.style.cursor =
+    "pointer";
 
 
-                    showImage(
-                        image,
-                        thumbnail
-                    );
+thumbnail.addEventListener(
+    "pointerup",
+    event => {
 
-                }
-            );
+        event.preventDefault();
+        event.stopPropagation();
+
+
+        /*
+           Only react to the primary
+           finger/mouse pointer.
+        */
+
+        if (
+            event.isPrimary === false
+        ) {
+
+            return;
+
+        }
+
+
+        showImage(
+            image,
+            thumbnail
+        );
+
+    }
+);
 
 
             thumbnails.appendChild(
@@ -725,22 +750,38 @@ if (
                    Video click.
                 */
 
-                videoThumbnail.addEventListener(
-                    "click",
-                    event => {
+                /* ==========================================================
+   VIDEO THUMBNAIL POINTER
+   Works with touchscreen + mouse
+========================================================== */
 
-                        event.preventDefault();
+videoThumbnail.style.touchAction =
+    "manipulation";
 
-                        event.stopPropagation();
+
+videoThumbnail.addEventListener(
+    "pointerup",
+    event => {
+
+        event.preventDefault();
+        event.stopPropagation();
 
 
-                        showProductVideo(
-                            videoThumbnail
-                        );
+        if (
+            event.isPrimary === false
+        ) {
 
-                    }
-                );
+            return;
 
+        }
+
+
+        showProductVideo(
+            videoThumbnail
+        );
+
+    }
+);
 
                 /*
                    Add video immediately
