@@ -171,47 +171,59 @@ if (thumbnails && product.images) {
         }
 
 
-        thumbnail.addEventListener(
-            "click",
-            () => {
+       thumbnail.addEventListener("click", () => {
 
-                setMainImage(image);
+    /* ================================================
+       SWITCH BACK FROM VIDEO TO IMAGE
+    ================================================ */
 
-
-                document
-                    .querySelectorAll(
-                        ".thumbnail"
-                    )
-                    .forEach(img =>
-                        img.classList.remove(
-                            "active"
-                        )
-                    );
-
-
-                document
-                    .querySelectorAll(
-                        ".video-thumbnail"
-                    )
-                    .forEach(video =>
-                        video.classList.remove(
-                            "active"
-                        )
-                    );
-
-
-                thumbnail.classList.add(
-                    "active"
-                );
-
-            }
+    const mainVideo =
+        document.getElementById(
+            "mainProductVideo"
         );
 
 
-        thumbnails.appendChild(
-            thumbnail
+    if (mainVideo) {
+
+        mainVideo.pause();
+
+        mainVideo.style.display =
+            "none";
+
+    }
+
+
+    mainImage.style.display =
+        "block";
+
+
+    /* ================================================
+       SHOW SELECTED IMAGE
+    ================================================ */
+
+    setMainImage(image);
+
+
+    /* ================================================
+       UPDATE ACTIVE THUMBNAIL
+    ================================================ */
+
+    document
+        .querySelectorAll(".thumbnail")
+        .forEach(img =>
+            img.classList.remove(
+                "active"
+            )
         );
 
+
+    thumbnail.classList.add(
+        "active"
+    );
+
+});
+
+    
 
         /* ==================================================
            MOBILE VIDEO SLOT
