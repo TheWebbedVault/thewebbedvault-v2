@@ -17,10 +17,12 @@ const params =
         window.location.search
     );
 
+
 const productId =
     Number(
         params.get("id")
     );
+
 
 const product =
     Store.getProduct(
@@ -63,55 +65,66 @@ const productName =
         "productName"
     );
 
+
 const productPrice =
     document.getElementById(
         "productPrice"
     );
+
 
 const productDescription =
     document.getElementById(
         "productDescription"
     );
 
+
 const productBadge =
     document.getElementById(
         "productBadge"
     );
+
 
 const productShipping =
     document.getElementById(
         "productShipping"
     );
 
+
 const productReturns =
     document.getElementById(
         "productReturns"
     );
+
 
 const productFeatures =
     document.getElementById(
         "productFeatures"
     );
 
+
 const productCartBtn =
     document.getElementById(
         "productCartBtn"
     );
+
 
 const productWishlistBtn =
     document.getElementById(
         "productWishlistBtn"
     );
 
+
 const mainImage =
     document.getElementById(
         "mainImage"
     );
 
+
 const thumbnails =
     document.getElementById(
         "thumbnails"
     );
+
 
 const relatedProducts =
     document.getElementById(
@@ -174,7 +187,7 @@ if (productReturns) {
 
 
 /* ==========================================================
-   CART BUTTON ID
+   CART BUTTON
 ========================================================== */
 
 if (productCartBtn) {
@@ -226,8 +239,10 @@ if (
                     "li"
                 );
 
+
             li.textContent =
                 `✓ ${feature}`;
+
 
             productFeatures.appendChild(
                 li
@@ -240,7 +255,7 @@ if (
 
 
 /* ==========================================================
-   MAIN IMAGE
+   MAIN PRODUCT IMAGE
 ========================================================== */
 
 if (mainImage) {
@@ -255,23 +270,10 @@ if (mainImage) {
 
 
 /* ==========================================================
-   MAIN IMAGE SWITCHER
+   HIDE PRODUCT VIDEO
 ========================================================== */
 
-function setMainImage(
-    image
-) {
-
-    if (!mainImage) {
-
-        return;
-
-    }
-
-
-    /*
-       Hide any product video.
-    */
+function hideProductVideo() {
 
     const mainVideo =
         document.getElementById(
@@ -279,56 +281,23 @@ function setMainImage(
         );
 
 
-    if (mainVideo) {
+    if (!mainVideo) {
 
-        mainVideo.pause();
-
-        mainVideo.style.display =
-            "none";
+        return;
 
     }
 
 
-    /*
-       Show the image.
-    */
+    mainVideo.pause();
 
-    mainImage.style.display =
-        "block";
-
-
-    /*
-       Change image.
-    */
-
-    mainImage.src =
-        `../${image}`;
+    mainVideo.style.display =
+        "none";
 
 }
 
 
 /* ==========================================================
-   IMAGE LOADING
-========================================================== */
-
-if (mainImage) {
-
-    mainImage.addEventListener(
-        "load",
-        () => {
-
-            mainImage.classList.remove(
-                "changing"
-            );
-
-        }
-    );
-
-}
-
-
-/* ==========================================================
-   REMOVE ACTIVE THUMBNAILS
+   CLEAR ACTIVE THUMBNAILS
 ========================================================== */
 
 function clearActiveThumbnails() {
@@ -363,24 +332,77 @@ function clearActiveThumbnails() {
 
 function showImage(
     image,
-    thumbnail
+    selectedThumbnail
 ) {
 
-    setMainImage(
-        image
-    );
+    if (!mainImage) {
 
+        return;
+
+    }
+
+
+    /*
+       Hide video first.
+    */
+
+    hideProductVideo();
+
+
+    /*
+       Make image visible.
+    */
+
+    mainImage.style.display =
+        "block";
+
+
+    /*
+       Change image immediately.
+    */
+
+    mainImage.src =
+        `../${image}`;
+
+
+    mainImage.alt =
+        product.name;
+
+
+    /*
+       Update active thumbnail.
+    */
 
     clearActiveThumbnails();
 
 
-    if (thumbnail) {
+    if (selectedThumbnail) {
 
-        thumbnail.classList.add(
+        selectedThumbnail.classList.add(
             "active"
         );
 
     }
+
+}
+
+
+/* ==========================================================
+   MAIN IMAGE LOAD
+========================================================== */
+
+if (mainImage) {
+
+    mainImage.addEventListener(
+        "load",
+        () => {
+
+            mainImage.classList.remove(
+                "changing"
+            );
+
+        }
+    );
 
 }
 
@@ -403,23 +425,43 @@ function showProductVideo(
     }
 
 
+    /*
+       Remove active state.
+    */
+
     clearActiveThumbnails();
 
+
+    /*
+       Activate video thumbnail.
+    */
 
     videoThumbnail.classList.add(
         "active"
     );
 
 
+    /*
+       Hide image.
+    */
+
     mainImage.style.display =
         "none";
 
+
+    /*
+       Find existing video.
+    */
 
     let mainVideo =
         document.getElementById(
             "mainProductVideo"
         );
 
+
+    /*
+       Create video if needed.
+    */
 
     if (!mainVideo) {
 
@@ -428,22 +470,28 @@ function showProductVideo(
                 "video"
             );
 
+
         mainVideo.id =
             "mainProductVideo";
+
 
         mainVideo.className =
             "main-product-video";
 
+
         mainVideo.controls =
             true;
 
+
         mainVideo.playsInline =
             true;
+
 
         mainVideo.setAttribute(
             "playsinline",
             ""
         );
+
 
         mainVideo.preload =
             "metadata";
@@ -458,11 +506,17 @@ function showProductVideo(
     }
 
 
+    /*
+       Set video source.
+    */
+
     mainVideo.src =
         `../${product.video}`;
 
+
     mainVideo.style.display =
         "block";
+
 
     mainVideo.load();
 
@@ -470,19 +524,29 @@ function showProductVideo(
 
 
 /* ==========================================================
-   IMAGE GALLERY
+   PRODUCT IMAGE GALLERY
 ========================================================== */
 
 if (
     thumbnails &&
     Array.isArray(
         product.images
-    )
+    ) &&
+    product.images.length > 0
 ) {
+
+    /*
+       Remove anything previously
+       inside the thumbnail container.
+    */
 
     thumbnails.innerHTML =
         "";
 
+
+    /*
+       Create every product image.
+    */
 
     product.images.forEach(
         (
@@ -490,21 +554,92 @@ if (
             index
         ) => {
 
+            /* ==============================================
+               THUMBNAIL BUTTON
+            ============================================== */
+
             const thumbnail =
                 document.createElement(
-                    "img"
+                    "button"
                 );
 
 
-            thumbnail.src =
-                `../${image}`;
+            thumbnail.type =
+                "button";
 
-            thumbnail.alt =
-                `${product.name} ${index + 1}`;
 
             thumbnail.className =
                 "thumbnail";
 
+
+            thumbnail.setAttribute(
+                "aria-label",
+                `View image ${index + 1} of ${product.name}`
+            );
+
+
+            /*
+               Explicit sizing.
+
+               This prevents the existing
+               CSS from collapsing the thumbnail.
+            */
+
+            thumbnail.style.position =
+                "relative";
+
+
+            thumbnail.style.display =
+                "block";
+
+
+            thumbnail.style.width =
+                "100%";
+
+
+            thumbnail.style.height =
+                "auto";
+
+
+            thumbnail.style.aspectRatio =
+                "1 / 1";
+
+
+            thumbnail.style.padding =
+                "0";
+
+
+            thumbnail.style.margin =
+                "0";
+
+
+            thumbnail.style.overflow =
+                "hidden";
+
+
+            thumbnail.style.border =
+                "none";
+
+
+            thumbnail.style.background =
+                "transparent";
+
+
+            thumbnail.style.cursor =
+                "pointer";
+
+
+            thumbnail.style.touchAction =
+                "manipulation";
+
+
+            thumbnail.style.flexShrink =
+                "0";
+
+
+            /*
+               First image active.
+            */
 
             if (index === 0) {
 
@@ -515,82 +650,124 @@ if (
             }
 
 
-            /*
-               Normal image click.
+            /* ==============================================
+               THUMBNAIL IMAGE
+            ============================================== */
 
-               This works on both desktop
-               and mobile touch devices.
+            const thumbnailImage =
+                document.createElement(
+                    "img"
+                );
+
+
+            thumbnailImage.src =
+                `../${image}`;
+
+
+            thumbnailImage.alt =
+                `${product.name} image ${index + 1}`;
+
+
+            thumbnailImage.draggable =
+                false;
+
+
+            thumbnailImage.style.display =
+                "block";
+
+
+            thumbnailImage.style.width =
+                "100%";
+
+
+            thumbnailImage.style.height =
+                "100%";
+
+
+            thumbnailImage.style.minWidth =
+                "100%";
+
+
+            thumbnailImage.style.minHeight =
+                "100%";
+
+
+            thumbnailImage.style.objectFit =
+                "cover";
+
+
+            thumbnailImage.style.objectPosition =
+                "center";
+
+
+            thumbnailImage.style.pointerEvents =
+                "none";
+
+
+            /*
+               Add actual image inside button.
             */
 
-           /* ==========================================================
-   THUMBNAIL POINTER
-   Works with mouse + touchscreen
-========================================================== */
-
-thumbnail.style.touchAction =
-    "manipulation";
-
-thumbnail.style.cursor =
-    "pointer";
+            thumbnail.appendChild(
+                thumbnailImage
+            );
 
 
-thumbnail.addEventListener(
-    "pointerup",
-    event => {
+            /* ==============================================
+               IMAGE CLICK
+            ============================================== */
 
-        event.preventDefault();
-        event.stopPropagation();
+            thumbnail.addEventListener(
+                "click",
+                () => {
 
+                    showImage(
+                        image,
+                        thumbnail
+                    );
 
-        /*
-           Only react to the primary
-           finger/mouse pointer.
-        */
-
-        if (
-            event.isPrimary === false
-        ) {
-
-            return;
-
-        }
+                }
+            );
 
 
-        showImage(
-            image,
-            thumbnail
-        );
-
-    }
-);
-
+            /*
+               Add thumbnail to gallery.
+            */
 
             thumbnails.appendChild(
                 thumbnail
             );
 
 
-            /* ==================================================
+            /* ==============================================
                MOBILE VIDEO SLOT
 
-               Insert video AFTER image 1.
+               ONLY after image 1.
 
-               Therefore:
                Slot 1 = Image 1
                Slot 2 = Video
                Slot 3 = Image 2
                Slot 4 = Image 3
                Slot 5 = Image 4
                Slot 6 = Image 5
-
-               ONLY MOBILE.
-            ================================================== */
+            ============================================== */
 
             if (
                 index === 0 &&
                 window.innerWidth <= 768 &&
                 product.video
             ) {
+
+                createVideoThumbnail();
+
+            }
+
+
+            /* ==============================================
+               CREATE MOBILE VIDEO THUMBNAIL
+            ============================================== */
+
+            function createVideoThumbnail() {
 
                 const videoThumbnail =
                     document.createElement(
@@ -600,6 +777,7 @@ thumbnail.addEventListener(
 
                 videoThumbnail.type =
                     "button";
+
 
                 videoThumbnail.className =
                     "thumbnail video-thumbnail";
@@ -612,180 +790,192 @@ thumbnail.addEventListener(
 
 
                 /*
-                   Give the button the same
-                   basic sizing as the images.
+                   Same sizing as image thumbnails.
                 */
+
+                videoThumbnail.style.position =
+                    "relative";
+
+
+                videoThumbnail.style.display =
+                    "block";
+
 
                 videoThumbnail.style.width =
                     "100%";
 
+
+                videoThumbnail.style.height =
+                    "auto";
+
+
                 videoThumbnail.style.aspectRatio =
                     "1 / 1";
+
 
                 videoThumbnail.style.padding =
                     "0";
 
+
                 videoThumbnail.style.margin =
                     "0";
 
-                videoThumbnail.style.border =
-                    "none";
 
                 videoThumbnail.style.overflow =
                     "hidden";
 
-                videoThumbnail.style.position =
-                    "relative";
+
+                videoThumbnail.style.border =
+                    "none";
+
+
+                videoThumbnail.style.background =
+                    "#111";
+
 
                 videoThumbnail.style.cursor =
                     "pointer";
 
 
-                videoThumbnail.innerHTML = `
+                videoThumbnail.style.touchAction =
+                    "manipulation";
 
-                    <video
-                        class="video-thumbnail-preview"
-                        muted
-                        playsinline
-                        preload="metadata"
-                        style="
-                            width:100%;
-                            height:100%;
-                            object-fit:cover;
-                            display:block;
-                            pointer-events:none;
-                        "
-                    >
 
-                        <source
-                            src="../${product.video}"
-                            type="video/mp4"
-                        >
+                videoThumbnail.style.flexShrink =
+                    "0";
 
-                    </video>
 
-                    <span
-                        class="video-thumbnail-icon"
-                        style="
-                            position:absolute;
-                            inset:0;
-                            display:flex;
-                            align-items:center;
-                            justify-content:center;
-                            pointer-events:none;
-                        "
-                    >
-
-                        <i
-                            class="fa-solid fa-play"
-                            style="
-                                width:34px;
-                                height:34px;
-                                border-radius:50%;
-                                display:flex;
-                                align-items:center;
-                                justify-content:center;
-                                background:rgba(0,0,0,.72);
-                                color:#fff;
-                                font-size:.75rem;
-                                padding-left:2px;
-                            "
-                        ></i>
-
-                    </span>
-
-                `;
-
+                /*
+                   Video preview.
+                */
 
                 const preview =
-                    videoThumbnail.querySelector(
-                        ".video-thumbnail-preview"
+                    document.createElement(
+                        "video"
                     );
+
+
+                preview.className =
+                    "video-thumbnail-preview";
+
+
+                preview.muted =
+                    true;
+
+
+                preview.playsInline =
+                    true;
+
+
+                preview.setAttribute(
+                    "playsinline",
+                    ""
+                );
+
+
+                preview.preload =
+                    "metadata";
+
+
+                preview.src =
+                    `../${product.video}`;
+
+
+                preview.style.display =
+                    "block";
+
+
+                preview.style.width =
+                    "100%";
+
+
+                preview.style.height =
+                    "100%";
+
+
+                preview.style.objectFit =
+                    "cover";
+
+
+                preview.style.pointerEvents =
+                    "none";
 
 
                 /*
-                   Force the video to display
-                   its first frame as thumbnail.
+                   Play icon.
                 */
 
-                if (preview) {
-
-                    preview.addEventListener(
-                        "loadedmetadata",
-                        () => {
-
-                            try {
-
-                                preview.currentTime =
-                                    0.01;
-
-                            }
-
-                            catch (error) {
-
-                                console.warn(
-                                    "Could not seek video preview.",
-                                    error
-                                );
-
-                            }
-
-                        }
+                const icon =
+                    document.createElement(
+                        "span"
                     );
 
 
-                    preview.addEventListener(
-                        "loadeddata",
-                        () => {
+                icon.className =
+                    "video-thumbnail-icon";
 
-                            preview.pause();
 
-                        }
-                    );
+                icon.innerHTML =
+                    '<i class="fa-solid fa-play"></i>';
 
-                }
+
+                icon.style.position =
+                    "absolute";
+
+
+                icon.style.inset =
+                    "0";
+
+
+                icon.style.display =
+                    "flex";
+
+
+                icon.style.alignItems =
+                    "center";
+
+
+                icon.style.justifyContent =
+                    "center";
+
+
+                icon.style.pointerEvents =
+                    "none";
 
 
                 /*
-                   Video click.
+                   Add preview + icon.
                 */
 
-                /* ==========================================================
-   VIDEO THUMBNAIL POINTER
-   Works with touchscreen + mouse
-========================================================== */
-
-videoThumbnail.style.touchAction =
-    "manipulation";
+                videoThumbnail.appendChild(
+                    preview
+                );
 
 
-videoThumbnail.addEventListener(
-    "pointerup",
-    event => {
-
-        event.preventDefault();
-        event.stopPropagation();
+                videoThumbnail.appendChild(
+                    icon
+                );
 
 
-        if (
-            event.isPrimary === false
-        ) {
+                /*
+                   Video thumbnail click.
+                */
 
-            return;
+                videoThumbnail.addEventListener(
+                    "click",
+                    () => {
 
-        }
+                        showProductVideo(
+                            videoThumbnail
+                        );
 
+                    }
+                );
 
-        showProductVideo(
-            videoThumbnail
-        );
-
-    }
-);
 
                 /*
                    Add video immediately
-                   AFTER image 1.
+                   after first image.
                 */
 
                 thumbnails.appendChild(
@@ -798,7 +988,6 @@ videoThumbnail.addEventListener(
     );
 
 }
-
 
 /* ==========================================================
    ADD TO CART
@@ -813,6 +1002,7 @@ if (productCartBtn) {
             Store.addToCart(
                 product.id
             );
+
 
             Store.showToast(
                 "Added to cart 🛒"
@@ -855,9 +1045,11 @@ if (productWishlistBtn) {
                 productWishlistBtn.innerHTML =
                     '<i class="fa-regular fa-heart"></i>';
 
+
                 productWishlistBtn.classList.remove(
                     "active"
                 );
+
 
                 Store.showToast(
                     "Removed from wishlist ❤️"
@@ -875,9 +1067,11 @@ if (productWishlistBtn) {
                 productWishlistBtn.innerHTML =
                     '<i class="fa-solid fa-heart"></i>';
 
+
                 productWishlistBtn.classList.add(
                     "active"
                 );
+
 
                 Store.showToast(
                     "Added to wishlist ❤️"
@@ -892,6 +1086,7 @@ if (productWishlistBtn) {
     );
 
 }
+
 
 /* ==========================================================
    RELATED PRODUCTS
@@ -975,9 +1170,7 @@ function renderRelatedProducts() {
                             class="cart-btn"
                             data-id="${item.id}"
                         >
-
                             🛒 Add to Cart
-
                         </button>
 
                     </div>
@@ -1059,8 +1252,8 @@ if (imageContainer) {
         () => {
 
             /*
-               Don't zoom when the product
-               video is currently displayed.
+               Don't zoom while video
+               is being displayed.
             */
 
             const mainVideo =
