@@ -435,15 +435,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const search = params.get("search");
 
-    if (search) {
+if (search) {
 
-        if (searchInput) {
+    searchQuery = search.trim();
 
-            searchInput.value = search;
+    if (searchInput) {
 
-        }
+        searchInput.value =
+            searchQuery;
 
-        const query = search.toLowerCase();
+    }
+
+    const query =
+        searchQuery.toLowerCase();
 
         products = products.filter(product => {
 
