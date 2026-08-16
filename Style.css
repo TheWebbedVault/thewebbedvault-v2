@@ -5674,3 +5674,141 @@ p{
     }
 
 }
+
+/* ==========================================================
+   CART + WISHLIST — MOBILE FIX
+   Keeps everything compact and properly sized on phones
+========================================================== */
+
+@media (max-width: 768px) {
+
+    /* Main cart / wishlist layout */
+    .cart-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 30px 14px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Product list container */
+    .cart-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 14px;
+        min-height: 0;
+        box-sizing: border-box;
+        border-radius: 18px;
+    }
+
+    /* Individual cart/wishlist product */
+    .cart-item {
+        grid-template-columns: 78px minmax(0, 1fr);
+        gap: 14px;
+        padding: 14px;
+        margin-bottom: 12px;
+        border-radius: 16px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .cart-item img {
+        width: 78px;
+        height: 78px;
+        padding: 6px;
+        border-radius: 10px;
+    }
+
+    .cart-info {
+        min-width: 0;
+        gap: 8px;
+    }
+
+    .cart-info h3 {
+        font-size: 1rem;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+    }
+
+    .cart-info p {
+        font-size: .95rem;
+    }
+
+    /* Quantity / action controls */
+    .cart-item button,
+    .wishlist-actions button {
+        max-width: 100%;
+        font-size: .8rem;
+    }
+
+    /* Summary */
+    .cart-summary {
+        position: static;
+        width: 100%;
+        max-width: 100%;
+        padding: 18px;
+        box-sizing: border-box;
+        border-radius: 18px;
+    }
+
+    .cart-summary h2 {
+        margin-bottom: 18px;
+        font-size: 1.3rem;
+    }
+
+    .cart-summary .primary-btn,
+    .cart-summary .secondary-btn {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+
+/* ==========================================================
+   SMALL PHONES
+========================================================== */
+
+@media (max-width: 576px) {
+
+    .cart-layout {
+        padding: 22px 10px;
+        gap: 16px;
+    }
+
+    .cart-container {
+        padding: 10px;
+        border-radius: 16px;
+    }
+
+    .cart-item {
+        grid-template-columns: 68px minmax(0, 1fr);
+        gap: 11px;
+        padding: 11px;
+        border-radius: 14px;
+    }
+
+    .cart-item img {
+        width: 68px;
+        height: 68px;
+        padding: 5px;
+    }
+
+    .cart-info h3 {
+        font-size: .9rem;
+    }
+
+    .cart-info p {
+        font-size: .85rem;
+    }
+
+    .cart-summary {
+        padding: 15px;
+        border-radius: 16px;
+    }
+
+    .cart-summary h2 {
+        font-size: 1.2rem;
+    }
+}
