@@ -852,7 +852,7 @@ const products = [
 
 {
     id: 20,
-    ecwidId: 0,
+    ecwidId: 856805079,
     name: "Amazing Spider V1 Mask V2",
     category: "Masks",
     price: 55,
@@ -884,7 +884,7 @@ const products = [
 
 {
     id: 21,
-    ecwidId: 0,
+    ecwidId: 856800422,
     name: "Amazing Spider V2 Mask V2",
     category: "Masks",
     price: 55,
@@ -918,7 +918,7 @@ const products = [
 
 {
     id: 22,
-    ecwidId: 0,
+    ecwidId:856805082,
     name: "Spider-Verse Mask V2",
     category: "Masks",
     price: 55,
@@ -947,7 +947,7 @@ const products = [
 
 {
     id: 23,
-    ecwidId: 0,
+    ecwidId: 856805080,
     name: "BND Mask V2",
     category: "Masks",
     price: 60,
@@ -975,7 +975,7 @@ const products = [
 },
 {
     id: 24,
-    ecwidId: 0,
+    ecwidId: 856800423,
 
     name: "Basic Web Shooter",
 

@@ -29,6 +29,108 @@ const product =
         productId
     );
 
+/* ==========================================================
+   PRODUCT SEO
+========================================================== */
+
+if (product) {
+
+    const seoDescription =
+        `Shop ${product.name} at The Webbed Vault. ${product.description} UK shipping available.`;
+
+    document.title =
+        `${product.name} | The Webbed Vault`;
+
+    const metaDescription =
+        document.querySelector(
+            'meta[name="description"]'
+        );
+
+    if (metaDescription) {
+        metaDescription.setAttribute(
+            "content",
+            seoDescription
+        );
+    }
+
+    const canonical =
+        document.querySelector(
+            'link[rel="canonical"]'
+        );
+
+    if (canonical) {
+        canonical.setAttribute(
+            "href",
+            `https://thewebbedvault.com/Html/Product.html?id=${product.id}`
+        );
+    }
+
+    const ogTitle =
+        document.querySelector(
+            'meta[property="og:title"]'
+        );
+
+    if (ogTitle) {
+        ogTitle.setAttribute(
+            "content",
+            `${product.name} | The Webbed Vault`
+        );
+    }
+
+    const ogDescription =
+        document.querySelector(
+            'meta[property="og:description"]'
+        );
+
+    if (ogDescription) {
+        ogDescription.setAttribute(
+            "content",
+            seoDescription
+        );
+    }
+
+}
+
+/* ==========================================================
+   PRODUCT SCHEMA
+========================================================== */
+
+const productSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": product.name,
+    "description": product.description,
+    "image": [
+        `https://thewebbedvault.com/${product.image}`
+    ],
+    "brand": {
+        "@type": "Brand",
+        "name": "The Webbed Vault"
+    },
+    "offers": {
+        "@type": "Offer",
+        "url": `https://thewebbedvault.com/Html/Product.html?id=${product.id}`,
+        "priceCurrency": "GBP",
+        "price": Number(product.price).toFixed(2),
+        "availability": product.stock > 0
+            ? "https://schema.org/InStock"
+            : "https://schema.org/OutOfStock",
+        "itemCondition": "https://schema.org/NewCondition"
+    }
+};
+
+const schemaScript =
+    document.createElement("script");
+
+schemaScript.type =
+    "application/ld+json";
+
+schemaScript.textContent =
+    JSON.stringify(productSchema);
+
+document.head.appendChild(
+    schemaScript
+);
 
 /* ==========================================================
    PRODUCT NOT FOUND
