@@ -38,6 +38,8 @@ const products = [
             "Images/Masks/Mask-pictures/tobey-red.side-right.png"
         ],
 
+         video: "Videos/tobeyvideo.mp4",
+
         description: "Premium Raimi-inspired full-head mask.",
 
         features: [
@@ -79,8 +81,8 @@ const products = [
 
         images: [
             "Images/Masks/Mask-pictures/tobey-black.front.png",
-            "Images/Model/Modeel-Symbiote-back.jpeg",
-            "Images/Model/Model-symbiote-pose.jpeg",
+            "Images/Model/Model-Symbiote-back.jpeg",
+            "Images/Model/Modeel-symbiote-pose.jpeg",
             "Images/Model/Model-symbiote-comic.jpeg",
             "Images/Masks/Mask-pictures/tobey-black.eyes-close.png",
             "Images/Masks/Mask-pictures/tobey-black.side-left.png",
@@ -108,7 +110,7 @@ const products = [
 
         ecwidId: 846610119,
        
-        name: "Amazing Spider V1",
+        name: "Amazing Spider 1",
 
         category: "Masks",
 
@@ -131,7 +133,7 @@ const products = [
             "Images/Model/Model-tasm1-handsonhead.jpeg",
             "Images/Masks/Mask-pictures/amazing-v1.eyes-close.png",
             "Images/Masks/Mask-pictures/amazing-v1.side-left.png",
-            "Images/Masks/Mask-pictures/amazing-v1.close.png"
+            "Images/Masks/Mask-pictures/amazing-v1.close.png",
         ],
 
         description: "The Amazing Spider- Version 1 mask.",
@@ -155,7 +157,7 @@ const products = [
 
         ecwidId: 846610118,
         
-        name: "Amazing Spider V2",
+        name: "Amazing Spider 2",
 
         category: "Masks",
 
@@ -690,8 +692,7 @@ const products = [
 
         image: "Images/Webshooters/tasm2-webshooters-front.png",
 
-        video: "Videos/tasm2-wbshooters.mp4",
-
+    
 
         images: [
             "Images/Webshooters/tasm2-webshooters-front.png",
@@ -700,6 +701,8 @@ const products = [
             "Images/Webshooters/tasm2-webshooters.close.png",
 
         ],
+
+         video: "Videos/tasm2.mp4",
 
         description: "Amazing Spider 2 web shooters.",
 
@@ -738,9 +741,11 @@ const products = [
 
         images: [
             "Images/Webshooters/brandnewday-webshooters.png",
-            "Images/Webshooters/brandnewday-webshoot1.png",
+            "Images/Webshooters/brandnewday-webshooter1.png",
             "Images/Webshooters/brandnewdaywebshooters.png",
         ],
+
+         video: "Videos/bndwebshooters.mp4",
 
         description: "Brand New Day inspired web shooters.",
 
@@ -788,7 +793,7 @@ const products = [
             "Images/Accessories/bagshowinggloves.jpeg",
             "Images/Accessories/bagprops.jpeg",
             "Images/Accessories/behindbag.jpeg",
-            "Images/Accessories/insidebag.jpeg",
+            
            
 
         ],
@@ -853,7 +858,7 @@ const products = [
 {
     id: 20,
     ecwidId: 856805079,
-    name: "Amazing Spider V1 Mask V2",
+    name: "Amazing Spider 1 Mask V2",
     category: "Masks",
     price: 55,
     
@@ -885,7 +890,7 @@ const products = [
 {
     id: 21,
     ecwidId: 856800422,
-    name: "Amazing Spider V2 Mask V2",
+    name: "Amazing Spider 2 Mask V2",
     category: "Masks",
     price: 55,
     image: "Images/Budget/Budget-tasm2-front.jpeg",
