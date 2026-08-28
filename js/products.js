@@ -770,7 +770,7 @@ const products = [
       {
         id: 18,
          
-        ecwidId:853021447, 
+        ecwidId: 853021447, 
         
         name: "Amazing 2 Bag",
 
