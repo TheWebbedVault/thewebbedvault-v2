@@ -1122,13 +1122,13 @@ const products = [
 
     stock: 4,
 
-    image: "Images/Model/headsstand1.avif",
+    image: "Images/Model/headstand1.avif",
 
     images: [
         
-        "Images/Model/headsstand1.avif",
-        "Images/Model/headsstand2.avif",
-        "Images/Model/headsstand 3.avif",
+        "Images/Model/headstand1.avif",
+        "Images/Model/headstand2.avif",
+        "Images/Model/some.png",
         
     ],
 
