@@ -50,7 +50,7 @@ const products = [
             "Comfortable fit"
         ],
 
-        shipping: "Ships within 1–2 business days.",
+        shipping: "Ships withib 2-3 business days.",
 
         returns: "30-day returns accepted."
 
@@ -99,7 +99,7 @@ const products = [
             "Comfortable fit"
         ],
 
-        shipping: "Ships within 1–2 business days.",
+        shipping: "Ships within 2–3 business days.",
 
         returns: "30-day returns accepted."
 
@@ -146,7 +146,7 @@ const products = [
             "Detachable fabric"
         ],
 
-        shipping: "Ships within 1–2 business days.",
+        shipping: "Ships within 2–3 business days.",
 
         returns: "30-day returns accepted."
 
@@ -188,7 +188,7 @@ const products = [
             "Detachable fabric"
         ],
 
-        shipping: "Ships within 1–2 business days.",
+        shipping: "Ships within 2–3 business days.",
 
         returns: "30-day returns accepted."
 
@@ -230,7 +230,7 @@ const products = [
             "Detachable fabric"
         ],
 
-        shipping: "Ships within 1–2 business days.",
+        shipping: "Ships within 2–3 business days.",
 
         returns: "30-day returns accepted."
 
@@ -277,7 +277,7 @@ const products = [
             "Detachable fabric"
         ],
 
-        shipping: "Ships within 1–2 business days.",
+        shipping: "Ships within 2–3 business days.",
 
         returns: "30-day returns accepted."
 
@@ -322,7 +322,7 @@ const products = [
         "Limited stock"
     ],
 
-    shipping: "Ships within 1–2 business days.",
+    shipping: "Ships within 2–3 business days.",
 
     returns: "30-day returns accepted."
 },
@@ -364,7 +364,7 @@ const products = [
             "Detachable fabric"
         ],
 
-        shipping: "Ships within 1–2 business days.",
+        shipping: "Ships within 2–3 business days.",
 
         returns: "30-day returns accepted."
 
@@ -412,7 +412,7 @@ const products = [
             "Perfect for cosplay"
         ],
 
-        shipping: "Ships within 1–2 business days.",
+        shipping: "Ships within 2–3 business days.",
 
         returns: "30-day returns accepted."
 
@@ -454,7 +454,7 @@ const products = [
             "Perfect for cosplay"
         ],
 
-        shipping: "Ships within 1–2 business days.",
+        shipping: "Ships within 2–3 business days.",
 
         returns: "30-day returns accepted."
 
@@ -496,7 +496,7 @@ const products = [
             "Perfect for cosplay"
         ],
 
-        shipping: "Ships within 1–2 business days.",
+        shipping: "Ships within 2–3 business days.",
 
         returns: "30-day returns accepted."
 
@@ -540,7 +540,7 @@ const products = [
             "Perfect for cosplay"
         ],
 
-        shipping: "Ships within 1–2 business days.",
+        shipping: "Ships within 2–3 business days.",
 
         returns: "30-day returns accepted."
 
@@ -581,7 +581,7 @@ const products = [
         "Perfect for cosplay"
     ],
 
-    shipping: "Ships within 1–2 business days.",
+    shipping: "Ships within 2–3 business days.",
 
     returns: "30-day returns accepted."
 },
@@ -667,7 +667,7 @@ const products = [
             "Perfect for cosplay"
         ],
 
-        shipping: "Ships within 1–2 business days.",
+        shipping: "Ships within 2–3 business days.",
 
         returns: "30-day returns accepted."
 
@@ -714,7 +714,7 @@ const products = [
             "Perfect for cosplay"
         ],
 
-        shipping: "Ships within 1–2 business days.",
+        shipping: "Ships within 2–3 business days.",
 
         returns: "30-day returns accepted."
 
@@ -757,7 +757,7 @@ const products = [
             "Perfect for cosplay"
         ],
 
-        shipping: "Ships within 1–2 business days.",
+        shipping: "Ships within 2–3 business days.",
 
         returns: "30-day returns accepted."
 
@@ -808,7 +808,7 @@ const products = [
             "Perfect display piece"
         ],
 
-        shipping: "Ships within 1–2 business days.",
+        shipping: "Ships within 2–3 business days.",
 
         returns: "30-day returns accepted."
 
@@ -846,7 +846,7 @@ const products = [
         "Perfect everyday bag"
     ],
 
-    shipping: "Ships within 1–2 business days.",
+    shipping: "Ships within 2–3 business days.",
 
     returns: "30-day returns accepted."
 },
@@ -1023,7 +1023,7 @@ const products = [
 
 {
     id: 27,
-    ecwidId: 0,
+    ecwidId: 856800413,
 
     name: "Tom Stark Suit Mask - Red",
 
@@ -1031,7 +1031,7 @@ const products = [
 
     price: 20,
 
-    badge: "Coming Soon",
+    badge: "Perfect",
 
     featured: true,
 
@@ -1065,7 +1065,7 @@ const products = [
 
 {
     id: 28,
-    ecwidId: 0,
+    ecwidId: 856800416,
 
     name: "Tom Stark Suit Mask - Black",
 
@@ -1073,7 +1073,7 @@ const products = [
 
     price: 20,
 
-    badge: "Coming Soon",
+    badge: "Perfect",
 
     featured: false,
 
@@ -1105,6 +1105,49 @@ const products = [
 
     returns: "30-day returns accepted."
 },
+
+{
+    id: 29,
+    ecwidId: 866106060,
+
+    name: "Head Stand",
+
+    category: "Masks",
+
+    price: 20,
+
+    badge: "Perfect",
+
+    featured: true,
+
+    stock: 4,
+
+    image: "Images/Model/headsstand1.avif",
+
+    images: [
+        
+        "Images/Model/headsstand1.avif",
+        "Images/Model/headsstand2.avif",
+        "Images/Model/headsstand 3.avif",
+        
+    ],
+
+    description:
+        "A perfeect way to display your masks.",
+
+    features: [
+        "Dark color",
+        "Heavy",
+        "Amazing quality",
+        "Fits all masks",
+        "3D printed",
+    ],
+
+    shipping: "Ships within 2–3 business days.",
+
+    returns: "30-day returns accepted."
+
+} 
 
 ];
 
