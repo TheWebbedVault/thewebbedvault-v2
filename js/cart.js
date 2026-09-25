@@ -11,26 +11,44 @@
 ========================================================== */
 
 const ECWID_PRODUCT_IDS = {
+    "Amazing Spider V1": 846610119, 
+    "Amazing Spider V2": 846610118, 
+    "Black Symbiote Mask": 846610124, 
+    "Brand New Day Mask": 846610122, 
+    "Spider-Verse Mask": 846610125, 
+    "Tobey Red Mask": 846610126, 
+    "Iron Man Helmet": 853020945, 
+    "Stark Suit Mask": 853014984, 
+ 
+    "Amazing 1 Gloves": 849846652, 
+    "Amazing 2 Gloves": 849849183, 
+    "Black Spider Gloves": 846610121, 
+    "Brand New Day Gloves": 849849194, 
+    "Tobey Red Gloves": 849846654, 
+    "Miles Morales Gloves": 853014986, 
+ 
+    "Amazing 2 Web Shooters": 846610120, 
+    "Brand New Day Web Shooters": 846610123, 
+    "Web Shooters": 849846650,
 
-    "Amazing Spider V1": 846610119,
-    "Amazing Spider V2": 846610118,
-    "Black Symbiote Mask": 846610124,
-    "Brand New Day Mask": 846610122,
-    "Spider-Verse Mask": 846610125,
-    "Tobey Red Mask": 846610126,
-    "Iron Man Helmet": 853020945,
-    "Stark Suit Mask": 853014984,
+    "Amazing 2 Bag": 853021447,
+    "Washed Denim Bag": 853014985,
+    "V2 Denim Bag": 867383631,
 
-    "Amazing 1 Gloves": 849846652,
-    "Amazing 2 Gloves": 849849183,
-    "Black Spider Gloves": 846610121,
-    "Brand New Day Gloves": 849849194,
-    "Tobey Red Gloves": 849846654,
-    "Miles Morales Gloves": 853014986,
+    "Metal Keychain": 867390302,
+    "Pin": 867390305,
 
-    "Amazing 2 Web Shooters": 846610120,
-    "Brand New Day Web Shooters": 846610123,
-    "Web Shooters": 849846650
+    "Amazing Spider 1 Mask V2": 856805079,
+    "Amazing Spider 2 Mask V2": 856800422,
+    "Spider-Verse Mask V2": 856805082,
+    "BND Mask V2": 856805080,
+
+    "Basic Web Shooter": 856800423,
+
+    "Tom Stark Suit Mask - Red": 856800413,
+    "Tom Stark Suit Mask - Black": 856800416,
+
+    "Head Stand": 866106060
 
 };
 

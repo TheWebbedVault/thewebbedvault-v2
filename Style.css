@@ -5812,3 +5812,140 @@ p{
         font-size: 1.2rem;
     }
 }
+
+.hero-sale {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+
+    margin: 0 auto 32px;
+    padding: 18px 34px;
+
+    border: 2px solid #e50914;
+    border-radius: 60px;
+
+    background: rgba(229, 9, 20, 0.10);
+
+    color: #fff;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: .5px;
+
+    box-shadow: 0 0 25px rgba(229, 9, 20, 0.18);
+}
+
+.hero-sale strong {
+    color: #ff1e2d;
+    font-size: 1.45rem;
+}
+
+.hero-sale span {
+    color: #fff;
+    font-size: 1.25rem;
+}
+
+.hero-sale span strong {
+    color: #fff;
+    background: #e50914;
+    padding: 7px 13px;
+    border-radius: 8px;
+    font-size: 1.25rem;
+}
+
+@media (max-width: 600px) {
+    .hero-sale {
+        gap: 10px;
+        padding: 14px 18px;
+        font-size: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .hero-sale strong {
+        font-size: 1.1rem;
+    }
+
+    .hero-sale span {
+        font-size: 1rem;
+    }
+
+    .hero-sale span strong {
+        font-size: 1rem;
+        padding: 5px 9px;
+    }
+}
+
+.hero-giveaway {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    width: fit-content;
+    max-width: 90%;
+
+    margin: 0 auto 35px;
+    padding: 18px 32px;
+
+    border: 2px solid #ffd700;
+    border-radius: 18px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255, 215, 0, 0.12),
+        rgba(229, 9, 20, 0.10)
+    );
+
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.12);
+
+    color: white;
+    text-align: left;
+}
+
+.giveaway-icon {
+    font-size: 2.5rem;
+}
+
+.giveaway-title {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #ffd700;
+    letter-spacing: 1px;
+}
+
+.giveaway-subtitle {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #fff;
+    margin-top: 3px;
+}
+
+.giveaway-text {
+    font-size: 0.95rem;
+    color: #d8d8d8;
+    margin-top: 4px;
+}
+
+@media (max-width: 600px) {
+    .hero-giveaway {
+        gap: 12px;
+        padding: 14px 18px;
+        max-width: 92%;
+    }
+
+    .giveaway-icon {
+        font-size: 2rem;
+    }
+
+    .giveaway-title {
+        font-size: 1.05rem;
+    }
+
+    .giveaway-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .giveaway-text {
+        font-size: 0.8rem;
+    }
+}

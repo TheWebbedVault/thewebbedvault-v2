@@ -6830,3 +6830,44 @@ canvas{
     }
 
 }
+
+/* ==========================================================
+   SALE ANNOUNCEMENT
+========================================================== */
+
+.announcement-bar {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 11px 15px;
+    font-size: 0.95rem;
+    letter-spacing: .3px;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+.announcement-bar strong:first-child {
+    color: #e50914;
+}
+
+.announcement-bar span {
+    margin-left: 10px;
+    color: #fff;
+}
+
+.announcement-bar span strong {
+    color: #e50914;
+}
+
+@media (max-width: 600px) {
+    .announcement-bar {
+        padding: 10px 12px;
+        font-size: .82rem;
+        line-height: 1.4;
+    }
+
+    .announcement-bar span {
+        display: block;
+        margin-left: 0;
+        margin-top: 2px;
+    }
+}

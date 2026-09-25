@@ -820,6 +820,8 @@ const products = [
 
     name: "Washed Denim Bag",
 
+     ecwidId: 853014985,
+
     category: "Accessories",
 
     price: 65,
@@ -833,7 +835,8 @@ const products = [
     image: "Images/Accessories/washed-denim-bag.webp",
 
     images: [
-        "Images/Accessories/washed-denim-bag.webp"
+        "Images/Accessories/washed-denim-bag.webp",
+        "Images/Accessories/washeddenim2.png",
     ],
 
     description: "Premium washed denim Spider-Man bag.",
@@ -851,12 +854,136 @@ const products = [
     returns: "30-day returns accepted."
 },
 
+{
+        
+    id: 20,
+
+    name: "V2 Denim Bag",
+     
+    ecwidId: 867383631,
+
+    category: "Accessories",
+
+    price: 55,
+
+    badge: "Cosplay",
+
+    featured: true,
+
+    stock: 10,
+
+    image: "Images/Accessories/bag1.png",
+
+    images: [
+        "Images/Accessories/bag1.png",
+        "Images/Accessories/bag2.png",
+        "Images/Accessories/bag3.png",
+    ],
+
+    description: "Premium washed denim Spider-Man bag.",
+
+    features: [
+        "Premium quality",
+        "Collector edition",
+        "Durable construction",
+        "Movie inspired",
+        "Perfect everyday bag"
+    ],
+
+    shipping: "Ships within 2–3 business days.",
+
+    returns: "30-day returns accepted."
+},
+
+{
+        
+    id: 21,
+
+    ecwidId: 867390302,
+
+    name: "Metal Keychain",
+
+    category: "Accessories",
+
+    price: 5,
+
+    badge: "Collectible",
+
+    featured: true,
+
+    stock: 10,
+
+    image: "Images/Accessories/keychain2.png",
+
+    images: [
+      
+        "Images/Accessories/keychain2.png",
+        "Images/Accessories/keychain3.png",
+    ],
+
+    description: "Premium metal Spider-Man keychain.",
+
+    features: [
+        "Premium quality",
+        "Collector edition",
+        "Durable construction",
+        "Movie inspired",
+        "Perfect everyday accessory"
+    ],
+
+    shipping: "Ships within 2–3 business days.",
+
+    returns: "30-day returns accepted."
+},
+
+{
+        
+    id: 22,
+
+    name: "Pin",
+
+     ecwidId: 867390305,
+
+    category: "Accessories",
+
+    price: 5,
+
+    badge: "Cosplay",
+
+    featured: true,
+
+    stock: 10,
+
+    image: "Images/Accessories/pin1.png",
+
+    images: [
+        "Images/Accessories/pin1.png",
+        "Images/Accessories/pin2.png",
+       
+    ],
+
+    description: "Premium Spider-Man pin.",
+
+    features: [
+        "Premium quality",
+        "Collector edition",
+        "Durable construction",
+        "Movie inspired",
+        "Perfect everyday accessory"
+    ],
+
+    shipping: "Ships within 2–3 business days.",
+
+    returns: "30-day returns accepted."
+},
+
+
 /* ==========================================================
    BUDGET MASKS (V2)
 ========================================================== */
 
 {
-    id: 20,
+    id: 23,
     ecwidId: 856805079,
     name: "Amazing Spider 1 Mask V2",
     category: "Masks",
@@ -870,6 +997,7 @@ const products = [
         "Images/Model/Model-tasm1-budgetpose.jpeg",
         "Images/Budget/Budget-tasm1-close.jpeg ",
         "Images/Budget/Budget-tasm1-backshell.jpeg",
+        "Images/Budget/tasm1budgete.jpeg"
       
     ],
 
@@ -888,7 +1016,7 @@ const products = [
 },
 
 {
-    id: 21,
+    id: 24,
     ecwidId: 856800422,
     name: "Amazing Spider 2 Mask V2",
     category: "Masks",
@@ -902,7 +1030,9 @@ const products = [
         "Images/Model/Modelbudget-tasm2-front.jpeg",
         "Images/Model/Modelbudget-tasm2-side.jpeg",
         "Images/Budget/Budget.tasm2-side.jpeg",
-        "Images/Budget/Budget-tasm2-inside.jpeg"
+        "Images/Budget/Budget-tasm2-inside.jpeg",
+        "Images/Budget/ttasm2budget.jpeg"
+
     ],
 
     video: "Videos/tasm2.mp4",
@@ -922,7 +1052,7 @@ const products = [
 },
 
 {
-    id: 22,
+    id: 25,
     ecwidId:856805082,
     name: "Spider-Verse Mask V2",
     category: "Masks",
@@ -951,7 +1081,7 @@ const products = [
 },
 
 {
-    id: 23,
+    id: 26,
     ecwidId: 856805080,
     name: "BND Mask V2",
     category: "Masks",
@@ -979,7 +1109,7 @@ const products = [
     ]
 },
 {
-    id: 24,
+    id: 27,
     ecwidId: 856800423,
 
     name: "Basic Web Shooter",
@@ -1022,7 +1152,7 @@ const products = [
 },
 
 {
-    id: 27,
+    id: 28,
     ecwidId: 856800413,
 
     name: "Tom Stark Suit Mask - Red",
@@ -1064,7 +1194,7 @@ const products = [
 },
 
 {
-    id: 28,
+    id: 29,
     ecwidId: 856800416,
 
     name: "Tom Stark Suit Mask - Black",
@@ -1107,7 +1237,7 @@ const products = [
 },
 
 {
-    id: 29,
+    id: 30,
     ecwidId: 866106060,
 
     name: "Head Stand",
