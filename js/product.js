@@ -1092,6 +1092,58 @@ if (
 }
 
 /* ==========================================================
+   KEYCHAIN COLOUR OPTION
+========================================================== */
+
+let keychainColour = "";
+
+if (product.id === 21) {
+
+    const productInfo =
+        document.querySelector(".product-info");
+
+    if (productInfo) {
+
+        const colourBox =
+            document.createElement("div");
+
+        colourBox.className =
+            "keychain-colour-box";
+
+        colourBox.innerHTML = `
+            <label for="keychainColour">
+                Keychain Colour
+            </label>
+
+            <select id="keychainColour" required>
+                <option value="">Select a colour</option>
+                <option value="Silver">Silver</option>
+                <option value="Dark Silver">Dark Silver</option>
+                <option value="Gold">Gold</option>
+            </select>
+        `;
+
+        productInfo.insertBefore(
+            colourBox,
+            productCartBtn
+        );
+
+        const colourSelect =
+            colourBox.querySelector(
+                "#keychainColour"
+            );
+
+        colourSelect.addEventListener(
+            "change",
+            () => {
+                keychainColour =
+                    colourSelect.value;
+            }
+        );
+    }
+}
+
+/* ==========================================================
    ADD TO CART
 ========================================================== */
 
@@ -1101,18 +1153,44 @@ if (productCartBtn) {
         "click",
         () => {
 
+            /* KEYCHAIN */
+            if (product.id === 21) {
+
+                if (!keychainColour) {
+
+                    Store.showToast(
+                        "Please select a keychain colour."
+                    );
+
+                    return;
+                }
+
+                Store.addToCart(
+                    product.id,
+                    1,
+                    {
+                        colour:
+                            keychainColour
+                    }
+                );
+
+                Store.showToast(
+                    `Added to cart — ${keychainColour} 🛒`
+                );
+
+                return;
+            }
+
+            /* ALL OTHER PRODUCTS */
             Store.addToCart(
                 product.id
             );
 
-
             Store.showToast(
                 "Added to cart 🛒"
             );
-
         }
     );
-
 }
 
 

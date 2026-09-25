@@ -5949,3 +5949,39 @@ p{
         font-size: 0.8rem;
     }
 }
+
+/* ==========================================================
+   KEYCHAIN COLOUR
+========================================================== */
+
+.keychain-colour-box {
+    margin: 20px 0;
+}
+
+.keychain-colour-box label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+#keychainColour {
+    width: 100%;
+    max-width: 320px;
+    padding: 13px 15px;
+
+    background: #111;
+    color: #fff;
+
+    border: 1px solid #444;
+    border-radius: 8px;
+
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#keychainColour:focus {
+    outline: none;
+    border-color: #e50914;
+}

@@ -729,48 +729,47 @@ if (checkoutButton) {
                             reject
                         ) => {
 
-                            Ecwid.Cart.addProduct({
+                            const ecwidProduct = {
+    id: Number(ecwidId),
 
-                                id:
-                                    Number(
-                                        ecwidId
-                                    ),
+    quantity: Number(item.quantity),
 
-                                quantity:
-                                    Number(
-                                        item.quantity
-                                    ),
+    callback: function(
+        success,
+        addedProduct,
+        ecwidCart,
+        error
+    ) {
+        if (success) {
+            resolve();
+        } else {
+            reject(
+                new Error(
+                    error ||
+                    `Ecwid could not add ${item.name}.`
+                )
+            );
+        }
+    }
+};
 
-                                callback:
-                                    function(
-                                        success,
-                                        addedProduct,
-                                        ecwidCart,
-                                        error
-                                    ) {
+/*
+ * KEYCHAIN COLOUR
+ * Send the selected colour to Ecwid.
+ */
+if (
+    product &&
+    product.id === 21 &&
+    item.colour
+) {
+    ecwidProduct.options = {
+        "Colour": item.colour
+    };
+}
 
-                                        if (
-                                            success
-                                        ) {
-
-                                            resolve();
-
-                                        }
-
-                                        else {
-
-                                            reject(
-                                                new Error(
-                                                    error ||
-                                                    `Ecwid could not add ${item.name}.`
-                                                )
-                                            );
-
-                                        }
-
-                                    }
-
-                            });
+Ecwid.Cart.addProduct(
+    ecwidProduct
+);
 
                         }
                     );

@@ -913,11 +913,12 @@ const products = [
 
     stock: 10,
 
-    image: "Images/Accessories/keychain2.png",
+    image: "Images/Accessories/keeychain1.png",
 
     images: [
       
-        "Images/Accessories/keychain2.png",
+        "Images/Accessories/keeychain1.png",
+        "Images/Accessories/Keychain2.png",
         "Images/Accessories/keychain3.png",
     ],
 
