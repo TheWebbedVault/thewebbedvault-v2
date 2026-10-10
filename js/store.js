@@ -128,59 +128,50 @@ const Store = (() => {
 
     }
 
+function addToCart(id, quantity = 1, options = {}) {
+    const product = getProduct(id);
 
-    function addToCart(id) {
+    if (!product) return false;
 
-        const product =
-            getProduct(id);
+    const selectedColour =
+        options.colour || null;
 
+    /*
+     * For the keychain, different colours
+     * are treated as separate cart items.
+     */
+    const existingItem = cart.find(item =>
+        item.id === product.id &&
+        (
+            product.id !== 21 ||
+            item.colour === selectedColour
+        )
+    );
 
-        if (!product) {
+    if (existingItem) {
 
-            return false;
+        existingItem.quantity += quantity;
 
-        }
+    } else {
 
+        cart.push({
+            ...product,
+            quantity: quantity,
 
-        const existingItem =
-            cart.find(
-                item =>
-                    item.id ===
-                    product.id
-            );
-
-
-        if (existingItem) {
-
-            existingItem.quantity++;
-
-        }
-
-        else {
-
-            cart.push({
-
-                ...product,
-
-                quantity: 1
-
-            });
-
-        }
-
-
-        save(
-            CART_KEY,
-            cart
-        );
-
-
-        updateCartCount();
-
-
-        return true;
+            ...(product.id === 21 && selectedColour
+                ? {
+                    colour: selectedColour
+                }
+                : {})
+        });
 
     }
+
+    save(CART_KEY, cart);
+    updateCartCount();
+
+    return true;
+}
 
 
     function removeFromCart(id) {
