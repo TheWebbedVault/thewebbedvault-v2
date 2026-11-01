@@ -163,7 +163,7 @@ const products = [
 
         price: 75,
 
-        badge: "Coming Soon!",
+        badge: "Best Seller!",
 
         featured: true,
 
@@ -205,7 +205,7 @@ const products = [
 
         price: 75,
 
-        badge: "Coming Soon!",
+        badge: "Popular!",
 
         featured: true,
 
@@ -247,7 +247,7 @@ const products = [
 
         price: 75,
 
-        badge: "Coming Soon!",
+        badge: "Trending!",
 
         featured: true,
 
@@ -339,7 +339,7 @@ const products = [
 
         price: 75,
 
-        badge: "Coming Soon!",
+        badge: "New!",
 
         featured: false,
 
