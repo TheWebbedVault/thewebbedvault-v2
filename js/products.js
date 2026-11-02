@@ -1012,7 +1012,7 @@ const products = [
         "Magnetic lenses",
         "Comfortable fit",
         "Breathable fabric",
-        "Non magnetic back shell",
+        "No Back Shell",
     ]
 },
 
