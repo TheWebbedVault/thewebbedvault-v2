@@ -249,47 +249,10 @@ if (productName) {
 
 if (productPrice) {
 
-    const originalPrice = Number(product.price);
-    const salePrice = (originalPrice * 0.90).toFixed(2);
-
-    productPrice.innerHTML = `
-        <div style="
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        ">
-            <span style="
-                text-decoration: line-through;
-                color: #888;
-                font-size: 0.9em;
-            ">
-                £${originalPrice.toFixed(2)}
-            </span>
-
-            <strong style="
-                color: #d62828;
-                font-size: 1.35em;
-            ">
-                £${salePrice}
-            </strong>
-
-            <span style="
-                background: #d62828;
-                color: white;
-                padding: 5px 9px;
-                border-radius: 4px;
-                font-size: 0.7em;
-                font-weight: bold;
-            ">
-                10% OFF
-            </span>
-        </div>
-    `;
-
-}
-
-}
+    productPrice.textContent =
+        `£${Number(
+            product.price
+        ).toFixed(2)}`;
 
 
 if (productDescription) {
