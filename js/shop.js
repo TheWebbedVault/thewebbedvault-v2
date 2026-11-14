@@ -120,7 +120,17 @@ function createProductCard(product) {
 
             <p class="price">
 
-                £${product.price.toFixed(2)}
+              <span style="text-decoration:line-through;color:#999;font-size:14px;">
+    £${Number(product.price).toFixed(2)}
+</span>
+
+<strong style="color:#e32636;font-size:20px;margin-left:8px;">
+    £${(Number(product.price) * 0.90).toFixed(2)}
+</strong>
+
+<span style="background:#e32636;color:white;padding:4px 7px;border-radius:4px;font-size:10px;margin-left:6px;font-weight:bold;">
+    10% OFF
+</span>
 
             </p>
 
