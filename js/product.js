@@ -254,7 +254,7 @@ if (productPrice) {
             product.price
         ).toFixed(2)}`;
 
-
+}
 if (productDescription) {
 
     productDescription.textContent =
