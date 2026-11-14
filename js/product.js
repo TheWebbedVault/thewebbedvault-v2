@@ -246,21 +246,12 @@ if (productName) {
 }
 
 
-
 if (productPrice) {
 
-    
-const originalPrice = Number(product.price);
-const salePrice = (originalPrice * 0.90).toFixed(2);
-
-productPrice.innerHTML =
-    '<span style="text-decoration:line-through;color:#999;font-size:0.9em;">£' +
-    originalPrice.toFixed(2) +
-    '</span> ' +
-    '<strong style="color:#e32636;font-size:1.3em;">£' +
-    salePrice +
-    '</strong> ' +
-    '<span style="background:#e32636;color:white;padding:4px 7px;border-radius:4px;font-size:11px;font-weight:bold;">10% OFF</span>';
+    productPrice.textContent =
+        `£${Number(
+            product.price
+        ).toFixed(2)}`;
 
 
 }
